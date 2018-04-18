@@ -2,7 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38ef741-17f9-42c2-878f-2681224a399e" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/lib/bootstrap-grid.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/lib/bootstrap-grid.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/lib/bootstrap-grid.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/lib/bootstrap-grid.min.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/lib/bootstrap-reboot.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/lib/bootstrap-reboot.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/lib/bootstrap-reboot.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/lib/bootstrap-reboot.min.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/lib/bootstrap.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/lib/bootstrap.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/lib/bootstrap.min.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/css/lib/bootstrap.min.css.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/lib/bootstrap.bundle.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/lib/bootstrap.bundle.js.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/lib/bootstrap.bundle.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/lib/bootstrap.bundle.min.js.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/lib/bootstrap.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/lib/bootstrap.js.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/lib/bootstrap.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/lib/bootstrap.min.js.map" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/lib/jquery-3.2.1.slim.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/lib/popper.min.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/view/templates/base.html.twig" afterPath="$PROJECT_DIR$/src/view/templates/base.html.twig" />
+      <change beforePath="$PROJECT_DIR$/src/view/templates/hello.twig" afterPath="$PROJECT_DIR$/src/view/templates/hello.twig" />
       <change beforePath="$PROJECT_DIR$/src/view/templates/landing.twig" afterPath="$PROJECT_DIR$/src/view/templates/landing.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,17 +48,16 @@
               <caret line="8" column="2" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
               <folding>
                 <element signature="e#7#63#0#PHP" expanded="true" />
-                <marker date="1524077804441" expanded="true" signature="531:587" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+            <state relative-caret-position="345">
+              <caret line="23" column="65" lean-forward="true" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -43,8 +66,8 @@
       <file leaf-file-name="hello.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/templates/hello.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="14" />
+            <state relative-caret-position="120">
+              <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -70,12 +93,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="landing.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="landing.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/templates/landing.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-              <folding />
+            <state relative-caret-position="240">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <element signature="e#653#657#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,7 +119,7 @@
         <entry file="file://$PROJECT_DIR$/public/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding>
                 <element signature="e#6#62#0#PHP" expanded="true" />
               </folding>
@@ -150,10 +175,10 @@
         <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/src/Controller/PostUserController.php" />
         <option value="$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" />
-        <option value="$PROJECT_DIR$/src/view/templates/hello.twig" />
         <option value="$PROJECT_DIR$/src/Controller/Middleware/TestMiddleware.php" />
-        <option value="$PROJECT_DIR$/src/view/templates/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/view/templates/hello.twig" />
         <option value="$PROJECT_DIR$/src/view/templates/landing.twig" />
+        <option value="$PROJECT_DIR$/src/view/templates/base.html.twig" />
       </list>
     </option>
   </component>
@@ -241,6 +266,29 @@
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="slimapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="slimapp" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="lib" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="slimapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="slimapp" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="slimapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="slimapp" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="lib" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="slimapp" type="b2602c69:ProjectViewProjectNode" />
@@ -356,12 +404,12 @@
       <workItem from="1523556412718" duration="4855000" />
       <workItem from="1524073809479" duration="9000" />
       <workItem from="1524073822594" duration="385000" />
-      <workItem from="1524076456592" duration="1449000" />
+      <workItem from="1524076456592" duration="2457000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13793000" />
+    <option name="totallyTimeSpent" value="14801000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="571" y="22" width="1349" height="1134" extended-state="0" />
@@ -442,7 +490,6 @@
           <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
           <folding>
             <element signature="e#7#63#0#PHP" expanded="true" />
-            <marker date="1524077804441" expanded="true" signature="531:587" ph="..." />
           </folding>
         </state>
       </provider>
@@ -487,7 +534,6 @@
           <caret line="8" column="56" lean-forward="false" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
           <folding>
             <element signature="e#7#63#0#PHP" expanded="true" />
-            <marker date="1524077804441" expanded="true" signature="531:587" ph="..." />
           </folding>
         </state>
       </provider>
@@ -550,7 +596,6 @@
           <caret line="5" column="63" lean-forward="true" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
           <folding>
             <element signature="e#7#63#0#PHP" expanded="true" />
-            <marker date="1524077804441" expanded="true" signature="531:587" ph="..." />
           </folding>
         </state>
       </provider>
@@ -613,7 +658,6 @@
           <caret line="8" column="3" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
           <folding>
             <element signature="e#7#63#0#PHP" expanded="true" />
-            <marker date="1524077804441" expanded="true" signature="531:587" ph="..." />
           </folding>
         </state>
       </provider>
@@ -706,21 +750,10 @@
     <entry file="file://$PROJECT_DIR$/src/Controller/PostUserController.php" />
     <entry file="file://$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" />
     <entry file="file://$PROJECT_DIR$/src/Model/UseCase/PostUserUseCase.php" />
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="2" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-          <folding>
-            <element signature="e#7#63#0#PHP" expanded="true" />
-            <marker date="1524077804441" expanded="true" signature="531:587" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <element signature="e#6#62#0#PHP" expanded="true" />
           </folding>
@@ -751,26 +784,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/templates/base.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/templates/hello.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="120">
+          <caret line="8" column="2" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+          <folding>
+            <element signature="e#7#63#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/templates/landing.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+        <state relative-caret-position="240">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#653#657#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/templates/hello.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="65" lean-forward="true" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
           <folding />
         </state>
       </provider>
