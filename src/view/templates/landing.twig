@@ -1,5 +1,21 @@
-{% extends "base.twig" %}
+{% extends "base.html.twig" %}
 {% block title %}Landing page{% endblock %}
+{% block styles %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/example.css">
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script src="example.js"></script>
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+    exemple
+{% endblock %}
 {% block content %}
     <h1>Welcome to Pwbox!</h1>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+    exemple
 {% endblock %}

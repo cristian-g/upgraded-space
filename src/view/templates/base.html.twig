@@ -3,9 +3,9 @@
     <head>
         <title>{%  block title %}{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/styles.css">
-        {%  block styles %}parent{% endblock %}
+        {%  block styles %}{% endblock %}
         <script src="example.js"></script>
-        {%  block scripts %}parent{% endblock %}
+        {%  block scripts %}{% endblock %}
     </head>
     <body>
         {%  block header %}header{% endblock %}
