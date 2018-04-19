@@ -9,12 +9,20 @@
     <!--<script src="example.js"></script>-->
 {% endblock %}
 {% block header %}
-    {{ parent() }}
+    {#{{ parent() }}#}
     exemple
+
 {% endblock %}
 {% block content %}
     {{ parent() }}
     exemple
+    Counter: {{ counter }}
+
+    {% if not advice %}
+        <h3>Cookies message</h3>
+    {% endif %}
+
+
 {% endblock %}
 {% block footer %}
     {{ parent() }}

@@ -14,6 +14,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 
+
 class PostUserController
 {
     /** @var ContainerInterface */
@@ -28,20 +29,27 @@ class PostUserController
         $this->container = $container;
     }
 
-    public function __invoke(Request $request, Response $response)
+    public function indexAction(Request $request, Response $response){
+        $messages = $this->container->get('flash')->getMessages();
+        $registerMessages = isset($messages['register'])?$messages['register']:[];
+        return $this->container->get('view')
+            ->render($response, 'register.twig', ['messages' => $registerMessages]);
+    }
+
+
+    public function registerAction(Request $request, Response $response)
     {
         try{
             $data = $request->getParsedBody();
             $service = $this->container->get('post_user_use_case');
             $service($data);
-
+            $this->container->get('flash')->addMessage('register', 'User registered.');
+            return $response->withStatus(302)->withHeader('Location', '/user');
         } catch (\Exception $e){
-            $response = $response
-                ->withStatus(500)
-                ->withHeader('Content-Type', 'text/html')
-                ->write($e->getMessage());
+            return $this->container->get('view')
+                ->render($response, 'register.twig', ['error' => $e->getMessage()]);
         }
-        // TODO: Implement __invoke() method.
+        return $response;
     }
 
 
