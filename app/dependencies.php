@@ -9,6 +9,11 @@ $container['view'] = function($container) {
     */]);// TODO desactivar en la versió de producció (és a dir al entregar la pràctica en aquest cas) (diu que NO CAL FER-HO)
     $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
     $view->addExtension(new \Slim\Views\TwigExtension($container['router'], $basePath));
+    $view->addExtension(new Knlv\Slim\Views\TwigMessages(
+        new Slim\Flash\Messages()
+    ));
+    $view->getEnvironment()->addGlobal('session', $_SESSION);
+    $view->getEnvironment()->addGlobal('user', ($container->get('get_user_use_case'))($_SESSION["user_id"]));
     return $view;
 };
 
@@ -31,6 +36,13 @@ $container['user_repository'] = function ($container) {
 
 $container['post_user_use_case'] = function($container) {
     $useCase = new \Pwbox\Model\UseCase\PostUserUseCase(
+        $container->get('user_repository')
+    );
+    return $useCase;
+};
+
+$container['get_user_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetUserUseCase(
         $container->get('user_repository')
     );
     return $useCase;

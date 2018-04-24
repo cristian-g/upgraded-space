@@ -5,8 +5,9 @@ namespace Pwbox\Controller;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Pwbox\Model\User;
 
-class LandingController
+class DashboardController
 {
     protected $container;
 
@@ -26,6 +27,6 @@ class LandingController
     public function __invoke(Request $request, Response $response, array $args)
     {
         return $this->container->get('view')
-            ->render($response, 'landing.twig', []);
+            ->render($response, 'dashboard.twig');
     }
 }

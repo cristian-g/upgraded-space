@@ -13,10 +13,13 @@ class User
 {
     private $id;
     private $username;
-    private $password;
     private $email;
+    private $birthdate;
+    private $password;
+    private $active;
+    private $emailActivationKey;
     private $createdAt;
-    private $updateAt;
+    private $updatedAt;
 
     /**
      * User constructor.
@@ -27,14 +30,17 @@ class User
      * @param $createdAt
      * @param $updateAt
      */
-    public function __construct($id, $username, $password, $email, $createdAt, $updateAt)
+    public function __construct($id, $username, $email, $birthdate, $password, $createdAt, $updatedAt)
     {
         $this->id = $id;
         $this->username = $username;
-        $this->password = $password;
         $this->email = $email;
+        $this->birthdate = $birthdate;
+        $this->password = password_hash($password, PASSWORD_DEFAULT, ['cost' => 11]);
+        $this->active = 0;
+        $this->emailActivationKey = md5($email . $username);
         $this->createdAt = $createdAt;
-        $this->updateAt = $updateAt;
+        $this->updatedAt = $updatedAt;
     }
 
     /**
@@ -46,6 +52,14 @@ class User
     }
 
     /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return mixed
      */
     public function getUsername()
@@ -54,11 +68,11 @@ class User
     }
 
     /**
-     * @return mixed
+     * @param mixed $username
      */
-    public function getPassword()
+    public function setUsername($username)
     {
-        return $this->password;
+        $this->username = $username;
     }
 
     /**
@@ -70,6 +84,78 @@ class User
     }
 
     /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBirthdate()
+    {
+        return $this->birthdate;
+    }
+
+    /**
+     * @param mixed $birthdate
+     */
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param mixed $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmailActivationKey()
+    {
+        return $this->emailActivationKey;
+    }
+
+    /**
+     * @param mixed $emailActivationKey
+     */
+    public function setEmailActivationKey($emailActivationKey)
+    {
+        $this->emailActivationKey = $emailActivationKey;
+    }
+
+    /**
      * @return mixed
      */
     public function getCreatedAt()
@@ -78,14 +164,44 @@ class User
     }
 
     /**
-     * @return mixed
+     * @param mixed $createdAt
      */
-    public function getUpdateAt()
+    public function setCreatedAt($createdAt)
     {
-        return $this->updateAt;
+        $this->createdAt = $createdAt;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
 
+    /**
+     * @param mixed $updateAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updateAt = $updatedAt;
+    }
 
+    public static function fromArray($array)
+    {
+        $object = new User($array["id"], $array["username"], $array["email"], $array["birthdate"], $array["password"], $array["created_at"], $array["updated_at"]);
+        return $object;
+    }
 
+    public function toArray() {
+        $array = [];
+        $array["id"] = $this->getId();
+        $array["username"] = $this->getUsername();
+        $array["email"] = $this->$this->getEmail();
+        $array["birthdate"] = $this->getBirthdate();
+        $array["password"] = $this->password;
+        $array["created_at"] = $this->getCreatedAt();
+        $array["updated_at"] = $this->getUpdateAt();
+        return $array;
+    }
 }

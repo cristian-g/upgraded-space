@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    Dashboard
+{% endblock %}
+{% block styles %}
+    {{ parent() }}
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    {% for message in flash('register') %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">{{ message }}</h4>
+            <p>{{ message }}</p>
+            <hr>
+            <p class="mb-0">{{ message }}</p>
+        </div>
+    {% endfor %}
+    <h1 class="mt-5">Hola, {{ user.username }}</h1>
+    <p class="lead">Esto es tu dashboard.</p>
+    <p>Empieza subiendo archivos.</p>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

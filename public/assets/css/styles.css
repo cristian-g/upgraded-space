@@ -1,3 +1,13 @@
 body {
-    background-color: red;
+    background-color: #eaeaea;
+}
+.container {
+    padding-top: 20px;
+}
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+.right-button {
+    margin-left: 10px;
 }

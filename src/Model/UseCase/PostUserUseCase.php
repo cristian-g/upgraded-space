@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: marc
- * Date: 4/12/18
- * Time: 8:24 PM
- */
 
 namespace Pwbox\Model\UseCase;
-
 
 use Pwbox\Model\User;
 use Pwbox\Model\UserRepository;
@@ -34,6 +27,7 @@ class PostUserUseCase
             null,
             $rawData['username'],
             $rawData['email'],
+            $rawData['birthdate'],
             $rawData['password'],
             $now,
             $now
