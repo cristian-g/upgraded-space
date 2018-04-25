@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{%  block title %}{% endblock %}</title>
+        <title>{%  block title %} | PWBox{% endblock %}</title>
         <link rel="stylesheet" href="{{ base_url() }}/assets/css/lib/bootstrap.min.css">
         <link rel="stylesheet" href="{{ base_url() }}/assets/css/styles.css">
         {%  block styles %}{% endblock %}
@@ -58,6 +58,9 @@
                                         {{ user.username }}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{{ base_url() }}/profile">
+                                            Mi perfil
+                                        </a>
                                         <a class="dropdown-item" href="{{ base_url() }}/logout">
                                             Cerrar sesión
                                         </a>

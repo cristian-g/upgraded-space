@@ -13,7 +13,9 @@ $container['view'] = function($container) {
         new Slim\Flash\Messages()
     ));
     $view->getEnvironment()->addGlobal('session', $_SESSION);
-    $view->getEnvironment()->addGlobal('user', ($container->get('get_user_use_case'))($_SESSION["user_id"]));
+    if (isset($_SESSION["user_id"])) {
+        $view->getEnvironment()->addGlobal('user', ($container->get('get_user_use_case'))($_SESSION["user_id"]));
+    }
     return $view;
 };
 

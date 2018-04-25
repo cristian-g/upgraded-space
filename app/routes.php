@@ -12,7 +12,12 @@ $app->get(
     //->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');//podríem afegir un altre middleware add('Pwbox\Controller\Middleware\TestMiddleware'), aquest afegit s'executaria el primer
 
 $app->get('/', function ($req, $res, $args) {
-    return $res->withStatus(302)->withHeader('Location', '/landing');
+    if (isset($_SESSION["user_id"])) {
+        return $res->withStatus(302)->withHeader('Location', '/dashboard');
+    }
+    else {
+        return $res->withStatus(302)->withHeader('Location', '/landing');
+    }
 });
 
 $app->get(
@@ -33,6 +38,11 @@ $app->post(
 $app->get(
     '/dashboard',
     'Pwbox\Controller\DashboardController'
+)->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');
+
+$app->get(
+    '/profile',
+    'Pwbox\Controller\ProfileUserController'
 )->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');
 
 $app->get(

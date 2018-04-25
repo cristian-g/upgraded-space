@@ -6,7 +6,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class DashboardController
+class ProfileUserController
 {
     protected $container;
 
@@ -26,6 +26,6 @@ class DashboardController
     public function __invoke(Request $request, Response $response, array $args)
     {
         return $this->container->get('view')
-            ->render($response, 'dashboard.twig');
+            ->render($response, 'profile.twig', []);
     }
 }

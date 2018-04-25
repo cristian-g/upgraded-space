@@ -1,0 +1,91 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body style="color: #515F7F; background-color: #F5F7FA; -webkit-text-size-adjust: none; font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; height: 100%; -ms-hyphens: auto; hyphens: auto; line-height: 1.4; margin: 0; -moz-hyphens: auto; -ms-word-break: break-all; width: 100%!important; -webkit-hyphens: auto; word-break: break-word;">
+	<style>
+		@media  only screen and (max-width: 600px) {
+            .inner-body {
+                width: 100% !important;
+            }
+            .footer {
+                width: 100% !important;
+            }
+		}
+		@media  only screen and (max-width: 500px) {
+            .button {
+                width: 100% !important;
+            }
+		}
+	</style>
+	<table class="wrapper" width="100%" cellpadding="0" cellspacing="0" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; background-color: #F5F7FA; padding: 0; -premailer-cellpadding: 0; -premailer-cellspacing: 0; margin: 0; width: 100%; -premailer-width: 100%;">
+		<tbody>
+			<tr>
+				<td align="center" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box;">
+					<table class="content" width="100%" cellpadding="0" cellspacing="0" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; padding: 0; -premailer-cellpadding: 0; -premailer-cellspacing: 0; margin: 0; width: 100%; -premailer-width: 100%;">
+						<tbody>
+							<tr>
+								<td class="header" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; text-align: center; padding: 25px 0;">
+									<a href="https://www.hiyacar.co.uk?utm_source=transactional&amp;utm_medium=email&amp;utm_campaign=email-verification" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; text-decoration: none!important; font-weight: 700; color: #111; font-size: 19px; text-shadow: 0 1px 0 #fff;" target="_blank">
+									PWBox</a>
+								</td>
+							</tr>
+							<!-- Email Body -->
+							<tr>
+								<td class="body" width="100%" cellpadding="0" cellspacing="0" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; margin: 0; width: 100%; -premailer-width: 100%; padding: 0; -premailer-cellpadding: 0; -premailer-cellspacing: 0;">
+									<table class="inner-body inner-body-first" align="center" width="570" cellpadding="0" cellspacing="0" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; padding: 0; -premailer-cellpadding: 0; -premailer-cellspacing: 0; background-color: #FFF; box-shadow: 0 0 10px 1px #ddd; margin: 0 auto; width: auto; max-width: 570px; -premailer-width: 570px; border-top: 5px solid #30D7F0;">
+										<!-- Body content -->
+										<tbody>
+											<tr>
+												<td class="content-cell" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; padding: 25px;">
+													<h2 style="color: #2F3133; text-align: left; margin-top: 0; font-weight: 700; font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; font-size: 16px;">¡Gracias por unirte a PWBox!</h2>
+													<p style="color: #515F7F; margin-top: 0; font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; text-align: left; font-size: 16px; line-height: 1.5em;">Para completar tu perfil de PWBox necesitamos que confirmes tu dirección de correo electrónico para que sepamos que puedes comunicarte con esta dirección:</p>
+													<table class="action" align="center" width="100%" cellpadding="0" cellspacing="0" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; text-align: center; margin: 30px auto; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%; padding: 0;">
+														<tbody>
+															<tr>
+																<td align="center" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box;">
+																	<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box;">
+																		<tbody>
+																			<tr>
+																				<td align="center" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box;">
+																					<table border="0" cellpadding="0" cellspacing="0" align="center" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box;">
+																						<tbody>
+																							<tr>
+																								<td style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box;">
+																									<a href="{link}" class="button button-hcblue" target="_blank" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; text-decoration: none!important; -webkit-text-size-adjust: none; color: #FFF; border-radius: 3px; box-shadow: 0 2px 3px rgba(0,0,0,.16); display: inline-block; background-color: #30D7F0; border-top: 10px solid #30D7F0; border-right: 18px solid #30D7F0; border-bottom: 10px solid #30D7F0; border-left: 18px solid #30D7F0;">Confirmar dirección de correo electrónico</a>
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+													<p style="color: #515F7F; margin-top: 0; font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; text-align: left; font-size: 16px; line-height: 1.5em;text-align: center">
+														Si el botón no funciona, pega esta dirección en la barra de direcciones de tu navegador:<br>
+														<a href="{link}">{link}</a>
+													</p>
+													<p style="color: #515F7F; margin-top: 0; font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; text-align: left; font-size: 16px; line-height: 1.5em; margin-bottom: 0;">
+														Atentamente,<br>
+														El equipo de PWBox
+													</p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td class="spacer" style="font-family: Panton,Avenir,Helvetica,sans-serif; box-sizing: border-box; height: 35px;"></td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>

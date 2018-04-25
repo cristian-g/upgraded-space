@@ -1,5 +1,7 @@
 {% extends "base.html.twig" %}
-{% block title %}Landing page{% endblock %}
+{% block title %}
+    Landing{{ parent() }}
+{% endblock %}
 {% block styles %}
     {{ parent() }}
     <link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/example.css">

@@ -6,7 +6,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class DashboardController
+class EditUserController
 {
     protected $container;
 
@@ -25,7 +25,7 @@ class DashboardController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        return $this->container->get('view')
-            ->render($response, 'dashboard.twig');
+        // From ajax
+        return $response->withStatus(200);
     }
 }
