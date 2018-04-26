@@ -49,3 +49,13 @@ $app->get(
     '/logout',
     'Pwbox\Controller\LogOutController'
 )->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');
+
+$app->get(
+    '/file',
+    'Pwbox\Controller\FileController:getAction'
+);
+
+$app->post(
+    '/file',
+    'Pwbox\Controller\FileController:postAction'
+);
