@@ -11,3 +11,6 @@ body {
 .right-button {
     margin-left: 10px;
 }
+.carousel h1, .carousel p{
+    text-shadow: black 0.1em 0.1em 0.2em;
+}
