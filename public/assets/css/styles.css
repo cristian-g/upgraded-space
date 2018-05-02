@@ -14,3 +14,14 @@ body {
 .carousel h1, .carousel p{
     text-shadow: black 0.1em 0.1em 0.2em;
 }
+footer .footer-black{
+    min-height: 150px;
+    color: white;
+    background-color: black;
+}
+footer .footer-black .col-md-3 {
+    padding: 50px;
+}
+footer .footer-black .blue{
+    background-color: #007bff;
+}

@@ -1,0 +1,25 @@
+section{
+    padding: 100px;
+}
+section.white{
+    background-color: white;
+}
+section .info{
+    text-align: center;
+    margin: 50px;
+}
+section .info svg{
+    font-size: 130px;
+    color: #007bff;
+}
+section.testimonials{
+    background-color: #007bff;
+    background-image: url(../img/avatar_all.png);
+    color: white;
+}
+section.testimonials svg{
+    font-size: 40px;
+}
+section.contact svg{
+    font-size: 40px;
+}
