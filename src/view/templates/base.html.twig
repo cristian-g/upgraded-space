@@ -3,11 +3,17 @@
     <head>
         <title>{%  block title %} | PWBox{% endblock %}</title>
         <link rel="stylesheet" href="{{ base_url() }}/assets/css/lib/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ base_url() }}/assets/css/lib/animate.css">
         <link rel="stylesheet" href="{{ base_url() }}/assets/css/styles.css">
         {%  block styles %}{% endblock %}
-        <script src="{{ base_url() }}/assets/js/lib/jquery-3.2.1.slim.min.js"></script>
+        <script src="{{ base_url() }}/assets/js/lib/jquery-3.2.1.min.js"></script>
         <script src="{{ base_url() }}/assets/js/lib/popper.min.js"></script>
         <script src="{{ base_url() }}/assets/js/lib/bootstrap.min.js"></script>
+        <script src="{{ base_url() }}/assets/js/lib/jquery.waypoints.js"></script>
+        <script src="{{ base_url() }}/assets/js/lib/circle-progress.min.js"></script>
+        <script src="{{ base_url() }}/assets/js/lib/progressbar.min.js"></script>
+        <script src="{{ base_url() }}/assets/js/lib/fontawesome-all.js"></script>
+        <script src="{{ base_url() }}/assets/js/lib/wow.min.js"></script>
         {%  block scripts %}{% endblock %}
     </head>
     <body>
@@ -41,11 +47,14 @@
                                     </div>
                                 </li>
                             {% else %}
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="{{ base_url() }}/"><span class="glyphicon glyphicon-file"></span> Conócenos <span class="sr-only">(current)</span></a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#info"><span class="glyphicon glyphicon-file"></span> Conócenos <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ base_url() }}/"><span class="glyphicon glyphicon-file"></span> Contacto <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="#opiniones"><span class="glyphicon glyphicon-file"></span> Contacto <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#contacto"><span class="glyphicon glyphicon-file"></span> Contacto <span class="sr-only">(current)</span></a>
                                 </li>
                             {% endif %}
                         </ul>
@@ -84,11 +93,23 @@
             {%  block content %}{% endblock %}
         </main>
         <footer class="footer">
-            <div class="container">
                 {%  block footer %}
-                    <span class="text-muted">PWBox</span>
+                    <div class="row footer-black">
+                        <div class="col-md-3">
+                            <h4>Navegación</h4>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Otra información</h4>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="text-muted">PWBox, S.A.</span>
+                        </div>
+                        <div class="col-md-3 blue">
+
+                        </div>
+                    </div>
+
                 {% endblock %}
-            </div>
         </footer>
     </body>
 </html>

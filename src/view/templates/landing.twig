@@ -4,11 +4,11 @@
 {% endblock %}
 {% block styles %}
     {{ parent() }}
-    <link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/example.css">
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/landing.css">
 {% endblock %}
 {% block scripts %}
     {{ parent() }}
-    <script src="example.js"></script>
+    <script src="{{ base_url() }}/assets/js/landing.js"></script>
 {% endblock %}
 {% block header %}
     {{ parent() }}
@@ -64,7 +64,63 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
+    <section class="white">
+        <div class="row cifras">
+            <div class="col-sm-4 text-center">
+                <div id="cifras-años"></div>
+            </div>
+            <div class="col-sm-4 text-center">
+                <div id="cifras-invertir"></div>
+            </div>
+            <div class="col-sm-4 text-center">
+                <div id="cifras-capital"></div>
+            </div>
+        </div>
+    </section>
+    <section id="info" style="padding-bottom: 50px">
+        <h1>Conócenos</h1>
+        <div class="row info">
+            <div class="col-md-3 wow fadeInLeft">
+                <i class="fa fa-cloud-upload-alt"></i>
+                <h2>Sube tus documentos a la nube</h2>
+            </div>
+            <div class="col-md-3 wow fadeInUp">
+                <i class="fas fa-folder-open"></i>
+                <h2>Organiza los archivos</h2>
+            </div>
+            <div class="col-md-3 wow fadeInDown">
+                <i class="fas fa-share-alt"></i>
+                <h2>Comparte con tus amigos</h2>
+            </div>
+            <div class="col-md-3 wow fadeInRight">
+                <i class="fa fa-search"></i>
+                <h2>Descubre nuevos proyectos</h2>
+            </div>
+        </div>
+    </section>
+    <section id="opiniones" class="testimonials">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <i class="fa fa-comment big-icon"></i>
+                <h1>
+                    LO QUE DICEN NUESTROS USUARIOS
+                </h1>
+                <div class="testimonials-text">
+                    <i>"Es la mejor plataforma para colgar documentos a la nube que conozco. Google Drive y Dropbox parecen proyectos de alumnos de ADE después de conocer esta plataforma."</i>
+                </div>
+                <small>
+                    <strong>Jaume Capdevila</strong>
+                </small>
+            </div>
+        </div>
+    </section>
+    <section id="contacto" class="white text-center contact" style="padding: 50px">
+        <h1>Contacto</h1>
+        <p><b>¡No dudes en consultarnos cualquier duda!</b></p>
+        <p><i class="fas fa-envelope"></i><br/>info@pwbox.com</p>
+        <p><i class="fas fa-phone"></i><br/>456789093</p>
+        <p><i class="fas fa-home"></i><br/>C/ Quatre Camins, 30<br/>Barcelona</p>
+    </section>
 {% endblock %}
 {% block footer %}
     {{ parent() }}
