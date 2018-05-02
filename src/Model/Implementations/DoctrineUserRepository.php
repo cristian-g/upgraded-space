@@ -55,4 +55,24 @@ class DoctrineUserRepository implements UserRepository
         }
     }
 
+    public function getFromEmail($email) {
+        try{
+            $array = $this->connection->fetchAssoc('SELECT id, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE email = ? LIMIT 1', array($email));
+            return $array;
+        }
+        catch (\Doctrine\DBAL\DBALException $e){
+
+        }
+    }
+
+    public function getFromUsername($username) {
+        try{
+            $array = $this->connection->fetchAssoc('SELECT id, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE username = ? LIMIT 1', array($username));
+            return $array;
+        }
+        catch (\Doctrine\DBAL\DBALException $e){
+
+        }
+    }
+
 }

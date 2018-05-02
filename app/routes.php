@@ -36,6 +36,16 @@ $app->post(
 );
 
 $app->get(
+    '/login',
+    'Pwbox\Controller\LogInController:indexAction'
+);
+
+$app->post(
+    '/login',
+    'Pwbox\Controller\LogInController:LogInAction'
+);
+
+$app->get(
     '/dashboard',
     'Pwbox\Controller\DashboardController'
 )->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');

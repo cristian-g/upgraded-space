@@ -50,6 +50,20 @@ $container['get_user_use_case'] = function($container) {
     return $useCase;
 };
 
+$container['get_from_email_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetFromEmailUseCase(
+        $container->get('user_repository')
+    );
+    return $useCase;
+};
+
+$container['get_from_username_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetFromUsernameUseCase(
+        $container->get('user_repository')
+    );
+    return $useCase;
+};
+
 $container['flash'] = function ($container) {
     return new \Slim\Flash\Messages();
 };

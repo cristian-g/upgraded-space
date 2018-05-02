@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+{% import "macros/userLogin.html.twig" as form %}
+{% block title %}
+    LogIn{{ parent() }}
+{% endblock %}
+{% block styles %}
+    {{ parent() }}
+    <!--<link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/example.css">-->
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    {{ form.userLogin() }}
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Error</h4>
+            <p>{{ error }}</p>
+            <hr>
+            <p class="mb-0">You can...</p>
+        </div>
+    {% endif %}
+    {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Success</h4>
+            <p>{{ message }}</p>
+            <hr>
+            <p class="mb-0">You can...</p>
+        </div>
+    {% endfor %}
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
