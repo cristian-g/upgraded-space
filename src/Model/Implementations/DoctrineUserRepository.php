@@ -75,4 +75,10 @@ class DoctrineUserRepository implements UserRepository
         }
     }
 
+    public function delete($userid) {
+        $sql = "DELETE FROM user WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue("id", $userid, 'integer');
+        $stmt->execute();
+    }
 }

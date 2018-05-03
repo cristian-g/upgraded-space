@@ -64,6 +64,13 @@ $container['get_from_username_use_case'] = function($container) {
     return $useCase;
 };
 
+$container['delete_user_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\DeleteUserUseCase(
+        $container->get('user_repository')
+    );
+    return $useCase;
+};
+
 $container['flash'] = function ($container) {
     return new \Slim\Flash\Messages();
 };
