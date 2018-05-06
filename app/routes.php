@@ -69,3 +69,8 @@ $app->post(
     '/file',
     'Pwbox\Controller\FileController:postAction'
 );
+
+$app->post(
+    '/deleteUser',
+    'Pwbox\Controller\DeleteUserController:deleteAction'
+);
