@@ -34,7 +34,6 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-        {{ form.userForm(user.username, user.email, user.birthdate, "", "", "", "Guardar") }}
         {% if error %}
             <div class="alert alert-danger" role="alert">
                 <h4 class="alert-heading">Error</h4>
