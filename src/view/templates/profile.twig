@@ -15,7 +15,9 @@
     {{ parent() }}
 {% endblock %}
 {% block content %}
-    {{ form.userForm(user.username, user.email, user.birthdate, "", "", "", "Guardar") }}
+    <div class="container">
+        {{ form.userForm(user.username, user.email, user.birthdate, "", "", "", "Guardar") }}
+    </div>
 {% endblock %}
 {% block footer %}
     {{ parent() }}

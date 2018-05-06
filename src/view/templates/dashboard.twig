@@ -12,17 +12,194 @@
     {{ parent() }}
 {% endblock %}
 {% block content %}
-    {% for message in flash('register') %}
-        <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">{{ message }}</h4>
-            <p>{{ message }}</p>
-            <hr>
-            <p class="mb-0">{{ message }}</p>
+    <div class="container">
+        {% for message in flash('register') %}
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">{{ message }}</h4>
+                <p>{{ message }}</p>
+                <hr>
+                <p class="mb-0">{{ message }}</p>
+            </div>
+        {% endfor %}
+        <h1 class="mt-5">Hola, {{ user.username }}</h1>
+        <p class="lead">Esto es tu dashboard.</p>
+        <p>Empieza subiendo archivos.</p>
+        <ol class="breadcrumb" dir="ltr">
+            <li><a href="#"><i class="fa fa-home fa-lg fa-fw"></i> </a></li>
+        </ol>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newFolderModal">
+            Nueva carpeta
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="newFolderModal" tabindex="-1" role="dialog" aria-labelledby="newFolderModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newFolderModalLabel">Nueva carpeta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="folder-name" class="col-form-label">Nombre de la carpeta:</label>
+                                <input type="text" class="form-control" id="folder-name">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Crear la carpeta</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    {% endfor %}
-    <h1 class="mt-5">Hola, {{ user.username }}</h1>
-    <p class="lead">Esto es tu dashboard.</p>
-    <p>Empieza subiendo archivos.</p>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFileModal">
+            Subir archivo
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="uploadFileModal" tabindex="-1" role="dialog" aria-labelledby="uploadFileModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="uploadFileModalLabel">Subir archivo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="file" class="col-form-label">Elige un archivo:</label>
+                            <input type="file" class="form-control" id="file">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Subir archivo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="table-responsive">
+            <table id="bs-table" class="table table-hover">
+                <thead>
+                <tr>
+                    <th class="text-right" data-sort="int">#</th>
+                    <th class="col-sm-8 text-left" data-sort="string">Name</th>
+                    <th class="col-sm-2 text-right" data-sort="int">Size</th>
+                    <th class="col-sm-2 text-right" data-sort="int">Modified</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <small class="pull-left text-muted" dir="ltr">3 folders and 15 files, 17.62 MB in total</small>
+                    </td>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="1">1</td>            <td class="text-left" data-sort-value="checksum"><i class="fa fa-folder "></i>&nbsp;<a href="Checksum/" ><strong>Checksum</strong></a></td>
+                    <td class="text-right" data-sort-value="0">&mdash;</td>
+                    <td class="text-right" data-sort-value="1460763836" title="2016-04-15 23:43:56">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="2">2</td>            <td class="text-left" data-sort-value="icon examples"><i class="fa fa-folder "></i>&nbsp;<a href="Icon%20Examples/" ><strong>Icon Examples</strong></a></td>
+                    <td class="text-right" data-sort-value="0">&mdash;</td>
+                    <td class="text-right" data-sort-value="1460763842" title="2016-04-15 23:44:02">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="3">3</td>            <td class="text-left" data-sort-value="virtual files"><i class="fa fa-folder "></i>&nbsp;<a href="Virtual%20Files/" ><strong>Virtual Files</strong></a></td>
+                    <td class="text-right" data-sort-value="0">&mdash;</td>
+                    <td class="text-right" data-sort-value="1460763862" title="2016-04-15 23:44:22">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="4">4</td>            <td class="text-left" data-sort-value="audio-ear_andrew_pekler_1.ogg"><i class="fa fa-music "></i>&nbsp;<a href="audio-ear_andrew_pekler_1.ogg" class="audio-modal"  data-modified="350.42 KB">audio-ear_andrew_pekler_1.ogg</a></td>
+                    <td class="text-right" data-sort-value="358832" title="358832 bytes">350.42 KB</td>
+                    <td class="text-right" data-sort-value="1460763835" title="2016-04-15 23:43:55">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="5">5</td>            <td class="text-left" data-sort-value="audio-ear_andrew_pekler_7.mp3"><i class="fa fa-music "></i>&nbsp;<a href="audio-ear_andrew_pekler_7.mp3" class="audio-modal"  data-modified="125.49 KB">audio-ear_andrew_pekler_7.mp3</a></td>
+                    <td class="text-right" data-sort-value="128503" title="128503 bytes">125.49 KB</td>
+                    <td class="text-right" data-sort-value="1460763836" title="2016-04-15 23:43:56">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="6">6</td>            <td class="text-left" data-sort-value="document.pdf"><i class="fa fa-file-text "></i>&nbsp;<a href="document.pdf" class="pdf-modal"  data-modified="253.31 KB">document.pdf</a></td>
+                    <td class="text-right" data-sort-value="259392" title="259392 bytes">253.31 KB</td>
+                    <td class="text-right" data-sort-value="1460763836" title="2016-04-15 23:43:56">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="7">7</td>            <td class="text-left" data-sort-value="flash-clock.swf"><i class="fa fa-bolt "></i>&nbsp;<a href="flash-clock.swf" class="flash-modal"  data-modified="1.78 KB">flash-clock.swf</a></td>
+                    <td class="text-right" data-sort-value="1825" title="1825 bytes">1.78 KB</td>
+                    <td class="text-right" data-sort-value="1460763836" title="2016-04-15 23:43:56">2 years ago</td>
+                </tr>
+                <tr class="hidden text-muted">
+                    <td class="text-muted text-right" data-sort-value="8">8</td>            <td class="text-left" data-sort-value="hidden.txt"><i class="fa fa-file-text-o "></i>&nbsp;<a href="hidden.txt" class="text-muted text-modal"  data-modified="616 bytes">hidden.txt</a></td>
+                    <td class="text-right" data-sort-value="616" title="616 bytes">616 bytes</td>
+                    <td class="text-right" data-sort-value="1460763836" title="2016-04-15 23:43:56">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="9">9</td>            <td class="text-left" data-sort-value="image-1200x1200.png"><i class="fa fa-picture-o "></i>&nbsp;<a href="image-1200x1200.png" class="image-modal"  data-modified="50.74 KB">image-1200x1200.png</a></td>
+                    <td class="text-right" data-sort-value="51955" title="51955 bytes">50.74 KB</td>
+                    <td class="text-right" data-sort-value="1460763842" title="2016-04-15 23:44:02">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="10">10</td>            <td class="text-left" data-sort-value="image-250x250.svg"><i class="fa fa-picture-o "></i>&nbsp;<a href="image-250x250.svg" class="image-modal"  data-modified="764 bytes">image-250x250.svg</a></td>
+                    <td class="text-right" data-sort-value="764" title="764 bytes">764 bytes</td>
+                    <td class="text-right" data-sort-value="1460763842" title="2016-04-15 23:44:02">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="11">11</td>            <td class="text-left" data-sort-value="image-800x600.gif"><i class="fa fa-picture-o "></i>&nbsp;<a href="image-800x600.gif" class="image-modal"  data-modified="17.48 KB">image-800x600.gif</a></td>
+                    <td class="text-right" data-sort-value="17896" title="17896 bytes">17.48 KB</td>
+                    <td class="text-right" data-sort-value="1460763842" title="2016-04-15 23:44:02">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="12">12</td>            <td class="text-left" data-sort-value="source-gulpfile.js"><i class="fa fa-code "></i>&nbsp;<a href="source-gulpfile.js" class="source-modal" data-highlight="true" data-modified="777 bytes">source-gulpfile.js</a></td>
+                    <td class="text-right" data-sort-value="777" title="777 bytes">777 bytes</td>
+                    <td class="text-right" data-sort-value="1460763842" title="2016-04-15 23:44:02">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="13">13</td>            <td class="text-left" data-sort-value="source-prettify.css"><i class="fa fa-code "></i>&nbsp;<a href="source-prettify.css" class="source-modal" data-highlight="true" data-modified="815 bytes">source-prettify.css</a></td>
+                    <td class="text-right" data-sort-value="815" title="815 bytes">815 bytes</td>
+                    <td class="text-right" data-sort-value="1460763842" title="2016-04-15 23:44:02">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="14">14</td>            <td class="text-left" data-sort-value="video-notting_hill_carnival.ogv"><i class="fa fa-film "></i>&nbsp;<a href="video-notting_hill_carnival.ogv" class="video-modal"  data-modified="3.21 MB">video-notting_hill_carnival.ogv</a></td>
+                    <td class="text-right" data-sort-value="3360717" title="3360717 bytes">3.21 MB</td>
+                    <td class="text-right" data-sort-value="1460763853" title="2016-04-15 23:44:13">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="15">15</td>            <td class="text-left" data-sort-value="video-notting_hill_carnival.m4v"><i class="fa fa-film "></i>&nbsp;<a href="video-notting_hill_carnival.m4v" class="video-modal"  data-modified="6 MB">video-notting_hill_carnival.m4v</a></td>
+                    <td class="text-right" data-sort-value="6289070" title="6289070 bytes">6 MB</td>
+                    <td class="text-right" data-sort-value="1460763849" title="2016-04-15 23:44:09">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="16">16</td>            <td class="text-left" data-sort-value="video-notting_hill_carnival.webm"><i class="fa fa-film "></i>&nbsp;<a href="video-notting_hill_carnival.webm" class="video-modal"  data-modified="7.61 MB">video-notting_hill_carnival.webm</a></td>
+                    <td class="text-right" data-sort-value="7983780" title="7983780 bytes">7.61 MB</td>
+                    <td class="text-right" data-sort-value="1460763861" title="2016-04-15 23:44:21">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="17">17</td>            <td class="text-left" data-sort-value="website-readme.html"><i class="fa fa-globe "></i>&nbsp;<a href="website-README.html" class="website-modal"  data-modified="3.43 KB">website-README.html</a></td>
+                    <td class="text-right" data-sort-value="3510" title="3510 bytes">3.43 KB</td>
+                    <td class="text-right" data-sort-value="1460763862" title="2016-04-15 23:44:22">2 years ago</td>
+                </tr>
+                <tr>
+                    <td class="text-muted text-right" data-sort-value="18">18</td>            <td class="text-left" data-sort-value="&auml;&ordm;&aring;&curren;&copy;&auml;&cedil;&aelig;&micro;.txt"><i class="fa fa-file-text-o "></i>&nbsp;<a href="%E4%BA%8C%E5%A4%A9%E4%B8%80%E6%B5%81.txt" class="text-modal"  data-modified="522 bytes">二天一流.txt</a></td>
+                    <td class="text-right" data-sort-value="522" title="522 bytes">522 bytes</td>
+                    <td class="text-right" data-sort-value="1460763862" title="2016-04-15 23:44:22">2 years ago</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
 {% block footer %}
     {{ parent() }}

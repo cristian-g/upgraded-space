@@ -15,23 +15,25 @@
     {{ parent() }}
 {% endblock %}
 {% block content %}
-    {{ form.userForm() }}
-    {% if error %}
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">Error</h4>
-            <p>{{ error }}</p>
-            <hr>
-            <p class="mb-0">You can...</p>
-        </div>
-    {% endif %}
-    {% for message in messages %}
-        <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">Success</h4>
-            <p>{{ message }}</p>
-            <hr>
-            <p class="mb-0">You can...</p>
-        </div>
-    {% endfor %}
+    <div class="container">
+        {{ form.userForm() }}
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Error</h4>
+                <p>{{ error }}</p>
+                <hr>
+                <p class="mb-0">You can...</p>
+            </div>
+        {% endif %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Success</h4>
+                <p>{{ message }}</p>
+                <hr>
+                <p class="mb-0">You can...</p>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
 {% block footer %}
     {{ parent() }}
