@@ -76,7 +76,7 @@ class PostUserController
             // Create the Mailer using your created Transport
             $mailer = new \Swift_Mailer($transport);
 
-            $mailer->send($message);
+            //$mailer->send($message);
 
 
 

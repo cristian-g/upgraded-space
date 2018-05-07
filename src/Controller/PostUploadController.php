@@ -26,7 +26,7 @@ class PostUploadController
             $data = $request->getParsedBody();
             $service = $this->container->get('post_upload_use_case');
             $service($data);
-            $this->container->get('flash')->addMessage('register', 'Upload registered.');
+            $this->container->get('flash')->addMessage('dashboard', 'La carpeta se ha creado correctamente.');
             return $response->withStatus(302)->withHeader('Location', '/dashboard');
         } catch (\Exception $e){
             return $this->container->get('view')

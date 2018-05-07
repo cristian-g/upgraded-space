@@ -19,11 +19,6 @@ class FileController
         $this->container = $container;
     }
 
-    public function getAction(Request $request, Response $response) {
-        return $this->container->get('view')
-            ->render($response, 'file.twig',[]);
-    }
-
     public function postAction(Request $request, Response $response)
     {
         $directory = __DIR__.'/../../public/uploads';// És relatiu o absolut, però respecte el file system (la màquina)
@@ -59,7 +54,7 @@ class FileController
         }
 
         return $this->container->get('view')
-            ->render($response, 'file.twig', ['errors' => $errors, 'isPost' => true]);
+            ->render($response, 'dashboard.twig', ['errors' => $errors, 'isPost' => true]);
     }
 
     /**
@@ -70,7 +65,7 @@ class FileController
      */
     private function isValidExtension(string $extension)
     {
-        $validExtensions = ['jpg', 'png'];
+        $validExtensions = ['pdf', 'jpg', 'png', 'gif', 'md', 'txt'];
 
         return in_array($extension, $validExtensions);
     }

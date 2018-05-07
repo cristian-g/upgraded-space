@@ -7,6 +7,7 @@
 {% endblock %}
 {% block scripts %}
     {{ parent() }}
+    <script src="{{ base_url() }}/assets/js/dashboard.js"></script>
 {% endblock %}
 {% block header %}
     {{ parent() }}
@@ -14,12 +15,12 @@
 {% block content %}
     <div class="container">
 
-        {% for message in flash('register') %}
-            <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">{{ message }}</h4>
-                <p>{{ message }}</p>
-                <hr>
-                <p class="mb-0">{{ message }}</p>
+        {% for message in flash('dashboard') %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         {% endfor %}
 
@@ -29,7 +30,19 @@
                 <p>{{ error }}</p>
             </div>
         {% endif %}
-        
+
+        {% if errors is empty and isPost %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>¡Hurra!</strong> Todos los archivos han sido cargados exitosamente.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+        {% for error in errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
         <h1 class="mt-5">Hola, {{ user.username }}</h1>
         <p class="lead">Esto es tu dashboard.</p>
         <p>Empieza subiendo archivos.</p>
@@ -53,17 +66,16 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/folder" method="post">
+                        <form action="/folder" method="post" id="newFolderForm">
                             <div class="form-group">
                                 <label for="folder-name" class="col-form-label">Nombre de la carpeta:</label>
                                 <input type="text" class="form-control" id="folder-name" name="name">
                             </div>
-                            <button type="submit" class="btn btn-primary">Crear la carpeta</button>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Crear la carpeta</button>
+                        <button type="button" class="btn btn-primary" id="submitNewFolder">Crear la carpeta</button>
                     </div>
                 </div>
             </div>
@@ -85,14 +97,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label for="file" class="col-form-label">Elige un archivo:</label>
-                            <input type="file" class="form-control" id="file">
-                        </div>
+                        <form action="/file" enctype="multipart/form-data" method="POST" id="uploadFileForm">
+                            <input type="file" name="files[]" multiple="multiple">
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Subir archivo</button>
+                        <button type="button" class="btn btn-primary" id="submitUploadFile">Subir archivo</button>
                     </div>
                 </div>
             </div>
