@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: marc
- * Date: 4/12/18
- * Time: 8:19 PM
- */
 
 namespace Pwbox\Model;
 

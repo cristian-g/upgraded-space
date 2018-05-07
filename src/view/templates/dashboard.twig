@@ -13,6 +13,7 @@
 {% endblock %}
 {% block content %}
     <div class="container">
+
         {% for message in flash('register') %}
             <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">{{ message }}</h4>
@@ -21,6 +22,14 @@
                 <p class="mb-0">{{ message }}</p>
             </div>
         {% endfor %}
+
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Error</h4>
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+        
         <h1 class="mt-5">Hola, {{ user.username }}</h1>
         <p class="lead">Esto es tu dashboard.</p>
         <p>Empieza subiendo archivos.</p>
@@ -44,11 +53,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="/folder" method="post">
                             <div class="form-group">
                                 <label for="folder-name" class="col-form-label">Nombre de la carpeta:</label>
-                                <input type="text" class="form-control" id="folder-name">
+                                <input type="text" class="form-control" id="folder-name" name="name">
                             </div>
+                            <button type="submit" class="btn btn-primary">Crear la carpeta</button>
                         </form>
                     </div>
                     <div class="modal-footer">

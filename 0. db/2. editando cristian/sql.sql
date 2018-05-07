@@ -15,9 +15,9 @@ CREATE TABLE `user` (
 
 CREATE TABLE `upload` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) unsigned NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
-  `ext` varchar(255) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `ext` varchar(255) CHARACTER SET utf8mb4 DEFAULT '',
   `created_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),

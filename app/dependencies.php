@@ -36,6 +36,13 @@ $container['user_repository'] = function ($container) {
     return $repository;
 };
 
+$container['upload_repository'] = function ($container) {
+    $repository = new \Pwbox\Model\Implementations\DoctrineUploadRepository(
+        $container->get('doctrine')
+    );
+    return $repository;
+};
+
 $container['post_user_use_case'] = function($container) {
     $useCase = new \Pwbox\Model\UseCase\PostUserUseCase(
         $container->get('user_repository')
@@ -67,6 +74,13 @@ $container['get_from_username_use_case'] = function($container) {
 $container['delete_user_use_case'] = function($container) {
     $useCase = new \Pwbox\Model\UseCase\DeleteUserUseCase(
         $container->get('user_repository')
+    );
+    return $useCase;
+};
+
+$container['post_upload_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\PostUploadUseCase(
+        $container->get('upload_repository')
     );
     return $useCase;
 };
