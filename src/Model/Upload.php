@@ -5,6 +5,7 @@ namespace Pwbox\Model;
 class Upload
 {
     private $id;
+    private $uuid;
     private $idUser;
     private $name;
     private $ext;
@@ -44,6 +45,22 @@ class Upload
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUuid()
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * @param mixed $uuid
+     */
+    public function setUuid($uuid)
+    {
+        $this->uuid = $uuid;
     }
 
     /**
@@ -124,5 +141,19 @@ class Upload
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    public static function fromArray($array)
+    {
+        $object = new Upload(
+            $array["id"],
+            $array["id_user"],
+            $array["name"],
+            $array["ext"],
+            $array["created_at"],
+            $array["updated_at"]
+        );
+        $object->setUuid($array["uuid"]);
+        return $object;
     }
 }

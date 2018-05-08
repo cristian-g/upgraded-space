@@ -24,11 +24,12 @@ class DoctrineUserRepository implements UserRepository
 
     /**
      * @param User $user
+     * @return mixed
      * @throws \Doctrine\DBAL\DBALException
      */
     public function save(User $user)
     {
-        $sql = "INSERT INTO user(username, email, birthdate, password, active, email_activation_key, created_at, updated_at) VALUES(:username, :email, :birthdate, :password, :active, :email_activation_key, :created_at, :updated_at)";
+        $sql = "INSERT INTO user(uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at) VALUES(uuid(), :username, :email, :birthdate, :password, :active, :email_activation_key, :created_at, :updated_at)";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindValue("username", $user->getUsername(), 'string');
         $stmt->bindValue("email", $user->getEmail(), 'string');
@@ -41,12 +42,13 @@ class DoctrineUserRepository implements UserRepository
         $stmt->execute();
         // Save id
         $user->setId($this->connection->lastInsertId());
-        $_SESSION["user_id"] = $user->getId();
+        // Return id
+        return $user->getId();
     }
 
     public function get($id) {
         try {
-            $array = $this->connection->fetchAssoc('SELECT id, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE id = ? LIMIT 1', array($_SESSION["user_id"]));
+            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE id = ? LIMIT 1', array($_SESSION["user_id"]));
             $user = User::fromArray($array);
             return $user;
         }
@@ -57,7 +59,7 @@ class DoctrineUserRepository implements UserRepository
 
     public function getFromEmail($email) {
         try{
-            $array = $this->connection->fetchAssoc('SELECT id, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE email = ? LIMIT 1', array($email));
+            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE email = ? LIMIT 1', array($email));
             return $array;
         }
         catch (\Doctrine\DBAL\DBALException $e){
@@ -67,7 +69,7 @@ class DoctrineUserRepository implements UserRepository
 
     public function getFromUsername($username) {
         try{
-            $array = $this->connection->fetchAssoc('SELECT id, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE username = ? LIMIT 1', array($username));
+            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE username = ? LIMIT 1', array($username));
             return $array;
         }
         catch (\Doctrine\DBAL\DBALException $e){

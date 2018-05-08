@@ -10,7 +10,7 @@ use Dflydev\FigCookies\FigRequestCookies;
 use Dflydev\FigCookies\FigResponseCookies;
 use Dflydev\FigCookies\SetCookie;
 
-class FileController
+class PostFileController
 {
     protected $container;
 
@@ -19,9 +19,22 @@ class FileController
         $this->container = $container;
     }
 
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
     public function postAction(Request $request, Response $response)
     {
-        $directory = __DIR__.'/../../public/uploads';// És relatiu o absolut, però respecte el file system (la màquina)
+        $user = ($this->container->get('get_user_use_case'))($_SESSION["user_id"]);
+
+        $directory = __DIR__.'/../../public/uploads/'.$user->getUuid();// És relatiu o absolut, però respecte el file system (la màquina)
+
+        if (!file_exists($directory)) {
+            mkdir($directory, 0777, true);
+        }
 
         $uploadedFiles = $request->getUploadedFiles();
 
@@ -50,11 +63,20 @@ class FileController
                 );
                 continue;
             }
-            $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $fileName);
+
+            // Save the uploaded file in the database
+            $service = $this->container->get('post_file_use_case');
+            $id = $service($fileInfo);
+
+            $upload = ($this->container->get('get_file_use_case'))($id);
+
+            // Move the file to the user folder
+            $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $upload->getUuid());
         }
 
+        $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"]);
         return $this->container->get('view')
-            ->render($response, 'dashboard.twig', ['errors' => $errors, 'isPost' => true]);
+            ->render($response, 'dashboard.twig', ['uploads' => $uploads, 'errors' => $errors, 'isPost' => true]);
     }
 
     /**

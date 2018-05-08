@@ -5,7 +5,7 @@ namespace Pwbox\Model\UseCase;
 use Pwbox\Model\Upload;
 use Pwbox\Model\UploadRepository;
 
-class PostUploadUseCase
+class PostFileUseCase
 {
     /** @var UploadRepository */
     private $repository;
@@ -25,8 +25,8 @@ class PostUploadUseCase
         $upload = new Upload(
             null,
             $_SESSION['user_id'],
-            $rawData['name'],
-            null,
+            $rawData['filename'],
+            $rawData['extension'],
             $now,
             $now
         );

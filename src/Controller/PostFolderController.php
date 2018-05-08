@@ -6,7 +6,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class PostUploadController
+class PostFolderController
 {
     /** @var ContainerInterface */
     private $container;
@@ -24,7 +24,7 @@ class PostUploadController
     {
         try{
             $data = $request->getParsedBody();
-            $service = $this->container->get('post_upload_use_case');
+            $service = $this->container->get('post_folder_use_case');
             $service($data);
             $this->container->get('flash')->addMessage('dashboard', 'La carpeta se ha creado correctamente.');
             return $response->withStatus(302)->withHeader('Location', '/dashboard');

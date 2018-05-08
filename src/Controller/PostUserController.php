@@ -5,6 +5,7 @@ namespace Pwbox\Controller;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Ramsey\Uuid\Uuid;
 
 class PostUserController
 {
@@ -33,8 +34,12 @@ class PostUserController
         try{
             $data = $request->getParsedBody();
             $service = $this->container->get('post_user_use_case');
-            $service($data);
-            $this->container->get('flash')->addMessage('register', 'User registered.');
+            $_SESSION["user_id"] = $service($data);
+
+
+
+
+            $this->container->get('flash')->addMessage('dashboard', 'User registered.');
 
 
 
@@ -44,14 +49,16 @@ class PostUserController
             $link = 'http://' . $_SERVER['SERVER_NAME'] . '/activation.php?key=' . 'EXAMPLE';
 
             // get the html email content
-            /*$html_content = file_get_contents('emails/email_verification.html');
-            $html_content = preg_replace('/{link}/', $link, $html_content);*/
-            $html_content = $link;
+            $directory = __DIR__.'/../view/emails/';
+            $html_content = file_get_contents($directory . 'email_verification.html');
+            echo $html_content;
+            /*$html_content = preg_replace('/{link}/', $link, $html_content);*/
+            //$html_content = $link;
 
             // get plain email content
             /*$plain_text = file_get_contents('emails/email_verification.txt');
             $plain_text = preg_replace('/{link}/', $link, $plain_text);*/
-            $plain_text = $link;
+            $plain_text = $html_content;
 
 
             $smtp_server = 'smtp.mailtrap.io';
@@ -76,7 +83,7 @@ class PostUserController
             // Create the Mailer using your created Transport
             $mailer = new \Swift_Mailer($transport);
 
-            //$mailer->send($message);
+            $mailer->send($message);
 
 
 

@@ -6,6 +6,7 @@ namespace Pwbox\Model;
 class User
 {
     private $id;
+    private $uuid;
     private $username;
     private $email;
     private $birthdate;
@@ -18,20 +19,25 @@ class User
     /**
      * User constructor.
      * @param $id
+     * @param $uuid
      * @param $username
-     * @param $password
      * @param $email
+     * @param $birthdate
+     * @param $password
+     * @param $active
+     * @param $emailActivationKey
      * @param $createdAt
-     * @param $updateAt
+     * @param $updatedAt
      */
-    public function __construct($id, $username, $email, $birthdate, $password, $createdAt, $updatedAt)
+    public function __construct($id, $uuid, $username, $email, $birthdate, $password, $active, $createdAt, $updatedAt)
     {
         $this->id = $id;
+        $this->uuid = $uuid;
         $this->username = $username;
         $this->email = $email;
         $this->birthdate = $birthdate;
         $this->password = password_hash($password, PASSWORD_DEFAULT, ['cost' => 11]);
-        $this->active = 0;
+        $this->active = $active;
         $this->emailActivationKey = md5($email . $username);
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
@@ -51,6 +57,22 @@ class User
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUuid()
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * @param mixed $uuid
+     */
+    public function setUuid($uuid)
+    {
+        $this->uuid = $uuid;
     }
 
     /**
@@ -174,22 +196,33 @@ class User
     }
 
     /**
-     * @param mixed $updateAt
+     * @param mixed $updatedAt
      */
     public function setUpdatedAt($updatedAt)
     {
-        $this->updateAt = $updatedAt;
+        $this->updatedAt = $updatedAt;
     }
 
     public static function fromArray($array)
     {
-        $object = new User($array["id"], $array["username"], $array["email"], $array["birthdate"], $array["password"], $array["created_at"], $array["updated_at"]);
+        $object = new User(
+            $array["id"],
+            $array["uuid"],
+            $array["username"],
+            $array["email"],
+            $array["birthdate"],
+            null,
+            $array["active"],
+            $array["email_activation_key"],
+            $array["created_at"],
+            $array["updated_at"]);
         return $object;
     }
 
     public function toArray() {
         $array = [];
         $array["id"] = $this->getId();
+        $array["uuid"] = $this->getUuid();
         $array["username"] = $this->getUsername();
         $array["email"] = $this->$this->getEmail();
         $array["birthdate"] = $this->getBirthdate();

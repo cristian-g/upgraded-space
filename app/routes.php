@@ -62,7 +62,7 @@ $app->get(
 
 $app->post(
     '/file',
-    'Pwbox\Controller\FileController:postAction'
+    'Pwbox\Controller\PostFileController:postAction'
 );
 
 $app->post(
@@ -72,5 +72,5 @@ $app->post(
 
 $app->post(
     '/folder',
-    'Pwbox\Controller\PostUploadController:postAction'
+    'Pwbox\Controller\PostFolderController:postAction'
 );

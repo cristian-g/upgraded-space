@@ -25,7 +25,8 @@ class DashboardController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
+        $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"]);
         return $this->container->get('view')
-            ->render($response, 'dashboard.twig');
+            ->render($response, 'dashboard.twig', ['uploads' => $uploads]);
     }
 }

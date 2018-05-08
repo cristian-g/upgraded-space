@@ -23,6 +23,5 @@ class GetUserUseCase
     public function __invoke($id)
     {
         return $this->repository->get($id);
-
     }
 }

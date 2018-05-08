@@ -25,13 +25,15 @@ class PostUserUseCase
         $now = new \DateTime('now');
         $user = new User(
             null,
+            null,
             $rawData['username'],
             $rawData['email'],
             $rawData['birthdate'],
             $rawData['password'],
+            0,
             $now,
             $now
         );
-        $this->repository->save($user);
+        return $this->repository->save($user);
     }
 }

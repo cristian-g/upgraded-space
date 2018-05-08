@@ -78,8 +78,29 @@ $container['delete_user_use_case'] = function($container) {
     return $useCase;
 };
 
-$container['post_upload_use_case'] = function($container) {
-    $useCase = new \Pwbox\Model\UseCase\PostUploadUseCase(
+$container['post_folder_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\PostFolderUseCase(
+        $container->get('upload_repository')
+    );
+    return $useCase;
+};
+
+$container['post_file_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\PostFileUseCase(
+        $container->get('upload_repository')
+    );
+    return $useCase;
+};
+
+$container['get_file_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetFileUseCase(
+        $container->get('upload_repository')
+    );
+    return $useCase;
+};
+
+$container['get_uploads_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetUploadsUseCase(
         $container->get('upload_repository')
     );
     return $useCase;
