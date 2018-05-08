@@ -7,6 +7,9 @@
     {{ parent() }}
     <!--<link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/example.css">-->
 {% endblock %}
+{% block scripts %}
+    <script src="{{ base_url() }}/assets/js/validate.js"></script>
+{% endblock %}
 {% block header %}
     {{ parent() }}
 {% endblock %}
