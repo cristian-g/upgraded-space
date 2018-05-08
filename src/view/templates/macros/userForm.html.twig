@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="Introduce un email válido" value="{{ email|default('') }}" required>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Introduce un email válido" value="{{ email|default('') }}" required pattern="[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$">
             <div class="invalid-feedback">
                 <strong>Introduce un email válido.</strong>
             </div>
@@ -45,6 +45,6 @@
             <label for="profile_image">Imagen de perfil (opcional)</label>
             <input type="file" name="profile_image" id="profile_image" value="{{ profile_image|default('') }}" style="display: block">
         </div>
-        <input type="submit" class="btn btn-primary" value="{{ buttonText|default('Crear la cuenta') }}" id="registerSubmit">
+        <input type="button" class="btn btn-primary" value="{{ buttonText|default('Crear la cuenta') }}" id="registerSubmit">
     </form>
 {% endmacro %}

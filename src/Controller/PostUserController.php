@@ -32,7 +32,37 @@ class PostUserController
     public function registerAction(Request $request, Response $response)
     {
         try{
+
+
             $data = $request->getParsedBody();
+
+            //password
+            if (!(strlen($data['password']) > 5 and strlen($data['password']) < 13  and
+                preg_match('/[a-z]/', $data['password']) and preg_match('/[A-Z]/', $data['password'])
+                and preg_match('/[0-9]/', $data['password']))){
+
+                return $this->container->get('view')
+                    ->render($response, 'register.twig', ['error' => "contraseña con formato incorrecto"]);
+            }
+
+            //confirm password
+            if (strcmp($data['password'], $data['confirm_password']) != 0){
+                return $this->container->get('view')
+                    ->render($response, 'register.twig', ['error' => "las dos contrasenyas no son iguales"]);
+            }
+
+            //username
+            if(!(ctype_alnum($data['username']) and strlen($data['username']) > 0 and strlen($data['username']) < 21)){
+                return $this->container->get('view')
+                    ->render($response, 'register.twig', ['error' => "nombre de usuario con formato incorrecto"]);
+            }
+
+            //email
+            if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+                return $this->container->get('view')
+                    ->render($response, 'register.twig', ['error' => "correo con formato incorrecto"]);
+            }
+
             $service = $this->container->get('post_user_use_case');
             $_SESSION["user_id"] = $service($data);
 
@@ -40,8 +70,6 @@ class PostUserController
 
 
             $this->container->get('flash')->addMessage('dashboard', 'User registered.');
-
-
 
 
 
