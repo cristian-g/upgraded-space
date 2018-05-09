@@ -35,6 +35,11 @@ $app->post(
     'Pwbox\Controller\PostUserController:registerAction'
 );
 
+$app->post(
+    '/edit',
+    'Pwbox\Controller\EditUserController'
+);
+
 $app->get(
     '/login',
     'Pwbox\Controller\LogInController:indexAction'
