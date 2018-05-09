@@ -59,4 +59,21 @@ $(document).ready(function () {
 
         $('#loginForm').submit(); // If all the validations succeeded
     })
+
+    $('#deleteUserButton').click(function () {
+        swal({
+            title: "¿Eliminar cuenta?",
+            icon: "warning",
+            text: "Si eliminas tu cuenta perderás todos tus documentos! Si deseas continuar haz click en 'Eliminar'.",
+            buttons: {
+                cancel: "Cancelar",
+                confirm: "Eliminar"
+            },
+            dangerMode: true,
+        }).then(function(confirm){
+            if(confirm){
+                $("#deleteUserForm").submit();
+            }
+        });
+    })
 });

@@ -11,24 +11,6 @@
     {{ parent() }}
     <script src="{{ base_url() }}/assets/js/registerSubmit.js"></script>
     <script src="{{ base_url() }}/assets/js/validate.js"></script>
-    <script>
-        function deleteUser(){
-            swal({
-                title: "¿Eliminar cuenta?",
-                icon: "warning",
-                text: "Si eliminas tu cuenta perderás todos tus documentos! Si deseas continuar haz click en 'Eliminar'.",
-                buttons: {
-                    cancel: "Cancelar",
-                    confirm: "Eliminar"
-                },
-                dangerMode: true,
-            }).then(function(confirm){
-                if(confirm){
-                    $("#deleteUserForm").submit();
-                }
-            });
-        }
-    </script>
 {% endblock %}
 {% block header %}
     {{ parent() }}
@@ -44,7 +26,7 @@
         {{ form.userForm(user.username, user.email, user.birthdate, "", "", "", "Guardar") }}
         <div class="text-right">
             <form id="deleteUserForm" action="/deleteUser" method="POST">
-                <button onclick="deleteUser()" type="button" class="btn btn-danger">ELIMINAR CUENTA</button>
+                <button id="deleteUserButton" type="button" class="btn btn-danger">ELIMINAR CUENTA</button>
             </form>
         </div>
 {% endblock %}
