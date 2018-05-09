@@ -2,8 +2,8 @@
     <form action="/register" method="post" id="registerForm" enctype="multipart/form-data">
         <div class="form-group">
             <label for="username">Nombre de usuario</label>
-            <input type="text" class="form-control" name="username" id="username" placeholder="Introduce el nombre de usuario que quieres" value="{{ username|default('') }}" required pattern="^[a-zA-Z0-9]{1,20}" aria-describedby="usernameHelpInline">
-            <div class="invalid-feedback">
+            <input type="text" onchange="checkForm(this.name, this.value)" class="form-control" name="username" id="username" placeholder="Introduce el nombre de usuario que quieres" value="{{ username|default('') }}" required pattern="^[a-zA-Z0-9]{1,20}" aria-describedby="usernameHelpInline">
+            <div id="feedback-username" class="invalid-feedback">
                 <strong>Introduce un nombre de usuario:</strong>
             </div>
             <small id="usernameHelpBlock" class="form-text text-muted">
@@ -12,22 +12,22 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="Introduce un email válido" value="{{ email|default('') }}" required pattern="[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$">
-            <div class="invalid-feedback">
+            <input type="email" onchange="checkForm(this.name, this.value)" class="form-control" name="email" id="email" placeholder="Introduce un email válido" value="{{ email|default('') }}" required pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/">
+            <div id="feedback-email" class="invalid-feedback">
                 <strong>Introduce un email válido.</strong>
             </div>
         </div>
         <div class="form-group">
             <label for="birthdate">Fecha de nacimiento</label>
-            <input type="date" class="form-control" name="birthdate" id="birthdate" placeholder="¿Cuándo naciste?" value="{{ birthdate|default('') }}" required>
-            <div class="invalid-feedback">
+            <input type="date" onblur="checkForm(this.name, this.value)" class="form-control" name="birthdate" id="birthdate" placeholder="¿Cuándo naciste?" value="{{ birthdate|default('') }}" required>
+            <div id="feedback-birthdate" class="invalid-feedback">
                 <strong>Introduce una fecha válida con el formato correcto.</strong>
             </div>
         </div>
         <div class="form-group">
             <label for="password">Contraseña</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Introduce una contraseña" value="{{ password|default('') }}" required pattern="^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,12}$" aria-describedby="passwordHelpInline">
-            <div class="invalid-feedback">
+            <input type="password" onchange="checkForm(this.name, this.value)" class="form-control" name="password" id="password" placeholder="Introduce una contraseña" value="{{ password|default('') }}" required pattern="^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,12}$" aria-describedby="passwordHelpInline">
+            <div id="feedback-password" class="invalid-feedback">
                 <strong>Introduce una contraseña con el formato indicado:</strong>
             </div>
             <small id="passwordHelpBlock" class="form-text text-muted">
@@ -36,8 +36,8 @@
         </div>
         <div class="form-group">
             <label for="confirm_password">Repite la contraseña</label>
-            <input type="confirm_password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Repite la contraseña" value="{{ confirm_password|default('') }}" required>
-            <div class="invalid-feedback">
+            <input type="password" onchange="checkForm(this.name, this.value)" class="form-control" name="confirm_password" id="confirm_password" placeholder="Repite la contraseña" value="{{ confirm_password|default('') }}" required>
+            <div id="feedback-confirm_password" class="invalid-feedback">
                 <strong>Las contraseñas no coinciden.</strong>
             </div>
         </div>
