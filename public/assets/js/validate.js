@@ -72,7 +72,8 @@ $(document).ready(function () {
                 $("#deleteUserForm").submit();
             }
         });
-    })
+    });
+
 });
 
 function checkForm(name, value){

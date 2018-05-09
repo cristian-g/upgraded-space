@@ -50,6 +50,13 @@ $container['post_user_use_case'] = function($container) {
     return $useCase;
 };
 
+$container['edit_user_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\EditUserUseCase(
+        $container->get('user_repository')
+    );
+    return $useCase;
+};
+
 $container['get_user_use_case'] = function($container) {
     $useCase = new \Pwbox\Model\UseCase\GetUserUseCase(
         $container->get('user_repository')

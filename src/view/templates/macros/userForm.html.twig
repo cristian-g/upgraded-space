@@ -1,5 +1,5 @@
-{% macro userForm(username, email, birthdate, password, confirm_password, profile_image, buttonText) %}
-    <form action="/register" method="post" id="registerForm" enctype="multipart/form-data">
+{% macro userForm(username, email, birthdate, password, confirm_password, profile_image, buttonText, action) %}
+    <form action="{{ action|default('/register') }}" method="post" id="registerForm" enctype="multipart/form-data">
         <div class="form-group">
             <label for="username">Nombre de usuario</label>
             <input type="text" onchange="checkForm(this.name, this.value)" class="form-control" name="username" id="username" placeholder="Introduce el nombre de usuario que quieres" value="{{ username|default('') }}" required pattern="^[a-zA-Z0-9]{1,20}" aria-describedby="usernameHelpInline">
