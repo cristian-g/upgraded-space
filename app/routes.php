@@ -46,7 +46,7 @@ $app->post(
 );
 
 $app->get(
-    '/dashboard',
+    '/dashboard[/{uuid}]',
     'Pwbox\Controller\DashboardController'
 )->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');
 

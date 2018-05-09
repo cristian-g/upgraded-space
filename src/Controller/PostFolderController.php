@@ -25,7 +25,8 @@ class PostFolderController
         try{
             $data = $request->getParsedBody();
             $service = $this->container->get('post_folder_use_case');
-            $service($data);
+            $parentFolder = ($this->container->get('get_folder_use_case'))($data["uuid_parent"]);
+            $service($data, $parentFolder->getId());
             $this->container->get('flash')->addMessage('dashboard', 'La carpeta se ha creado correctamente.');
             return $response->withStatus(302)->withHeader('Location', '/dashboard');
         } catch (\Exception $e){
