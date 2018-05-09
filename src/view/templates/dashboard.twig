@@ -70,6 +70,11 @@
                             <div class="form-group">
                                 <label for="folder-name" class="col-form-label">Nombre de la carpeta:</label>
                                 <input type="text" class="form-control" id="folder-name" name="name">
+                                {% if uuid_parent is null %}
+                                    <input type="hidden" name="uuid_parent" value="">
+                                {% else %}
+                                    <input type="hidden" name="uuid_parent" value="{{ uuid_parent }}">
+                                {% endif %}
                             </div>
                         </form>
                     </div>
@@ -99,6 +104,11 @@
                     <div class="modal-body">
                         <form action="/file" enctype="multipart/form-data" method="POST" id="uploadFileForm">
                             <input type="file" name="files[]" multiple="multiple">
+                            {% if uuid_parent is null %}
+                                <input type="hidden" name="uuid_parent" value="">
+                            {% else %}
+                                <input type="hidden" name="uuid_parent" value="{{ uuid_parent }}">
+                            {% endif %}
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -136,10 +146,10 @@
                                     <i class="fa fa-folder"></i>
                                 {% endif %}
                                 {% if upload.ext is null %}
-                                    <a href="#"><strong>{{ upload.name }}</strong></a>
+                                    <a href="/dashboard/{{ upload.uuid }}"><strong>{{ upload.name }}</strong></a>
                                     {% set foldersCount = foldersCount+1 %}
                                 {% else %}
-                                    <a href="#"><strong>{{ upload.name }}.{{ upload.ext }}</strong></a>
+                                    <a href="/dashboard/{{ upload.uuid }}"><strong>{{ upload.name }}.{{ upload.ext }}</strong></a>
                                     {% set filesCount = filesCount+1 %}
                                 {% endif %}
                             </td>

@@ -106,6 +106,13 @@ $container['get_uploads_use_case'] = function($container) {
     return $useCase;
 };
 
+$container['get_folder_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetFolderUseCase(
+        $container->get('upload_repository')
+    );
+    return $useCase;
+};
+
 $container['flash'] = function ($container) {
     return new \Slim\Flash\Messages();
 };

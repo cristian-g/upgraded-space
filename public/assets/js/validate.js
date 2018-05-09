@@ -9,7 +9,7 @@ $(document).ready(function () {
         var password = $('#password').val();
         var confirm_password = $('#confirm_password').val();
 
-        if (username.length > 20 || username.length < 0){
+        /*if (username.length > 20 || username.length < 0){
             alert("username not valid");
             return false;
         }
@@ -29,7 +29,7 @@ $(document).ready(function () {
         if (confirm_password.localeCompare(password) != 0){
             alert("passwords not identical");
             return false;
-        }
+        }*/
 
         $('#registerForm').submit(); // If all the validations succeeded
     });

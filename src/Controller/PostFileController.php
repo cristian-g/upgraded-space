@@ -37,8 +37,11 @@ class PostFileController
         }
 
         $uploadedFiles = $request->getUploadedFiles();
+        $data = $request->getParsedBody();
 
         $errors = [];
+
+        $parentFolder = ($this->container->get('get_folder_use_case'))($data["uuid_parent"]);
 
         foreach ($uploadedFiles['files'] as $uploadedFile) {
             if ($uploadedFile->getError() !== UPLOAD_ERR_OK) {
@@ -66,7 +69,7 @@ class PostFileController
 
             // Save the uploaded file in the database
             $service = $this->container->get('post_file_use_case');
-            $id = $service($fileInfo);
+            $id = $service($fileInfo, $parentFolder->getId());
 
             $upload = ($this->container->get('get_file_use_case'))($id);
 

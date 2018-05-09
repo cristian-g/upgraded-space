@@ -25,8 +25,16 @@ class DashboardController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"]);
+        if (isset($args['uuid'])) {
+            $folder = ($this->container->get('get_folder_use_case'))($args['uuid']);
+            $folderId = $folder->getId();
+            $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"], $folderId);
+        }
+        else {
+            $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"]);
+        }
+
         return $this->container->get('view')
-            ->render($response, 'dashboard.twig', ['uploads' => $uploads]);
+            ->render($response, 'dashboard.twig', ['uploads' => $uploads, 'uuid_parent' => (isset($args['uuid'])) ? $args['uuid'] : null ]);
     }
 }
