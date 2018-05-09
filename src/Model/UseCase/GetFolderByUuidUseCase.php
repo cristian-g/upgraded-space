@@ -4,13 +4,13 @@ namespace Pwbox\Model\UseCase;
 
 use Pwbox\Model\UploadRepository;
 
-class GetFolderUseCase
+class GetFolderByUuidUseCase
 {
     /** @var UploadRepository */
     private $repository;
 
     /**
-     * GetFolderUseCase constructor.
+     * GetFolderByUuidUseCase constructor.
      * @param UploadRepository $repository
      */
     public function __construct(UploadRepository $repository)

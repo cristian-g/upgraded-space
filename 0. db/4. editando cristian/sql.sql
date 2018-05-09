@@ -10,7 +10,7 @@ CREATE TABLE `user` (
   `created_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE (`uuid`),
+  UNIQUE KEY (`uuid`),
   UNIQUE KEY `UNIQUE_EMAIL` (`email`),
   UNIQUE KEY `UNIQUE_USERNAME` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
@@ -26,7 +26,7 @@ CREATE TABLE `upload` (
   `created_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE (`uuid`),
+  UNIQUE KEY (`uuid`),
   FOREIGN KEY (`id_user`) REFERENCES user(id),
   FOREIGN KEY (`id_parent`) REFERENCES upload(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;

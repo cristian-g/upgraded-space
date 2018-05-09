@@ -41,7 +41,7 @@ class PostFileController
 
         $errors = [];
 
-        $parentFolder = ($this->container->get('get_folder_use_case'))($data["uuid_parent"]);
+        $parentFolder = ($this->container->get('get_folder_by_uuid_use_case'))($data["uuid_parent"]);
 
         foreach ($uploadedFiles['files'] as $uploadedFile) {
             if ($uploadedFile->getError() !== UPLOAD_ERR_OK) {
@@ -55,6 +55,17 @@ class PostFileController
             $fileName = $uploadedFile->getClientFilename();
 
             $fileInfo = pathinfo($fileName);
+
+            /**
+             * Retrieve the file size.
+             *
+             * Implementations SHOULD return the value stored in the "size" key of
+             * the file in the $_FILES array if available, as PHP calculates this based
+             * on the actual size transmitted.
+             *
+             * @return int|null The file size in bytes or null if unknown.
+             */
+            $fileInfo['size'] = $uploadedFile->getSize();
 
             $extension = $fileInfo['extension'];
 

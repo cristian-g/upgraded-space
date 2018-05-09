@@ -106,8 +106,15 @@ $container['get_uploads_use_case'] = function($container) {
     return $useCase;
 };
 
-$container['get_folder_use_case'] = function($container) {
-    $useCase = new \Pwbox\Model\UseCase\GetFolderUseCase(
+$container['get_folder_by_uuid_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetFolderByUuidUseCase(
+        $container->get('upload_repository')
+    );
+    return $useCase;
+};
+
+$container['get_folder_by_id_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetFolderByIdUseCase(
         $container->get('upload_repository')
     );
     return $useCase;

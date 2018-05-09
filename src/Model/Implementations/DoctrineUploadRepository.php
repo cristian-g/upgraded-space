@@ -45,7 +45,7 @@ class DoctrineUploadRepository implements UploadRepository
         return $upload->getId();
     }
 
-    public function get($id) {
+    public function getById($id) {
         try {
             $array = $this->connection->fetchAssoc('SELECT id, uuid, id_user, id_parent, name, ext, bytes_size, created_at, updated_at FROM upload WHERE id = ? LIMIT 1', array($id));
             $upload = Upload::fromArray($array);
