@@ -71,7 +71,7 @@ class PostFileController
 
             if (!$this->isValidExtension($extension)) {
                 $errors[] = sprintf(
-                    'Unable to upload the file %s, the extension %s is not valid',
+                    'El archivo %s no se ha podido subir porque la extensión %s no es válida.',
                     $fileName,
                     $extension
                 );
@@ -89,8 +89,14 @@ class PostFileController
         }
 
         $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"]);
-        return $this->container->get('view')
-            ->render($response, 'dashboard.twig', ['uploads' => $uploads, 'errors' => $errors, 'isPost' => true]);
+
+        /*return $this->container->get('view')
+            ->render($response, 'dashboard.twig', ['uploads' => $uploads, 'errors' => $errors, 'isPost' => true]);*/
+
+        $this->container->get('flash')->addMessage('errors', $errors);
+        $this->container->get('flash')->addMessage('isPost', true);
+        return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
+
     }
 
     /**

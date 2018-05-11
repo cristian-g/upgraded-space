@@ -32,7 +32,7 @@
             </div>
         {% endif %}
 
-        {% if errors is empty and isPost %}
+        {% if flash('errors') is empty and flash('isPost') %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>¡Hurra!</strong> Todos los archivos han sido cargados exitosamente.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -40,8 +40,15 @@
                 </button>
             </div>
         {% endif %}
-        {% for error in errors %}
-            <p>{{ error }}</p>
+        {% for errors in flash('errors') %}
+            {% for error in errors %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ error }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
         {% endfor %}
 
         <h1 class="mt-5">Hola, {{ user.username }}</h1>
@@ -140,13 +147,13 @@
                         <tr>
                             <td class="text-left" data-sort-value="checksum">
                                 {% if upload.ext == "pdf" %}
-                                    <i class="fa fa-file-alt"></i>
+                                    <i class="fa fa-book"></i>
                                 {% elseif (upload.ext == "jpg") or (upload.ext == "png") or (upload.ext == "gif") %}
                                     <i class="fa fa-image"></i>
                                 {% elseif upload.ext == "md" %}
                                     <i class="fa fa-align-left"></i>
                                 {% elseif upload.ext == "txt" %}
-                                    <i class="fa fa-text"></i>
+                                    <i class="fa fa-file-alt"></i>
                                 {% else %}
                                     <i class="fa fa-folder"></i>
                                 {% endif %}
@@ -183,7 +190,11 @@
                 <tfoot>
                     <tr>
                         <td colspan="4">
-                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} carpetas y {{ filesCount }} archivos, {{ folderSize }} MB en total.</small>
+                        {% if uuid_parent is null %}
+                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} carpetas y {{ filesCount }} archivos, {{ rootFolderSize }} bytes en total.</small>
+                        {% else %}
+                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} carpetas y {{ filesCount }} archivos, {{ folderSize }} bytes en total.</small>
+                        {% endif %}
                         </td>
                     </tr>
                 </tfoot>

@@ -110,7 +110,7 @@ class PostUserController
             // Create the Mailer using your created Transport
             $mailer = new \Swift_Mailer($transport);
 
-            $mailer->send($message);
+            //$mailer->send($message);
 
 
             return $response->withStatus(302)->withHeader('Location', '/dashboard');
