@@ -4,7 +4,7 @@ $(document).ready(function () {
     $('#registerSubmit').click(function() {
         /* Validations go here */
 
-        var username = $('#username').val();
+        /*var username = $('#username').val();
         var email = $('#email').val();
         var password = $('#password').val();
         var confirm_password = $('#confirm_password').val();
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
         if (confirm_password.localeCompare(password) != 0){
             return false;
-        }
+        }*/
 
         $('#registerForm').submit(); // If all the validations succeeded
     });

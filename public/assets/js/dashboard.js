@@ -5,4 +5,7 @@ $(document).ready(function () {
     $('#submitUploadFile').on('click', function() {
         $('#uploadFileForm').submit();
     });
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
 });

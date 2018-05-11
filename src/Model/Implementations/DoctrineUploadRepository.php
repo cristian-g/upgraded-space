@@ -85,4 +85,19 @@ class DoctrineUploadRepository implements UploadRepository
             return $e->getMessage();
         }
     }
+
+    public function getFolderSizeInBytes($folderId) {
+        $array = $this->connection->fetchAssoc("select SUM(bytes_size) as total
+            from    (select * from upload
+                     order by id_parent, id) products_sorted,
+                    (select @pv := ?) initialisation
+            where   find_in_set(id_parent, @pv)
+            and     length(@pv := concat(@pv, ',', id))", array($folderId));
+        return $array['total'];
+    }
+
+    public function getRootFolderSizeInBytes($userId) {
+        $array = $this->connection->fetchAssoc('SELECT SUM(bytes_size) AS total FROM upload WHERE id_user = ?', array($userId));
+        return $array['total'];
+    }
 }

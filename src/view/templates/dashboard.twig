@@ -1,6 +1,7 @@
 {% extends "base.html.twig" %}
 {% block title %}
     Dashboard
+    {{ parent() }}
 {% endblock %}
 {% block styles %}
     {{ parent() }}
@@ -126,9 +127,10 @@
             <table id="bs-table" class="table table-hover">
                 <thead>
                 <tr>
-                    <th class="text-left" data-sort="string">Nombre</th>
-                    <th class="text-right" data-sort="int">Tamaño</th>
-                    <th class="text-right" data-sort="int">Última modificación</th>
+                    <th class="text-left">Nombre</th>
+                    <th class="text-right">Tamaño</th>
+                    <th class="text-right">Última modificación</th>
+                    <th class="text-right"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -152,7 +154,7 @@
                                     <a href="/dashboard/{{ upload.uuid }}"><strong>{{ upload.name }}</strong></a>
                                     {% set foldersCount = foldersCount+1 %}
                                 {% else %}
-                                    <a href="/dashboard/{{ upload.uuid }}"><strong>{{ upload.name }}.{{ upload.ext }}</strong></a>
+                                    <a href="/dashboard/{{ upload.uuid }}" download="{{ upload.name }}.{{ upload.ext }}"><strong>{{ upload.name }}.{{ upload.ext }}</strong></a>
                                     {% set filesCount = filesCount+1 %}
                                 {% endif %}
                             </td>
@@ -162,6 +164,14 @@
                                 <td class="text-right">{{ upload.bytes_size }} bytes</td>
                             {% endif %}
                             <td class="text-right">{{ upload.updated_at }}</td>
+                            <td class="text-right">
+                                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Renombrar">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
                         </tr>
                     {% endfor %}
                     {% if uploads|length < 1 %}
@@ -173,7 +183,7 @@
                 <tfoot>
                     <tr>
                         <td colspan="4">
-                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} carpetas y {{ filesCount }} archivos, ??? MB en total.</small>
+                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} carpetas y {{ filesCount }} archivos, {{ folderSize }} MB en total.</small>
                         </td>
                     </tr>
                 </tfoot>

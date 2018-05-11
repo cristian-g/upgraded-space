@@ -37,6 +37,7 @@ class PostUserController
 
             $data = $request->getParsedBody();
 
+            /*
             //password
             if (!(strlen($data['password']) > 5 and strlen($data['password']) < 13 and
                 preg_match('/[a-z]/', $data['password']) and preg_match('/[A-Z]/', $data['password'])
@@ -63,6 +64,7 @@ class PostUserController
                 return $this->container->get('view')
                     ->render($response, 'register.twig', ['error' => "correo con formato incorrecto"]);
             }
+            */
 
             $service = $this->container->get('post_user_use_case');
             $_SESSION["user_id"] = $service($data);

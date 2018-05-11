@@ -8,4 +8,6 @@ interface UploadRepository
     public function getById($id);
     public function getByUuid($uuid);
     public function getAll($id, $folderId);
+    public function getFolderSizeInBytes($folderId);
+    public function getRootFolderSizeInBytes($userId);
 }

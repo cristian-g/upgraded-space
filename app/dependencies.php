@@ -12,9 +12,17 @@ $container['view'] = function($container) {
     $view->addExtension(new Knlv\Slim\Views\TwigMessages(
         new Slim\Flash\Messages()
     ));
+
+    // Globals per a la vista
     $view->getEnvironment()->addGlobal('session', $_SESSION);
     if (isset($_SESSION["user_id"])) {
+        // Informació de l'usuari
         $view->getEnvironment()->addGlobal('user', ($container->get('get_user_use_case'))($_SESSION["user_id"]));
+
+        // Espai utilitzat
+        $rootFolderSize = ($container->get('get_root_folder_size_use_case'))($_SESSION["user_id"]);
+        if ($rootFolderSize == null) $rootFolderSize = 0;
+        $view->getEnvironment()->addGlobal('rootFolderSize', $rootFolderSize);
     }
     return $view;
 };
@@ -122,6 +130,20 @@ $container['get_folder_by_uuid_use_case'] = function($container) {
 
 $container['get_folder_by_id_use_case'] = function($container) {
     $useCase = new \Pwbox\Model\UseCase\GetFolderByIdUseCase(
+        $container->get('upload_repository')
+    );
+    return $useCase;
+};
+
+$container['get_folder_size_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetFolderSizeUseCase(
+        $container->get('upload_repository')
+    );
+    return $useCase;
+};
+
+$container['get_root_folder_size_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetRootFolderSizeUseCase(
         $container->get('upload_repository')
     );
     return $useCase;
