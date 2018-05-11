@@ -35,6 +35,11 @@ $app->post(
     'Pwbox\Controller\PostUserController:registerAction'
 );
 
+$app->post(
+    '/edit',
+    'Pwbox\Controller\EditUserController'
+);
+
 $app->get(
     '/login',
     'Pwbox\Controller\LogInController:indexAction'
@@ -46,7 +51,7 @@ $app->post(
 );
 
 $app->get(
-    '/dashboard',
+    '/dashboard[/{uuid}]',
     'Pwbox\Controller\DashboardController'
 )->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');
 

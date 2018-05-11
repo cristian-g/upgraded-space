@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{%  block title %} | PWBox{% endblock %}</title>
+        <title>{%  block title %} - PWBox{% endblock %}</title>
         <link rel="stylesheet" href="{{ base_url() }}/assets/css/lib/bootstrap.min.css">
         <link rel="stylesheet" href="{{ base_url() }}/assets/css/lib/animate.css">
         <link rel="stylesheet" href="{{ base_url() }}/assets/css/styles.css">
@@ -32,20 +32,10 @@
                         <ul class="navbar-nav mr-auto">
                             {% if session.user_id != null  %}
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="{{ base_url() }}/"><span class="glyphicon glyphicon-file"></span> Archivos <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="{{ base_url() }}/"><span class="glyphicon glyphicon-file"></span>Dashboard<span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ base_url() }}/"><span class="glyphicon glyphicon-file"></span> Compartido <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="{{ base_url() }}/" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Más
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
+                                    <a class="nav-link" href="{{ base_url() }}/"><span class="glyphicon glyphicon-file"></span>Compartido conmigo<span class="sr-only">(current)</span></a>
                                 </li>
                             {% else %}
                                 <li class="nav-item">
@@ -68,6 +58,7 @@
                                         {{ user.username }}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton">
+                                        <p class="text-center">{{ rootFolderSize }} bytes</p>
                                         <a class="dropdown-item" href="{{ base_url() }}/profile">
                                             Mi perfil
                                         </a>

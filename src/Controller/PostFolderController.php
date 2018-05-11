@@ -25,9 +25,10 @@ class PostFolderController
         try{
             $data = $request->getParsedBody();
             $service = $this->container->get('post_folder_use_case');
-            $service($data);
+            $parentFolder = ($this->container->get('get_folder_by_uuid_use_case'))($data["uuid_parent"]);
+            $service($data, $parentFolder->getId());
             $this->container->get('flash')->addMessage('dashboard', 'La carpeta se ha creado correctamente.');
-            return $response->withStatus(302)->withHeader('Location', '/dashboard');
+            return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
         } catch (\Exception $e){
             return $this->container->get('view')
                 ->render($response, 'dashboard.twig', ['error' => $e->getMessage()]);

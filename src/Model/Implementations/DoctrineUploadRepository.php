@@ -29,11 +29,13 @@ class DoctrineUploadRepository implements UploadRepository
      */
     public function save(Upload $upload)
     {
-        $sql = "INSERT INTO upload(uuid, id_user, name, ext, created_at, updated_at) VALUES(uuid(), :id_user, :name, :ext, :created_at, :updated_at)";
+        $sql = "INSERT INTO upload(uuid, id_user, id_parent, name, ext, bytes_size, created_at, updated_at) VALUES(uuid(), :id_user, :id_parent, :name, :ext, :bytes_size, :created_at, :updated_at)";
         $stmt = $this->connection->prepare($sql);
-        $stmt->bindValue("id_user", $upload->getIdUser(), 'string');
+        $stmt->bindValue("id_user", $upload->getIdUser(), 'integer');
+        $stmt->bindValue("id_parent", $upload->getIdParent(), 'integer');
         $stmt->bindValue("name", $upload->getName(), 'string');
         $stmt->bindValue("ext", $upload->getExt(), 'string');
+        $stmt->bindValue("bytes_size", $upload->getBytesSize(), 'integer');
         $stmt->bindValue("created_at", $upload->getCreatedAt()->format(self::DATE_FORMAT));
         $stmt->bindValue("updated_at", $upload->getCreatedAt()->format(self::DATE_FORMAT));
         $stmt->execute();
@@ -43,9 +45,9 @@ class DoctrineUploadRepository implements UploadRepository
         return $upload->getId();
     }
 
-    public function get($id) {
+    public function getById($id) {
         try {
-            $array = $this->connection->fetchAssoc('SELECT id, uuid, id_user, name, ext, created_at, updated_at FROM upload WHERE id = ? LIMIT 1', array($id));
+            $array = $this->connection->fetchAssoc('SELECT id, uuid, id_user, id_parent, name, ext, bytes_size, created_at, updated_at FROM upload WHERE id = ? LIMIT 1', array($id));
             $upload = Upload::fromArray($array);
             return $upload;
         }
@@ -54,15 +56,48 @@ class DoctrineUploadRepository implements UploadRepository
         }
     }
 
-    public function getAll($id) {
+    public function getByUuid($uuid) {
         try {
-            $stmt = $this->connection->prepare('SELECT id, uuid, id_user, name, ext, created_at, updated_at FROM upload WHERE id_user = :id');
-            $stmt->bindParam('id', $id);
+            $array = $this->connection->fetchAssoc('SELECT id, uuid, id_user, id_parent, name, ext, bytes_size, created_at, updated_at FROM upload WHERE uuid = ? LIMIT 1', array($uuid));
+            $upload = Upload::fromArray($array);
+            return $upload;
+        }
+        catch (\Doctrine\DBAL\DBALException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function getAll($id, $folderId = null) {
+        try {
+            if ($folderId == null) {
+                $stmt = $this->connection->prepare('SELECT id, uuid, id_user, id_parent, name, ext, bytes_size, created_at, updated_at FROM upload WHERE id_user = :id AND id_parent IS NULL');
+                $stmt->bindParam('id', $id);
+            }
+            else {
+                $stmt = $this->connection->prepare('SELECT id, uuid, id_user, id_parent, name, ext, bytes_size, created_at, updated_at FROM upload WHERE id_user = :id AND id_parent = :id_parent');
+                $stmt->bindParam('id', $id);
+                $stmt->bindParam('id_parent', $folderId);
+            }
             $result = $stmt->execute();
             return $stmt->fetchAll();
         }
         catch (\Doctrine\DBAL\DBALException $e) {
             return $e->getMessage();
         }
+    }
+
+    public function getFolderSizeInBytes($folderId) {
+        $array = $this->connection->fetchAssoc("select SUM(bytes_size) as total
+            from    (select * from upload
+                     order by id_parent, id) products_sorted,
+                    (select @pv := ?) initialisation
+            where   find_in_set(id_parent, @pv)
+            and     length(@pv := concat(@pv, ',', id))", array($folderId));
+        return $array['total'];
+    }
+
+    public function getRootFolderSizeInBytes($userId) {
+        $array = $this->connection->fetchAssoc('SELECT SUM(bytes_size) AS total FROM upload WHERE id_user = ?', array($userId));
+        return $array['total'];
     }
 }

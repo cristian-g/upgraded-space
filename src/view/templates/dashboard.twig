@@ -1,6 +1,7 @@
 {% extends "base.html.twig" %}
 {% block title %}
     Dashboard
+    {{ parent() }}
 {% endblock %}
 {% block styles %}
     {{ parent() }}
@@ -31,7 +32,7 @@
             </div>
         {% endif %}
 
-        {% if errors is empty and isPost %}
+        {% if flash('errors') is empty and flash('isPost') %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>¡Hurra!</strong> Todos los archivos han sido cargados exitosamente.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -39,15 +40,25 @@
                 </button>
             </div>
         {% endif %}
-        {% for error in errors %}
-            <p>{{ error }}</p>
+        {% for errors in flash('errors') %}
+            {% for error in errors %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ error }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
         {% endfor %}
 
         <h1 class="mt-5">Hola, {{ user.username }}</h1>
         <p class="lead">Esto es tu dashboard.</p>
         <p>Empieza subiendo archivos.</p>
         <ol class="breadcrumb" dir="ltr">
-            <li><a href="#"><i class="fa fa-home fa-lg fa-fw"></i> </a></li>
+            <li><a href="/dashboard"><i class="fa fa-home fa-lg fa-fw"></i></a></li>
+            {% for folder in breadcrumb %}
+                &nbsp/&nbsp<li><a href="/dashboard/{{ folder.uuid }}">{{ folder.name }}</a></li>
+            {% endfor %}
         </ol>
 
         <!-- Button trigger modal -->
@@ -70,6 +81,11 @@
                             <div class="form-group">
                                 <label for="folder-name" class="col-form-label">Nombre de la carpeta:</label>
                                 <input type="text" class="form-control" id="folder-name" name="name">
+                                {% if uuid_parent is null %}
+                                    <input type="hidden" name="uuid_parent" value="">
+                                {% else %}
+                                    <input type="hidden" name="uuid_parent" value="{{ uuid_parent }}">
+                                {% endif %}
                             </div>
                         </form>
                     </div>
@@ -99,6 +115,11 @@
                     <div class="modal-body">
                         <form action="/file" enctype="multipart/form-data" method="POST" id="uploadFileForm">
                             <input type="file" name="files[]" multiple="multiple">
+                            {% if uuid_parent is null %}
+                                <input type="hidden" name="uuid_parent" value="">
+                            {% else %}
+                                <input type="hidden" name="uuid_parent" value="{{ uuid_parent }}">
+                            {% endif %}
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -113,9 +134,10 @@
             <table id="bs-table" class="table table-hover">
                 <thead>
                 <tr>
-                    <th class="text-left" data-sort="string">Name</th>
-                    <th class="text-right" data-sort="int">Size</th>
-                    <th class="text-right" data-sort="int">Modified</th>
+                    <th class="text-left">Nombre</th>
+                    <th class="text-right">Tamaño</th>
+                    <th class="text-right">Última modificación</th>
+                    <th class="text-right"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -125,33 +147,54 @@
                         <tr>
                             <td class="text-left" data-sort-value="checksum">
                                 {% if upload.ext == "pdf" %}
-                                    <i class="fa fa-file-alt"></i>
+                                    <i class="fa fa-book"></i>
                                 {% elseif (upload.ext == "jpg") or (upload.ext == "png") or (upload.ext == "gif") %}
                                     <i class="fa fa-image"></i>
                                 {% elseif upload.ext == "md" %}
                                     <i class="fa fa-align-left"></i>
                                 {% elseif upload.ext == "txt" %}
-                                    <i class="fa fa-text"></i>
+                                    <i class="fa fa-file-alt"></i>
                                 {% else %}
                                     <i class="fa fa-folder"></i>
                                 {% endif %}
                                 {% if upload.ext is null %}
-                                    <a href="#"><strong>{{ upload.name }}</strong></a>
+                                    <a href="/dashboard/{{ upload.uuid }}"><strong>{{ upload.name }}</strong></a>
                                     {% set foldersCount = foldersCount+1 %}
                                 {% else %}
-                                    <a href="#"><strong>{{ upload.name }}.{{ upload.ext }}</strong></a>
+                                    <a href="/dashboard/{{ upload.uuid }}" download="{{ upload.name }}.{{ upload.ext }}"><strong>{{ upload.name }}.{{ upload.ext }}</strong></a>
                                     {% set filesCount = filesCount+1 %}
                                 {% endif %}
                             </td>
-                            <td class="text-right" data-sort-value="0"></td>
-                            <td class="text-right" data-sort-value="1460763836" title="2016-04-15 23:43:56">{{ upload.updated_at }}</td>
+                            {% if upload.ext is null %}
+                                <td class="text-right">–</td>
+                            {% else %}
+                                <td class="text-right">{{ upload.bytes_size }} bytes</td>
+                            {% endif %}
+                            <td class="text-right">{{ upload.updated_at }}</td>
+                            <td class="text-right">
+                                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Renombrar">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
                         </tr>
                     {% endfor %}
+                    {% if uploads|length < 1 %}
+                        <tr>
+                            <td colspan="3" class="text-center"><i>Esto aún está vacío... ¿Por qué no subes algún archivo?</i></td>
+                        </tr>
+                    {% endif %}
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="4">
-                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} folders and {{ filesCount }} files, ??? MB in total</small>
+                        {% if uuid_parent is null %}
+                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} carpetas y {{ filesCount }} archivos, {{ rootFolderSize }} bytes en total.</small>
+                        {% else %}
+                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} carpetas y {{ filesCount }} archivos, {{ folderSize }} bytes en total.</small>
+                        {% endif %}
                         </td>
                     </tr>
                 </tfoot>

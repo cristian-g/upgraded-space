@@ -19,14 +19,17 @@ class PostFileUseCase
         $this->repository = $repository;
     }
 
-    public function __invoke(array $rawData)
+    public function __invoke(array $rawData, $parentFolderId = null)
     {
         $now = new \DateTime('now');
         $upload = new Upload(
             null,
+            null,
             $_SESSION['user_id'],
+            $parentFolderId,
             $rawData['filename'],
             $rawData['extension'],
+            $rawData['size'],
             $now,
             $now
         );

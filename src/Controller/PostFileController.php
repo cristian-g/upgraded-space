@@ -37,8 +37,11 @@ class PostFileController
         }
 
         $uploadedFiles = $request->getUploadedFiles();
+        $data = $request->getParsedBody();
 
         $errors = [];
+
+        $parentFolder = ($this->container->get('get_folder_by_uuid_use_case'))($data["uuid_parent"]);
 
         foreach ($uploadedFiles['files'] as $uploadedFile) {
             if ($uploadedFile->getError() !== UPLOAD_ERR_OK) {
@@ -53,11 +56,22 @@ class PostFileController
 
             $fileInfo = pathinfo($fileName);
 
+            /**
+             * Retrieve the file size.
+             *
+             * Implementations SHOULD return the value stored in the "size" key of
+             * the file in the $_FILES array if available, as PHP calculates this based
+             * on the actual size transmitted.
+             *
+             * @return int|null The file size in bytes or null if unknown.
+             */
+            $fileInfo['size'] = $uploadedFile->getSize();
+
             $extension = $fileInfo['extension'];
 
             if (!$this->isValidExtension($extension)) {
                 $errors[] = sprintf(
-                    'Unable to upload the file %s, the extension %s is not valid',
+                    'El archivo %s no se ha podido subir porque la extensión %s no es válida.',
                     $fileName,
                     $extension
                 );
@@ -66,7 +80,7 @@ class PostFileController
 
             // Save the uploaded file in the database
             $service = $this->container->get('post_file_use_case');
-            $id = $service($fileInfo);
+            $id = $service($fileInfo, $parentFolder->getId());
 
             $upload = ($this->container->get('get_file_use_case'))($id);
 
@@ -75,8 +89,14 @@ class PostFileController
         }
 
         $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"]);
-        return $this->container->get('view')
-            ->render($response, 'dashboard.twig', ['uploads' => $uploads, 'errors' => $errors, 'isPost' => true]);
+
+        /*return $this->container->get('view')
+            ->render($response, 'dashboard.twig', ['uploads' => $uploads, 'errors' => $errors, 'isPost' => true]);*/
+
+        $this->container->get('flash')->addMessage('errors', $errors);
+        $this->container->get('flash')->addMessage('isPost', true);
+        return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
+
     }
 
     /**

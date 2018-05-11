@@ -7,26 +7,34 @@ class Upload
     private $id;
     private $uuid;
     private $idUser;
+    private $idParent;
     private $name;
     private $ext;
+    private $bytesSize;
     private $createdAt;
     private $updatedAt;
 
     /**
      * Upload constructor.
      * @param $id
+     * @param $uuid
      * @param $idUser
+     * @param $idParent
      * @param $name
      * @param $ext
+     * @param $bytesSize
      * @param $createdAt
      * @param $updatedAt
      */
-    public function __construct($id, $idUser, $name, $ext, $createdAt, $updatedAt)
+    public function __construct($id, $uuid, $idUser, $idParent, $name, $ext, $bytesSize, $createdAt, $updatedAt)
     {
         $this->id = $id;
+        $this->uuid = $uuid;
         $this->idUser = $idUser;
+        $this->idParent = $idParent;
         $this->name = $name;
         $this->ext = $ext;
+        $this->bytesSize = $bytesSize;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
     }
@@ -82,6 +90,22 @@ class Upload
     /**
      * @return mixed
      */
+    public function getIdParent()
+    {
+        return $this->idParent;
+    }
+
+    /**
+     * @param mixed $idParent
+     */
+    public function setIdParent($idParent)
+    {
+        $this->idParent = $idParent;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getName()
     {
         return $this->name;
@@ -109,6 +133,22 @@ class Upload
     public function setExt($ext)
     {
         $this->ext = $ext;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBytesSize()
+    {
+        return $this->bytesSize;
+    }
+
+    /**
+     * @param mixed $bytesSize
+     */
+    public function setBytesSize($bytesSize)
+    {
+        $this->bytesSize = $bytesSize;
     }
 
     /**
@@ -147,9 +187,12 @@ class Upload
     {
         $object = new Upload(
             $array["id"],
+            $array["uuid"],
             $array["id_user"],
+            $array["id_parent"],
             $array["name"],
             $array["ext"],
+            $array["bytes_size"],
             $array["created_at"],
             $array["updated_at"]
         );
