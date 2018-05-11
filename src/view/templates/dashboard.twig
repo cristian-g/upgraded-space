@@ -130,6 +130,38 @@
             </div>
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="renameModal" tabindex="-1" role="dialog" aria-labelledby="renameModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="renameModalLabel">Cambiar el nombre</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/rename" method="post" id="renameForm">
+                            <div class="form-group">
+                                <label for="folder-name" class="col-form-label">Nombre:</label>
+                                <input type="text" class="form-control" name="name" value="" id="name_upload_rename">
+                                <input type="hidden" name="id" value="" id="id_upload_rename">
+                                {% if uuid_parent is null %}
+                                    <input type="hidden" name="uuid_parent" value="">
+                                {% else %}
+                                    <input type="hidden" name="uuid_parent" value="{{ uuid_parent }}">
+                                {% endif %}
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="submitRename">Renombrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="table-responsive">
             <table id="bs-table" class="table table-hover">
                 <thead>
@@ -172,7 +204,7 @@
                             {% endif %}
                             <td class="text-right">{{ upload.updated_at }}</td>
                             <td class="text-right">
-                                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Renombrar">
+                                <button type="button" class="btn btn-secondary renameUploadButton" data-toggle="tooltip" data-placement="top" title="Renombrar" data-id="{{ upload.id }}" data-name="{{ upload.name }}">
                                     <i class="fa fa-edit"></i>
                                 </button>
                                 <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar">

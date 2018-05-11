@@ -90,9 +90,6 @@ class PostFileController
 
         $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"]);
 
-        /*return $this->container->get('view')
-            ->render($response, 'dashboard.twig', ['uploads' => $uploads, 'errors' => $errors, 'isPost' => true]);*/
-
         $this->container->get('flash')->addMessage('errors', $errors);
         $this->container->get('flash')->addMessage('isPost', true);
         return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));

@@ -38,7 +38,7 @@ class DoctrineUserRepository implements UserRepository
         $stmt->bindValue("active", $user->getActive(), 'string');
         $stmt->bindValue("email_activation_key", $user->getEmailActivationKey(), 'string');
         $stmt->bindValue("created_at", $user->getCreatedAt()->format(self::DATE_FORMAT));
-        $stmt->bindValue("updated_at", $user->getCreatedAt()->format(self::DATE_FORMAT));
+        $stmt->bindValue("updated_at", $user->getUpdatedAt()->format(self::DATE_FORMAT));
         $stmt->execute();
         // Save id
         $user->setId($this->connection->lastInsertId());

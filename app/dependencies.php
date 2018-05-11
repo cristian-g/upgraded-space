@@ -149,6 +149,13 @@ $container['get_root_folder_size_use_case'] = function($container) {
     return $useCase;
 };
 
+$container['rename_upload_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\RenameUploadUseCase(
+        $container->get('upload_repository')
+    );
+    return $useCase;
+};
+
 $container['flash'] = function ($container) {
     return new \Slim\Flash\Messages();
 };

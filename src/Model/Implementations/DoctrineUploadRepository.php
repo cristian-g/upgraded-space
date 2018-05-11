@@ -37,7 +37,7 @@ class DoctrineUploadRepository implements UploadRepository
         $stmt->bindValue("ext", $upload->getExt(), 'string');
         $stmt->bindValue("bytes_size", $upload->getBytesSize(), 'integer');
         $stmt->bindValue("created_at", $upload->getCreatedAt()->format(self::DATE_FORMAT));
-        $stmt->bindValue("updated_at", $upload->getCreatedAt()->format(self::DATE_FORMAT));
+        $stmt->bindValue("updated_at", $upload->getUpdatedAt()->format(self::DATE_FORMAT));
         $stmt->execute();
         // Save id
         $upload->setId($this->connection->lastInsertId());
@@ -99,5 +99,14 @@ class DoctrineUploadRepository implements UploadRepository
     public function getRootFolderSizeInBytes($userId) {
         $array = $this->connection->fetchAssoc('SELECT SUM(bytes_size) AS total FROM upload WHERE id_user = ?', array($userId));
         return $array['total'];
+    }
+
+    public function rename(Upload $upload) {
+        $sql = "UPDATE upload SET name = :name, updated_at = :updated_at WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue("name", $upload->getName(), 'string');
+        $stmt->bindValue("updated_at", $upload->getUpdatedAt()->format(self::DATE_FORMAT));
+        $stmt->bindValue("id", $upload->getId(), 'integer');
+        $stmt->execute();
     }
 }

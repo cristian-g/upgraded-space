@@ -79,3 +79,8 @@ $app->post(
     '/folder',
     'Pwbox\Controller\PostFolderController:postAction'
 );
+
+$app->post(
+    '/rename',
+    'Pwbox\Controller\RenameUploadController:postAction'
+);
