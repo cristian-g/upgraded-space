@@ -6,6 +6,8 @@ use Doctrine\DBAL\Driver\Mysqli\MysqliException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use \Psr\Http\Message\UploadedFileInterface;
+use Slim\Http\UploadedFile;
 use Ramsey\Uuid\Uuid;
 
 class PostUserController
@@ -29,6 +31,17 @@ class PostUserController
             ->render($response, 'register.twig', ['messages' => $registerMessages]);
     }
 
+    function moveUploadedFile($directory, UploadedFile $uploadedFile)
+    {
+        $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+        $basename = "profile_image"; // see http://php.net/manual/en/function.random-bytes.php
+        $filename = sprintf('%s.%0.8s', $basename, $extension);
+
+        $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
+
+        return $filename;
+    }
+
 
     public function registerAction(Request $request, Response $response)
     {
@@ -36,6 +49,7 @@ class PostUserController
 
 
             $data = $request->getParsedBody();
+            $uploadedFiles = $request->getUploadedFiles();
 
             /*
             //password
@@ -70,7 +84,29 @@ class PostUserController
             $_SESSION["user_id"] = $service($data);
 
 
-            $this->container->get('flash')->addMessage('dashboard', 'User registered.');
+
+            $user = ($this->container->get('get_user_use_case'))($_SESSION["user_id"]);
+
+            $directory = __DIR__.'/../../public/uploads/'.$user->getUuid();// És relatiu o absolut, però respecte el file system (la màquina)
+            $directory_default = __DIR__.'/../../0.recursos/avatar.jpeg';
+
+            if (!file_exists($directory)) {
+                mkdir($directory, 0777, true);
+            }
+
+            $profile = $uploadedFiles['profile_image'];
+            if ($profile->getError() === UPLOAD_ERR_OK) {
+                $filename = $this->moveUploadedFile($directory, $profile);
+                $this->container->get('flash')->addMessage('dashboard', 'User registered with profile image.');
+            }else{
+                if (copy('avatar.jpeg', 'profile_image.jpeg')){
+                    $this->container->get('flash')->addMessage('dashboard', 'User registered with default image.');
+                }
+                $this->container->get('flash')->addMessage('dashboard', 'User registered without image.');
+            }
+
+
+
 
 
             // create account verification link
