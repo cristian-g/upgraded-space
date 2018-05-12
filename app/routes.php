@@ -84,3 +84,8 @@ $app->post(
     '/rename',
     'Pwbox\Controller\RenameUploadController:postAction'
 );
+
+$app->post(
+    '/delete',
+    'Pwbox\Controller\DeleteUploadController:postAction'
+);

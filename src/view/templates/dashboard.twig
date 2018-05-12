@@ -8,6 +8,7 @@
 {% endblock %}
 {% block scripts %}
     {{ parent() }}
+    <script src="{{ base_url() }}/assets/js/lib/bootstrap-confirmation.min.js"></script>
     <script src="{{ base_url() }}/assets/js/dashboard.js"></script>
 {% endblock %}
 {% block header %}
@@ -15,7 +16,6 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-
         {% for message in flash('dashboard') %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ message }}
@@ -51,20 +51,35 @@
             {% endfor %}
         {% endfor %}
 
-        <h1 class="mt-5">Hola, {{ user.username }}</h1>
-        <p class="lead">Esto es tu dashboard.</p>
-        <p>Empieza subiendo archivos.</p>
+        <div class="card">
+            <div class="card-header">
+                Ir arriba
+            </div>
+            <div class="card-body">
+                <p class="card-text"><strong>Mi unidad</strong></p>
+            </div>
+        </div>
+
         <ol class="breadcrumb" dir="ltr">
-            <li><a href="/dashboard"><i class="fa fa-home fa-lg fa-fw"></i></a></li>
+            <li><a href="/dashboard"><i class="fa fa-home fa-lg fa-fw"></i> Mi unidad</a></li>
             {% for folder in breadcrumb %}
                 &nbsp/&nbsp<li><a href="/dashboard/{{ folder.uuid }}">{{ folder.name }}</a></li>
             {% endfor %}
         </ol>
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newFolderModal">
-            Nueva carpeta
-        </button>
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newFolderModal">
+                    <i class="fa fa-folder"></i> Nueva carpeta
+                </button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFileModal">
+                    <i class="fa fa-cloud-upload-alt"></i> Subir archivo
+                </button>
+            </div>
+            <div class="col-md-4 text-right"><i class="fa fa-user-circle"></i> Propietario</div>
+        </div>
 
         <!-- Modal -->
         <div class="modal fade" id="newFolderModal" tabindex="-1" role="dialog" aria-labelledby="newFolderModalLabel" aria-hidden="true">
@@ -90,17 +105,12 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="button" class="btn btn-primary" id="submitNewFolder">Crear la carpeta</button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFileModal">
-            Subir archivo
-        </button>
 
         <!-- Modal -->
         <div class="modal fade" id="uploadFileModal" tabindex="-1" role="dialog" aria-labelledby="uploadFileModalLabel" aria-hidden="true">
@@ -123,7 +133,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="button" class="btn btn-primary" id="submitUploadFile">Subir archivo</button>
                     </div>
                 </div>
@@ -155,7 +165,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="button" class="btn btn-primary" id="submitRename">Renombrar</button>
                     </div>
                 </div>
@@ -197,17 +207,13 @@
                                     {% set filesCount = filesCount+1 %}
                                 {% endif %}
                             </td>
-                            {% if upload.ext is null %}
-                                <td class="text-right">–</td>
-                            {% else %}
-                                <td class="text-right">{{ upload.bytes_size }} bytes</td>
-                            {% endif %}
+                            <td class="text-right">{{ upload.bytes_size }} bytes</td>
                             <td class="text-right">{{ upload.updated_at }}</td>
                             <td class="text-right">
                                 <button type="button" class="btn btn-secondary renameUploadButton" data-toggle="tooltip" data-placement="top" title="Renombrar" data-id="{{ upload.id }}" data-name="{{ upload.name }}">
                                     <i class="fa fa-edit"></i>
                                 </button>
-                                <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                <button type="button" class="btn btn-danger deleteUploadButton" data-id="{{ upload.id }}">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </td>
@@ -215,7 +221,7 @@
                     {% endfor %}
                     {% if uploads|length < 1 %}
                         <tr>
-                            <td colspan="3" class="text-center"><i>Esto aún está vacío... ¿Por qué no subes algún archivo?</i></td>
+                            <td colspan="4" class="text-center"><i>Esto aún está vacío... ¿Por qué no subes algo?</i></td>
                         </tr>
                     {% endif %}
                 </tbody>
@@ -231,6 +237,15 @@
                     </tr>
                 </tfoot>
             </table>
+
+            <form action="/delete" method="post" id="deleteForm">
+                <input type="hidden" name="id" value="" id="id_upload_delete">
+                {% if uuid_parent is null %}
+                    <input type="hidden" name="uuid_parent" value="">
+                {% else %}
+                    <input type="hidden" name="uuid_parent" value="{{ uuid_parent }}">
+                {% endif %}
+            </form>
         </div>
     </div>
 {% endblock %}

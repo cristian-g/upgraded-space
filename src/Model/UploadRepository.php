@@ -11,4 +11,6 @@ interface UploadRepository
     public function getFolderSizeInBytes($folderId);
     public function getRootFolderSizeInBytes($userId);
     public function rename(Upload $upload);
+    public function getChildFiles($id);
+    public function delete($id);
 }

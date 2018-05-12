@@ -28,5 +28,5 @@ CREATE TABLE `upload` (
   PRIMARY KEY (`id`),
   UNIQUE KEY (`uuid`),
   FOREIGN KEY (`id_user`) REFERENCES user(id),
-  FOREIGN KEY (`id_parent`) REFERENCES upload(id)
+  FOREIGN KEY (`id_parent`) REFERENCES upload(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;

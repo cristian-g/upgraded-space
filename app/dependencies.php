@@ -156,6 +156,20 @@ $container['rename_upload_use_case'] = function($container) {
     return $useCase;
 };
 
+$container['get_child_files_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetChildFilesUseCase(
+        $container->get('upload_repository')
+    );
+    return $useCase;
+};
+
+$container['delete_upload_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\DeleteUploadUseCase(
+        $container->get('upload_repository')
+    );
+    return $useCase;
+};
+
 $container['flash'] = function ($container) {
     return new \Slim\Flash\Messages();
 };

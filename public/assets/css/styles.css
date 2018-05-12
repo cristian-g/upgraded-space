@@ -25,3 +25,21 @@ footer .footer-black .col-md-3 {
 footer .footer-black .blue{
     background-color: #007bff;
 }
+.breadcrumb {
+    background-color: white !important;
+    border: 1px solid rgba(0,0,0,.125);
+}
+.table-responsive {
+    padding-top: 15px;
+}
+.btn-notifications {
+    margin-right: 10px;
+    color: black;
+}
+.btn-notifications:hover {
+    color: #007bff;
+}
+.root-folder-size {
+    padding-left: 20px;
+    padding-right: 20px;
+}

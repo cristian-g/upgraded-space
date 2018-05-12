@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Pau
- * Date: 2/5/2018
- * Time: 20:37
- */
 
 namespace Pwbox\Controller;
 

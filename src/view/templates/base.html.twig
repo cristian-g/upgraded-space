@@ -15,6 +15,7 @@
         <script src="{{ base_url() }}/assets/js/lib/fontawesome-all.js"></script>
         <script src="{{ base_url() }}/assets/js/lib/wow.min.js"></script>
         <script src="{{ base_url() }}/assets/js/lib/sweetalert.min.js"></script>
+        <script src="{{ base_url() }}/assets/js/notifications.js"></script>
         {%  block scripts %}{% endblock %}
     </head>
     <body>
@@ -52,13 +53,35 @@
                         <!-- Right Side Of Navbar -->
                         <form class="form-inline my-2 my-lg-0">
                             {% if session.user_id != null  %}
+                                <a tabindex="0"
+                                   class="btn btn-light btn-notifications"
+                                   role="button"
+                                   data-html="true"
+                                   data-toggle="popover"
+                                   data-trigger="focus"
+                                   data-placement="bottom"
+                                   title="Notificaciones"
+                                   data-content="
+                                   <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
+                                   <hr>
+                                   <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
+                                   <hr>
+                                   <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
+                                   <hr>
+                                   <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
+                                   <hr>
+                                   <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
+                                   <hr>
+                                   <div class='text-center'><a href='#'>Ver todas</a></div>">
+                                    <i class="fa fa-bell"></i>
+                                </a>
                                 <!-- Authentication Links -->
                                 <div class="dropdown">
                                     <a class="btn btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{ user.username }}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton">
-                                        <p class="text-center">{{ rootFolderSize }} bytes</p>
+                                        <p class="text-center root-folder-size">{{ rootFolderSize }} bytes ocupados de un máximo de 1 GB</p>
                                         <a class="dropdown-item" href="{{ base_url() }}/profile">
                                             Mi perfil
                                         </a>

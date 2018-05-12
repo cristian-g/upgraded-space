@@ -23,8 +23,7 @@ class DashboardController
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function __invoke(Request $request, Response $response, array $args)
-    {
+    public function __invoke(Request $request, Response $response, array $args) {
         $breadcrumb = [];
 
         $folderSize = null;
@@ -38,6 +37,7 @@ class DashboardController
                 $folderId = $folder->getId();
                 $folderSize = ($this->container->get('get_folder_size_use_case'))($folderId);
                 $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"], $folderId);
+                $this->computeFolderSizes($uploads);
 
                 // Breadcrumb
                 array_push($breadcrumb, $folder);
@@ -59,6 +59,7 @@ class DashboardController
         else {
             // It is the root folder
             $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"]);
+            $this->computeFolderSizes($uploads);
         }
 
         if ($folderSize == null) $folderSize = 0;
@@ -67,15 +68,14 @@ class DashboardController
             ->render($response, 'dashboard.twig', ['uploads' => $uploads, 'breadcrumb' => $breadcrumb, 'folderSize' => $folderSize, 'uuid_parent' => (isset($args['uuid'])) ? $args['uuid'] : null ]);
     }
 
-    // Compute total size of some uploads
-    /*private function computeTotalSize($uploads) {
-        $bytesActiveFolder = 0;
-        foreach ($uploads as $item) {
-            if ($item->getExt() == null) {
+    private function computeFolderSizes(&$uploads) {
+        foreach ($uploads as $key => $upload) {
+            if ($upload['ext'] == null) {
                 // It is a folder
-                += computeTotalSize($uploads);
+                // Compute its size
+                $uploads[$key]['bytes_size'] = ($this->container->get('get_folder_size_use_case'))($upload['id']);
+                if ($uploads[$key]['bytes_size'] == null) $uploads[$key]['bytes_size'] = 0;
             }
         }
-        return $bytesActiveFolder;
-    }*/
+    }
 }

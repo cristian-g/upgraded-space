@@ -109,4 +109,57 @@ class DoctrineUploadRepository implements UploadRepository
         $stmt->bindValue("id", $upload->getId(), 'integer');
         $stmt->execute();
     }
+
+    public function getChildFiles($id) {
+        try {
+            $stmt = $this->connection->prepare('
+                select uuid, id_user
+                from    (select * from upload
+                         order by id_parent, id) products_sorted,
+                        (select @pv := :id) initialisation
+                where   find_in_set(id_parent, @pv)
+                and     length(@pv := concat(@pv, \',\', id))
+                and not ext is null
+            ');
+            $stmt->bindParam('id', $id);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll();
+            $files = [];
+            foreach ($result as $array) {
+                $file = new Upload(null, $array['uuid'], $array['id_user'], null, null, null, null, null, null);
+                array_push($files, $file);
+            }
+
+            return $files;
+        }
+        catch (\Doctrine\DBAL\DBALException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function delete($id) {
+        // Delete childs (if exists)
+        $sql = "
+            delete from upload
+            where id in (select id
+            from    (select * from upload
+                     order by id_parent, id) products_sorted,
+                    (select @pv := :id) initialisation
+            where   find_in_set(id_parent, @pv)
+            and     length(@pv := concat(@pv, ',', id)))
+        ";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue("id", $id, 'integer');
+        $stmt->execute();
+
+        // Delete the upload
+        $sql = "
+            delete from upload
+            where id = :id
+        ";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue("id", $id, 'integer');
+        $stmt->execute();
+    }
 }

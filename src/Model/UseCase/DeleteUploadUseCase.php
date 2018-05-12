@@ -4,21 +4,20 @@ namespace Pwbox\Model\UseCase;
 
 use Pwbox\Model\UploadRepository;
 
-class GetUploadsUseCase
+class DeleteUploadUseCase
 {
     /** @var UploadRepository */
     private $repository;
 
     /**
-     * GetUploadsUseCase constructor.
+     * DeleteUploadUseCase constructor.
      * @param UploadRepository $repository
      */
     public function __construct(UploadRepository $repository) {
         $this->repository = $repository;
     }
 
-
-    public function __invoke($id, $folderId = null) {
-        return $this->repository->getAll($id, $folderId);
+    public function __invoke($id) {
+        $this->repository->delete($id);
     }
 }

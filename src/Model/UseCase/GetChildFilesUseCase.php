@@ -4,21 +4,19 @@ namespace Pwbox\Model\UseCase;
 
 use Pwbox\Model\UploadRepository;
 
-class GetUploadsUseCase
-{
+class GetChildFilesUseCase {
     /** @var UploadRepository */
     private $repository;
 
     /**
-     * GetUploadsUseCase constructor.
+     * GetChildFilesUseCase constructor.
      * @param UploadRepository $repository
      */
     public function __construct(UploadRepository $repository) {
         $this->repository = $repository;
     }
 
-
-    public function __invoke($id, $folderId = null) {
-        return $this->repository->getAll($id, $folderId);
+    public function __invoke($id) {
+        return $this->repository->getChildFiles($id);
     }
 }
