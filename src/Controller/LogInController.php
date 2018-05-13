@@ -69,12 +69,12 @@ class LogInController
             }
 
             //we check if the password matches
-            if ( password_verify($data['password'],$user['password'])){
-                $_SESSION['user_id'] = $user['id'];
+            if ( password_verify($data['password'],$user->getPassword())){
+                $_SESSION['user_id'] = $user->getId();
                 return $response->withStatus(302)->withHeader('Location', '/dashboard');
             }
             else{
-                if ($user['id'] == null){
+                if ($user->getId() == null){
                     //user doesn't exist
                     return $this->container->get('view')
                         ->render($response, 'login.twig', ['error' => "Usuari inexistent"]);
