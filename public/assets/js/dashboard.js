@@ -41,4 +41,7 @@ $(document).ready(function () {
         $('#id_upload_delete').val($(this).data('id'));
         $('#deleteForm').submit();
     });
+    $('#submitShare').on('click', function() {
+        $('#shareForm').submit();
+    });
 });

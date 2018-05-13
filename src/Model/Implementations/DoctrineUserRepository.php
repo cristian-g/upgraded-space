@@ -58,9 +58,10 @@ class DoctrineUserRepository implements UserRepository
     }
 
     public function getFromEmail($email) {
-        try{
+        try {
             $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE email = ? LIMIT 1', array($email));
-            return $array;
+            $user = User::fromArray($array);
+            return $user;
         }
         catch (\Doctrine\DBAL\DBALException $e){
 
@@ -68,9 +69,10 @@ class DoctrineUserRepository implements UserRepository
     }
 
     public function getFromUsername($username) {
-        try{
+        try {
             $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE username = ? LIMIT 1', array($username));
-            return $array;
+            $user = User::fromArray($array);
+            return $user;
         }
         catch (\Doctrine\DBAL\DBALException $e){
 

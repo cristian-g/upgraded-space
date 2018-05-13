@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{%  block title %} - PWBox{% endblock %}</title>
+        <title>{% block title %} - PWBox{% endblock %}</title>
         <link rel="stylesheet" href="{{ base_url() }}/assets/css/lib/bootstrap.min.css">
         <link rel="stylesheet" href="{{ base_url() }}/assets/css/lib/animate.css">
         <link rel="stylesheet" href="{{ base_url() }}/assets/css/styles.css">
-        {%  block styles %}{% endblock %}
+        {% block styles %}{% endblock %}
         <script src="{{ base_url() }}/assets/js/lib/jquery-3.2.1.min.js"></script>
         <script src="{{ base_url() }}/assets/js/lib/popper.min.js"></script>
         <script src="{{ base_url() }}/assets/js/lib/bootstrap.min.js"></script>
@@ -16,10 +16,10 @@
         <script src="{{ base_url() }}/assets/js/lib/wow.min.js"></script>
         <script src="{{ base_url() }}/assets/js/lib/sweetalert.min.js"></script>
         <script src="{{ base_url() }}/assets/js/notifications.js"></script>
-        {%  block scripts %}{% endblock %}
+        {% block scripts %}{% endblock %}
     </head>
     <body>
-        {%  block header %}
+        {% block header %}
             <header>
                 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                     <a class="navbar-brand" href="{{ base_url() }}/">
@@ -32,21 +32,21 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             {% if session.user_id != null  %}
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="{{ base_url() }}/"><span class="glyphicon glyphicon-file"></span>Dashboard<span class="sr-only">(current)</span></a>
+                                <li class="nav-item{% block nav_item_dashboard %}{% endblock %}">
+                                    <a class="nav-link" href="{{ base_url() }}/dashboard"><span class="glyphicon glyphicon-file"></span>Mi unidad</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ base_url() }}/"><span class="glyphicon glyphicon-file"></span>Compartido conmigo<span class="sr-only">(current)</span></a>
+                                <li class="nav-item{% block nav_item_shared %}{% endblock %}">
+                                    <a class="nav-link" href="{{ base_url() }}/shared"><span class="glyphicon glyphicon-file"></span>Compartido conmigo</a>
                                 </li>
                             {% else %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#info"><span class="glyphicon glyphicon-file"></span> Conócenos <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="#info"><span class="glyphicon glyphicon-file"></span> Conócenos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#opiniones"><span class="glyphicon glyphicon-file"></span> Contacto <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="#opiniones"><span class="glyphicon glyphicon-file"></span> Contacto</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#contacto"><span class="glyphicon glyphicon-file"></span> Contacto <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="#contacto"><span class="glyphicon glyphicon-file"></span> Contacto</a>
                                 </li>
                             {% endif %}
                         </ul>
@@ -105,10 +105,10 @@
         {% endblock %}
         <!-- Begin page content -->
         <main role="main" class="">
-            {%  block content %}{% endblock %}
+            {% block content %}{% endblock %}
         </main>
         <footer class="footer">
-                {%  block footer %}
+                {% block footer %}
                     <div class="row footer-black">
                         <div class="col-md-3">
                             <h4>Navegación</h4>
@@ -123,7 +123,6 @@
 
                         </div>
                     </div>
-
                 {% endblock %}
         </footer>
     </body>

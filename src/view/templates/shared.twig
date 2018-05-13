@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    Compartido conmigo
+    {{ parent() }}
+{% endblock %}
+{% block styles %}
+    {{ parent() }}
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block nav_item_shared %} active{% endblock %}
+{% block content %}
+    <div class="container">
+        {% for message in flash('success') %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+
+        {% for message in flash('errors') %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+
+        <div class="card-columns">
+            {% for share in shares %}
+                <div class="card text-center">
+                    <div class="card-header">
+                        Hace unos segundos
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Carpeta {{ share.id }}</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Administrador
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

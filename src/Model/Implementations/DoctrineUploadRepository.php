@@ -14,7 +14,7 @@ class DoctrineUploadRepository implements UploadRepository
     private $connection;
 
     /**
-     * DoctrineUserRepository constructor.
+     * DoctrineUploadRepository constructor.
      * @param Connection $connection
      */
     public function __construct(Connection $connection)

@@ -89,3 +89,13 @@ $app->post(
     '/delete',
     'Pwbox\Controller\DeleteUploadController:postAction'
 );
+
+$app->post(
+    '/share',
+    'Pwbox\Controller\PostShareController:postAction'
+);
+
+$app->get(
+    '/shared',
+    'Pwbox\Controller\SharedController'
+)->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');

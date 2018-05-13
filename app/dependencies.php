@@ -51,6 +51,20 @@ $container['upload_repository'] = function ($container) {
     return $repository;
 };
 
+$container['share_repository'] = function ($container) {
+    $repository = new \Pwbox\Model\Implementations\DoctrineShareRepository(
+        $container->get('doctrine')
+    );
+    return $repository;
+};
+
+$container['notification_repository'] = function ($container) {
+    $repository = new \Pwbox\Model\Implementations\DoctrineNotificationRepository(
+        $container->get('doctrine')
+    );
+    return $repository;
+};
+
 $container['post_user_use_case'] = function($container) {
     $useCase = new \Pwbox\Model\UseCase\PostUserUseCase(
         $container->get('user_repository')
@@ -166,6 +180,27 @@ $container['get_child_files_use_case'] = function($container) {
 $container['delete_upload_use_case'] = function($container) {
     $useCase = new \Pwbox\Model\UseCase\DeleteUploadUseCase(
         $container->get('upload_repository')
+    );
+    return $useCase;
+};
+
+$container['post_share_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\PostShareUseCase(
+        $container->get('share_repository')
+    );
+    return $useCase;
+};
+
+$container['post_notification_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\PostNotificationUseCase(
+        $container->get('notification_repository')
+    );
+    return $useCase;
+};
+
+$container['get_shares_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetSharesUseCase(
+        $container->get('share_repository')
     );
     return $useCase;
 };
