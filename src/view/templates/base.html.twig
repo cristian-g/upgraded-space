@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%">
     <head>
         <title>{% block title %} - PWBox{% endblock %}</title>
         <link rel="stylesheet" href="{{ base_url() }}/assets/css/lib/bootstrap.min.css">
@@ -19,111 +19,114 @@
         {% block scripts %}{% endblock %}
     </head>
     <body>
-        {% block header %}
-            <header>
-                <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                    <a class="navbar-brand" href="{{ base_url() }}/">
-                        <span class="name">PWBox</span>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+        <div id="container">
+            {% block header %}
+                <header>
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                        <a class="navbar-brand" href="{{ base_url() }}/">
+                            <span class="name">PWBox</span>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            {% if session.user_id != null  %}
-                                <li class="nav-item{% block nav_item_dashboard %}{% endblock %}">
-                                    <a class="nav-link" href="{{ base_url() }}/dashboard"><span class="glyphicon glyphicon-file"></span>Mi unidad</a>
-                                </li>
-                                <li class="nav-item{% block nav_item_shared %}{% endblock %}">
-                                    <a class="nav-link" href="{{ base_url() }}/shared"><span class="glyphicon glyphicon-file"></span>Compartido conmigo</a>
-                                </li>
-                            {% else %}
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#info"><span class="glyphicon glyphicon-file"></span> Conócenos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#opiniones"><span class="glyphicon glyphicon-file"></span> Contacto</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#contacto"><span class="glyphicon glyphicon-file"></span> Contacto</a>
-                                </li>
-                            {% endif %}
-                        </ul>
-                        <!-- Right Side Of Navbar -->
-                        <form class="form-inline my-2 my-lg-0">
-                            {% if session.user_id != null  %}
-                                <a tabindex="0"
-                                   class="btn btn-light btn-notifications"
-                                   role="button"
-                                   data-html="true"
-                                   data-toggle="popover"
-                                   data-trigger="focus"
-                                   data-placement="bottom"
-                                   title="Notificaciones"
-                                   data-content="
-                                   <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
-                                   <hr>
-                                   <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
-                                   <hr>
-                                   <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
-                                   <hr>
-                                   <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
-                                   <hr>
-                                   <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
-                                   <hr>
-                                   <div class='text-center'><a href='#'>Ver todas</a></div>">
-                                    <i class="fa fa-bell"></i>
-                                </a>
-                                <!-- Authentication Links -->
-                                <div class="dropdown">
-                                    <a class="btn btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{ user.username }}
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                {% if session.user_id != null  %}
+                                    <li class="nav-item{% block nav_item_dashboard %}{% endblock %}">
+                                        <a class="nav-link" href="{{ base_url() }}/dashboard"><span class="glyphicon glyphicon-file"></span>Mi unidad</a>
+                                    </li>
+                                    <li class="nav-item{% block nav_item_shared %}{% endblock %}">
+                                        <a class="nav-link" href="{{ base_url() }}/shared"><span class="glyphicon glyphicon-file"></span>Compartido conmigo</a>
+                                    </li>
+                                {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#info"><span class="glyphicon glyphicon-file"></span> Conócenos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#opiniones"><span class="glyphicon glyphicon-file"></span> Contacto</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#contacto"><span class="glyphicon glyphicon-file"></span> Contacto</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                            <!-- Right Side Of Navbar -->
+                            <form class="form-inline my-2 my-lg-0">
+                                {% if session.user_id != null  %}
+                                    <a tabindex="0"
+                                       class="btn btn-light btn-notifications"
+                                       role="button"
+                                       data-html="true"
+                                       data-toggle="popover"
+                                       data-trigger="focus"
+                                       data-placement="bottom"
+                                       title="Notificaciones"
+                                       data-content="
+                                       <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
+                                       <hr>
+                                       <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
+                                       <hr>
+                                       <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
+                                       <hr>
+                                       <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
+                                       <hr>
+                                       <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
+                                       <hr>
+                                       <div class='text-center'><a href='#'>Ver todas</a></div>">
+                                        <i class="fa fa-bell"></i>
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton">
-                                        <p class="text-center root-folder-size">{{ rootFolderSize }} bytes ocupados de un máximo de 1 GB</p>
-                                        <a class="dropdown-item" href="{{ base_url() }}/profile">
-                                            Mi perfil
+                                    <!-- Authentication Links -->
+                                    <div class="dropdown">
+                                        <a class="btn btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ user.username }}
                                         </a>
-                                        <a class="dropdown-item" href="{{ base_url() }}/logout">
-                                            Cerrar sesión
-                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton">
+                                            <p class="text-center root-folder-size">{{ rootFolderSize }} bytes ocupados de un máximo de 1 GB</p>
+                                            <a class="dropdown-item" href="{{ base_url() }}/profile">
+                                                Mi perfil
+                                            </a>
+                                            <a class="dropdown-item" href="{{ base_url() }}/logout">
+                                                Cerrar sesión
+                                            </a>
+                                        </div>
                                     </div>
+                                {% else %}
+                                    <a class="btn btn btn-outline-light" href="{{ base_url() }}/login" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Iniciar sesión
+                                    </a>
+                                    <a class="btn btn btn-light right-button" href="{{ base_url() }}/register" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Registrarse
+                                    </a>
+                                {% endif %}
+                            </form>
+                        </div>
+                    </nav>
+                </header>
+            {% endblock %}
+            <!-- Begin page content -->
+            <main role="main" class="body">
+                {% block content %}{% endblock %}
+            </main>
+            <footer class="footer">
+                    {% block footer %}
+                        <div class="footer-black">
+                            <div class="row" style="margin-right: 0">
+                                <div class="col-md-9">
+                                    <span class="text-muted">PWBox, S.A.</span>
                                 </div>
-                            {% else %}
-                                <a class="btn btn btn-outline-light" href="{{ base_url() }}/login" role="button" aria-haspopup="true" aria-expanded="false">
-                                    Iniciar sesión
-                                </a>
-                                <a class="btn btn btn-light right-button" href="{{ base_url() }}/register" role="button" aria-haspopup="true" aria-expanded="false">
-                                    Registrarse
-                                </a>
-                            {% endif %}
-                        </form>
-                    </div>
-                </nav>
-            </header>
-        {% endblock %}
-        <!-- Begin page content -->
-        <main role="main" class="">
-            {% block content %}{% endblock %}
-        </main>
-        <footer class="footer">
-                {% block footer %}
-                    <div class="row footer-black">
-                        <div class="col-md-3">
-                            <h4>Navegación</h4>
-                        </div>
-                        <div class="col-md-3">
-                            <h4>Otra información</h4>
-                        </div>
-                        <div class="col-md-3">
-                            <span class="text-muted">PWBox, S.A.</span>
-                        </div>
-                        <div class="col-md-3 blue">
+                                <div class="col-md-3 blue text-right">
+                                    <span class="social-icons">
+                                        <i class="fab fa-facebook"></i>
+                                        <i class="fab fa-twitter-square"></i>
+                                        <i class="fab fa-instagram"></i>
 
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                {% endblock %}
-        </footer>
+                    {% endblock %}
+            </footer>
+        </div>
     </body>
 </html>
