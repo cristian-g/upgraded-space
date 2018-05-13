@@ -2,29 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38ef741-17f9-42c2-878f-2681224a399e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Controller/NotificationsController.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Model/UseCase/GetLastFiveNotificationsUseCase.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Model/UseCase/GetNotificationsUseCase.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/view/templates/notifications.twig" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/dependencies.php" afterPath="$PROJECT_DIR$/app/dependencies.php" />
-      <change beforePath="$PROJECT_DIR$/app/routes.php" afterPath="$PROJECT_DIR$/app/routes.php" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/styles.css" afterPath="$PROJECT_DIR$/public/assets/css/styles.css" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DashboardController.php" afterPath="$PROJECT_DIR$/src/Controller/DashboardController.php" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PostShareController.php" afterPath="$PROJECT_DIR$/src/Controller/PostShareController.php" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SharedController.php" afterPath="$PROJECT_DIR$/src/Controller/SharedController.php" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Implementations/DoctrineNotificationRepository.php" afterPath="$PROJECT_DIR$/src/Model/Implementations/DoctrineNotificationRepository.php" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Implementations/DoctrineShareRepository.php" afterPath="$PROJECT_DIR$/src/Model/Implementations/DoctrineShareRepository.php" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" afterPath="$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" />
-      <change beforePath="$PROJECT_DIR$/src/Model/NotificationRepository.php" afterPath="$PROJECT_DIR$/src/Model/NotificationRepository.php" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ShareRepository.php" afterPath="$PROJECT_DIR$/src/Model/ShareRepository.php" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Upload.php" afterPath="$PROJECT_DIR$/src/Model/Upload.php" />
-      <change beforePath="$PROJECT_DIR$/src/Model/User.php" afterPath="$PROJECT_DIR$/src/Model/User.php" />
       <change beforePath="$PROJECT_DIR$/src/view/templates/base.html.twig" afterPath="$PROJECT_DIR$/src/view/templates/base.html.twig" />
-      <change beforePath="$PROJECT_DIR$/src/view/templates/dashboard.twig" afterPath="$PROJECT_DIR$/src/view/templates/dashboard.twig" />
-      <change beforePath="$PROJECT_DIR$/src/view/templates/hello.twig" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/view/templates/profile.twig" afterPath="$PROJECT_DIR$/src/view/templates/profile.twig" />
-      <change beforePath="$PROJECT_DIR$/src/view/templates/shared.twig" afterPath="$PROJECT_DIR$/src/view/templates/shared.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,7 +17,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dashboard.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dashboard.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/templates/dashboard.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="671">
@@ -48,22 +27,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/css/styles.css">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/view/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-              <folding />
+            <state relative-caret-position="478">
+              <caret line="73" column="71" lean-forward="false" selection-start-line="73" selection-start-column="71" selection-end-line="73" selection-end-column="71" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#footer#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShareRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/ShareRepository.php">
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assets/css/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-              <folding />
+            <state relative-caret-position="585">
+              <caret line="65" column="19" lean-forward="false" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+              <folding>
+                <marker date="1526243252530" expanded="true" signature="5:38" ph="{...}" />
+                <marker date="1526243252530" expanded="true" signature="892:895" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,7 +80,7 @@
         <entry file="file://$PROJECT_DIR$/src/Controller/DashboardController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="576">
-              <caret line="51" column="13" lean-forward="true" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+              <caret line="51" column="13" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -159,7 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SessionMiddleware</find>
       <find>post_user_use_case</find>
       <find>button</find>
       <find>inicia</find>
@@ -189,6 +172,7 @@
       <find>shares</find>
       <find>bytesActiveFolder</find>
       <find>Mi unidad</find>
+      <find>arriba</find>
     </findStrings>
     <replaceStrings>
       <replace>uploadFileModal</replace>
@@ -258,7 +242,6 @@
         <option value="$PROJECT_DIR$/src/Model/NotificationRepository.php" />
         <option value="$PROJECT_DIR$/app/dependencies.php" />
         <option value="$PROJECT_DIR$/src/view/templates/notifications.twig" />
-        <option value="$PROJECT_DIR$/src/view/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/src/view/templates/shared.twig" />
         <option value="$PROJECT_DIR$/src/Model/Implementations/DoctrineShareRepository.php" />
         <option value="$PROJECT_DIR$/src/Controller/SharedController.php" />
@@ -267,6 +250,7 @@
         <option value="$PROJECT_DIR$/public/assets/css/styles.css" />
         <option value="$PROJECT_DIR$/src/Controller/DashboardController.php" />
         <option value="$PROJECT_DIR$/src/view/templates/dashboard.twig" />
+        <option value="$PROJECT_DIR$/src/view/templates/base.html.twig" />
       </list>
     </option>
   </component>
@@ -500,12 +484,12 @@
       <workItem from="1525871635789" duration="43721000" />
       <workItem from="1526052188981" duration="5000" />
       <workItem from="1526077330895" duration="15031000" />
-      <workItem from="1526160641680" duration="25994000" />
+      <workItem from="1526160641680" duration="26433000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198952000" />
+    <option name="totallyTimeSpent" value="199391000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1402" height="1137" extended-state="0" />
@@ -897,16 +881,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="75" column="35" lean-forward="false" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
-          <folding>
-            <marker date="1526239967312" expanded="true" signature="1043:1233" ph="{%  block scripts ...%}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/ShareRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -974,15 +948,18 @@
     <entry file="file://$PROJECT_DIR$/public/assets/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
-          <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding />
+          <caret line="65" column="19" lean-forward="false" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+          <folding>
+            <marker date="1526243252530" expanded="true" signature="5:38" ph="{...}" />
+            <marker date="1526243252530" expanded="true" signature="892:895" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DashboardController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
-          <caret line="51" column="13" lean-forward="true" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+          <caret line="51" column="13" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -992,6 +969,16 @@
         <state relative-caret-position="671">
           <caret line="71" column="56" lean-forward="false" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="73" column="71" lean-forward="false" selection-start-line="73" selection-start-column="71" selection-end-line="73" selection-end-column="71" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#footer#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
