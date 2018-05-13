@@ -23,6 +23,13 @@ $container['view'] = function($container) {
         $rootFolderSize = ($container->get('get_root_folder_size_use_case'))($_SESSION["user_id"]);
         if ($rootFolderSize == null) $rootFolderSize = 0;
         $view->getEnvironment()->addGlobal('rootFolderSize', $rootFolderSize);
+
+        // Notificacions
+        $notifications = ($container->get('get_last_five_notifications_use_case'))($_SESSION["user_id"]);
+        foreach ($notifications as $key => $notification) {
+            $notifications[$key]["created_at"] = \Pwbox\Controller\NotificationsController::computeRelativeTime($notifications[$key]["created_at"]);
+        }
+        $view->getEnvironment()->addGlobal('lastNotifications', $notifications);
     }
     return $view;
 };
@@ -201,6 +208,20 @@ $container['post_notification_use_case'] = function($container) {
 $container['get_shares_use_case'] = function($container) {
     $useCase = new \Pwbox\Model\UseCase\GetSharesUseCase(
         $container->get('share_repository')
+    );
+    return $useCase;
+};
+
+$container['get_notifications_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetNotificationsUseCase(
+        $container->get('notification_repository')
+    );
+    return $useCase;
+};
+
+$container['get_last_five_notifications_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetLastFiveNotificationsUseCase(
+        $container->get('notification_repository')
     );
     return $useCase;
 };

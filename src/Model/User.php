@@ -224,11 +224,11 @@ class User
         $array["id"] = $this->getId();
         $array["uuid"] = $this->getUuid();
         $array["username"] = $this->getUsername();
-        $array["email"] = $this->$this->getEmail();
+        $array["email"] = $this->getEmail();
         $array["birthdate"] = $this->getBirthdate();
         $array["password"] = $this->password;
         $array["created_at"] = $this->getCreatedAt();
-        $array["updated_at"] = $this->getUpdateAt();
+        $array["updated_at"] = $this->getUpdatedAt();
         return $array;
     }
 }

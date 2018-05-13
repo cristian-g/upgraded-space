@@ -199,4 +199,18 @@ class Upload
         $object->setUuid($array["uuid"]);
         return $object;
     }
+
+    public function toArray()
+    {
+        $array["id"] = $this->id;
+        $array["uuid"] = $this->uuid;
+        $array["id_user"] = $this->idUser;
+        $array["id_parent"] = $this->idParent;
+        $array["name"] = $this->name;
+        $array["ext"] = $this->ext;
+        $array["bytes_size"] = $this->bytesSize;
+        $array["created_at"] = $this->createdAt;
+        $array["updated_at"] = $this->updatedAt;
+        return $array;
+    }
 }
