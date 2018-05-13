@@ -42,4 +42,89 @@ class DoctrineNotificationRepository implements NotificationRepository
         // Return id
         return $notification->getId();
     }
+
+    public function getAll($userId) {
+        try {
+            $stmt = $this->connection->prepare("
+                (SELECT 
+                notification.id, 
+                notification.id_share, 
+                notification.type, 
+                notification.message, 
+                notification.created_at, 
+                notification.updated_at
+                FROM notification
+                INNER JOIN share ON share.id = notification.id_share
+                INNER JOIN upload ON share.id_upload = upload.id
+                WHERE upload.id_user = :id AND 
+                (notification.type = 'folder_sended' OR 
+                notification.type = 'upload_renamed' OR
+                notification.type = 'upload_deleted' OR 
+                notification.type = 'new_upload'))
+                UNION
+                (SELECT 
+                notification.id, 
+                notification.id_share, 
+                notification.type, 
+                notification.message, 
+                notification.created_at, 
+                notification.updated_at
+                FROM notification
+                INNER JOIN share ON share.id = notification.id_share
+                WHERE share.id_user_destination = :id AND 
+                notification.type = 'folder_received')
+                ORDER BY
+                created_at DESC
+            ");
+            $stmt->bindParam('id', $userId);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
+        catch (\Doctrine\DBAL\DBALException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function getLastFive($userId) {
+        try {
+            $stmt = $this->connection->prepare("
+                (SELECT 
+                notification.id, 
+                notification.id_share, 
+                notification.type, 
+                notification.message, 
+                notification.created_at, 
+                notification.updated_at
+                FROM notification
+                INNER JOIN share ON share.id = notification.id_share
+                INNER JOIN upload ON share.id_upload = upload.id
+                WHERE upload.id_user = :id AND 
+                (notification.type = 'folder_sended' OR 
+                notification.type = 'upload_renamed' OR
+                notification.type = 'upload_deleted' OR 
+                notification.type = 'new_upload'))
+                UNION
+                (SELECT 
+                notification.id, 
+                notification.id_share, 
+                notification.type, 
+                notification.message, 
+                notification.created_at, 
+                notification.updated_at
+                FROM notification
+                INNER JOIN share ON share.id = notification.id_share
+                WHERE share.id_user_destination = :id AND 
+                notification.type = 'folder_received')
+                ORDER BY
+                created_at DESC
+                LIMIT 5
+            ");
+            $stmt->bindParam('id', $userId);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
+        catch (\Doctrine\DBAL\DBALException $e) {
+            return $e->getMessage();
+        }
+    }
 }

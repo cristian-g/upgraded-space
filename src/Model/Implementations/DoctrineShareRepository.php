@@ -45,7 +45,7 @@ class DoctrineShareRepository implements ShareRepository
 
     public function getAll($userId) {
         try {
-            $stmt = $this->connection->prepare('SELECT id, id_upload, id_user_destination, role, created_at, updated_at FROM share WHERE id_user_destination = :id');
+            $stmt = $this->connection->prepare('SELECT id, id_upload, id_user_destination, role, created_at, updated_at FROM share WHERE id_user_destination = :id ORDER BY created_at DESC');
             $stmt->bindParam('id', $userId);
             $stmt->execute();
             return $stmt->fetchAll();

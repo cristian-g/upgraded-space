@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="height: 100%">
+<html>
     <head>
         <title>{% block title %} - PWBox{% endblock %}</title>
         <link rel="stylesheet" href="{{ base_url() }}/assets/css/lib/bootstrap.min.css">
@@ -62,18 +62,31 @@
                                        data-trigger="focus"
                                        data-placement="bottom"
                                        title="Notificaciones"
-                                       data-content="
-                                       <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
-                                       <hr>
-                                       <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
-                                       <hr>
-                                       <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
-                                       <hr>
-                                       <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
-                                       <hr>
-                                       <div><b>Título de la notificación</b><br>Descripción de la notificación</div>
-                                       <hr>
-                                       <div class='text-center'><a href='#'>Ver todas</a></div>">
+                                       data-content='
+                                        {% for notification in lastNotifications %}
+                                            <div><b>
+                                            {% if notification.type == "folder_sended" %}
+                                                <i class="fa fa-folder"></i>&nbsp&nbsp Carpeta compartida
+                                            {% elseif notification.type == "upload_renamed" %}
+                                                <i class="fa fa-edit"></i>&nbsp&nbsp Ítem renombrado
+                                            {% elseif notification.type == "upload_deleted" %}
+                                                <i class="fa fa-trash"></i>&nbsp&nbsp Ítem eliminado
+                                            {% elseif notification.type == "new_upload" %}
+                                                <i class="fa fa-cloud"></i>&nbsp&nbsp Nuevo ítem
+                                            {% elseif notification.type == "folder_received" %}
+                                                <i class="fa fa-folder"></i>&nbsp&nbsp Carpeta recibida
+                                            {% endif %}
+                                               </b><br>{{ notification.message }}<br><small class"text-right">{{ notification.created_at }}</small></div>
+                                           <hr>
+                                        {% endfor %}
+                                        {% if lastNotifications|length < 1 %}
+                                            <div>
+                                                <i>Vaya, aún no tienes notificaciones...</i>
+                                            </div>
+                                        {% else %}
+                                            <div class="text-center"><a href="{{ base_url() }}/notifications">Ver todo</a></div>
+                                        {% endif %}
+                                       '>
                                         <i class="fa fa-bell"></i>
                                     </a>
                                     <!-- Authentication Links -->
@@ -105,27 +118,27 @@
                 </header>
             {% endblock %}
             <!-- Begin page content -->
-            <main role="main" class="body">
+            <main role="main" class="">
                 {% block content %}{% endblock %}
             </main>
             <footer class="footer">
-                    {% block footer %}
-                        <div class="footer-black">
-                            <div class="row" style="margin-right: 0">
-                                <div class="col-md-9">
-                                    <span class="text-muted">PWBox, S.A.</span>
-                                </div>
-                                <div class="col-md-3 blue text-right">
+                {% block footer %}
+                    <div class="footer-black">
+                        <div class="row" style="margin-right: 0">
+                            <div class="col-md-9">
+                                <span class="text-muted">PWBox, S.A.</span>
+                            </div>
+                            <div class="col-md-3 blue text-right">
                                     <span class="social-icons">
                                         <i class="fab fa-facebook"></i>
                                         <i class="fab fa-twitter-square"></i>
                                         <i class="fab fa-instagram"></i>
 
                                     </span>
-                                </div>
                             </div>
                         </div>
-                    {% endblock %}
+                    </div>
+                {% endblock %}
             </footer>
         </div>
     </body>

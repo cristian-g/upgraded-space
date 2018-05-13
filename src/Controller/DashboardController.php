@@ -27,6 +27,8 @@ class DashboardController
         $breadcrumb = [];
 
         $folderSize = null;
+        $folderName = null;
+        $parentFolder = null;
 
         if (isset($args['uuid'])) {
             $upload = ($this->container->get('get_folder_by_uuid_use_case'))($args['uuid']);
@@ -35,6 +37,7 @@ class DashboardController
                 // It is a folder (not the root)
                 $folder = $upload;
                 $folderId = $folder->getId();
+                $folderName = $folder->getName();
                 $folderSize = ($this->container->get('get_folder_size_use_case'))($folderId);
                 $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"], $folderId);
                 $this->computeFolderSizes($uploads);
@@ -45,9 +48,7 @@ class DashboardController
                     $folder = ($this->container->get('get_folder_by_id_use_case'))($folder->getIdParent());
                     array_unshift($breadcrumb, $folder);
                 }
-
-                // Compute total size of the active folder
-                $bytesActiveFolder = ($this->container->get('get_folder_size_use_case'))($folderId);
+                $parentFolder = $breadcrumb[count($breadcrumb)-2];
             }
             else {
                 // It is a file
@@ -64,8 +65,12 @@ class DashboardController
 
         if ($folderSize == null) $folderSize = 0;
 
+        foreach ($uploads as $key => $upload) {
+            $uploads[$key]["updated_at"] = ucfirst(NotificationsController::computeRelativeTime($uploads[$key]["updated_at"]));
+        }
+
         return $this->container->get('view')
-            ->render($response, 'dashboard.twig', ['uploads' => $uploads, 'breadcrumb' => $breadcrumb, 'folderSize' => $folderSize, 'uuid_parent' => (isset($args['uuid'])) ? $args['uuid'] : null ]);
+            ->render($response, 'dashboard.twig', ['uploads' => $uploads, 'folderName' => $folderName, 'breadcrumb' => $breadcrumb, 'parentFolder' => $parentFolder, 'folderSize' => $folderSize, 'uuid_parent' => (isset($args['uuid'])) ? $args['uuid'] : null ]);
     }
 
     private function computeFolderSizes(&$uploads) {

@@ -1,0 +1,69 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    Notificaciones
+    {{ parent() }}
+{% endblock %}
+{% block styles %}
+    {{ parent() }}
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        {% for message in flash('success') %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+
+        {% for message in flash('errors') %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+
+        <div class="table-responsive">
+            <table id="bs-table" class="table table-hover">
+                <tbody>
+                {% for notification in notifications %}
+                    <tr>
+                        <td>
+                            {% if notification.type == "folder_sended" %}
+                                <i class="fa fa-folder"></i>&nbsp&nbsp Carpeta compartida
+                            {% elseif notification.type == "upload_renamed" %}
+                                <i class="fa fa-edit"></i>&nbsp&nbsp Ítem renombrado
+                            {% elseif notification.type == "upload_deleted" %}
+                                <i class="fa fa-trash"></i>&nbsp&nbsp Ítem eliminado
+                            {% elseif notification.type == "new_upload" %}
+                                <i class="fa fa-cloud"></i>&nbsp&nbsp Nuevo ítem
+                            {% elseif notification.type == "folder_received" %}
+                                <i class="fa fa-folder"></i>&nbsp&nbsp Carpeta recibida
+                            {% endif %}
+                        </td>
+                        <td class="text-right">{{ notification.message }}</td>
+                        <td class="text-right">{{ notification.created_at }}</td>
+                    </tr>
+                {% endfor %}
+                {% if notifications|length < 1 %}
+                    <tr>
+                        <td colspan="3" class="text-center"><i>Vaya, aún no tienes notificaciones...</i></td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

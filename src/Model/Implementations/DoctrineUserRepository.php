@@ -48,7 +48,7 @@ class DoctrineUserRepository implements UserRepository
 
     public function get($id) {
         try {
-            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE id = ? LIMIT 1', array($_SESSION["user_id"]));
+            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE id = ? LIMIT 1', array($id));
             $user = User::fromArray($array);
             return $user;
         }

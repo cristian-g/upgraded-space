@@ -99,3 +99,8 @@ $app->get(
     '/shared',
     'Pwbox\Controller\SharedController'
 )->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');
+
+$app->get(
+    '/notifications',
+    'Pwbox\Controller\NotificationsController'
+)->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');

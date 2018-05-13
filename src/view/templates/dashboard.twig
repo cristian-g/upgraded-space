@@ -53,13 +53,28 @@
         {% endfor %}
 
         <div class="card">
-            <div class="card-header">
-                Ir arriba
-            </div>
+            {% if not uuid_parent is null %}
+                <div class="card-header">
+
+                {% if not parentFolder is null %}
+                    <a href="/dashboard/{{ parentFolder.uuid }}"><i class="fa fa-folder-open"></i> Ir arriba</a>
+                {% else %}
+                    <a href="/dashboard"><i class="fa fa-folder-open"></i> Ir arriba</a>
+                {% endif %}
+                </div>
+            {% endif %}
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
-                        <p class="card-text"><strong>Mi unidad</strong></p>
+                        <p class="card-text">
+                            <strong>
+                                {% if not folderName is null %}
+                                    <i class="fa fa-folder"></i> {{ folderName }}
+                                {% else %}
+                                    <i class="fa fa-home"></i> Mi unidad
+                                {% endif %}
+                            </strong>
+                        </p>
                     </div>
                     <div class="col-md-4 text-right">
                         {% if not uuid_parent is null %}
@@ -73,12 +88,14 @@
             </div>
         </div>
 
-        <ol class="breadcrumb" dir="ltr">
-            <li><a href="/dashboard"><i class="fa fa-home fa-lg fa-fw"></i> Mi unidad</a></li>
-            {% for folder in breadcrumb %}
-                &nbsp/&nbsp<li><a href="/dashboard/{{ folder.uuid }}">{{ folder.name }}</a></li>
-            {% endfor %}
-        </ol>
+        {% if not uuid_parent is null %}
+            <ol class="breadcrumb" dir="ltr">
+                <li><a href="/dashboard"><i class="fa fa-home fa-lg fa-fw"></i> Mi unidad</a></li>
+                {% for folder in breadcrumb %}
+                    &nbsp/&nbsp<li><a href="/dashboard/{{ folder.uuid }}">{{ folder.name }}</a></li>
+                {% endfor %}
+            </ol>
+        {% endif %}
 
         <div class="row">
             <div class="col-md-8">
@@ -199,9 +216,16 @@
                         <div class="modal-body">
                             <form action="/share" method="post" id="shareForm">
                                 <div class="form-group">
-                                    <label for="folder-name" class="col-form-label">Correo electrónico del usuario que va a recibir la invitación:</label>
+                                    <label for="folder-name" class="col-form-label">Correo electrónico del usuario que va a recibir la carpeta:</label>
                                     <input type="text" class="form-control" name="email" value="" id="email_share">
                                     <input type="hidden" name="uuid_upload" value="{{ uuid_parent }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="roleSelect">Rol del usuario que va a recibir la carpeta:</label>
+                                    <select class="form-control" id="roleSelect" name="role">
+                                        <option value="viewer">Espectador</option>
+                                        <option value="admin">Administrador</option>
+                                    </select>
                                 </div>
                             </form>
                         </div>
@@ -279,16 +303,15 @@
                     </tr>
                 </tfoot>
             </table>
-
-            <form action="/delete" method="post" id="deleteForm">
-                <input type="hidden" name="id" value="" id="id_upload_delete">
-                {% if uuid_parent is null %}
-                    <input type="hidden" name="uuid_parent" value="">
-                {% else %}
-                    <input type="hidden" name="uuid_parent" value="{{ uuid_parent }}">
-                {% endif %}
-            </form>
         </div>
+        <form action="/delete" method="post" id="deleteForm">
+            <input type="hidden" name="id" value="" id="id_upload_delete">
+            {% if uuid_parent is null %}
+                <input type="hidden" name="uuid_parent" value="">
+            {% else %}
+                <input type="hidden" name="uuid_parent" value="{{ uuid_parent }}">
+            {% endif %}
+        </form>
     </div>
 {% endblock %}
 {% block footer %}
