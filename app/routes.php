@@ -78,7 +78,7 @@ $app->post(
 $app->post(
     '/folder',
     'Pwbox\Controller\PostFolderController:postAction'
-)->add('Pwbox\Controller\Middleware\PostMiddleware');
+);
 
 $app->post(
     '/rename',

@@ -2,13 +2,14 @@ body {
     background-color: #eaeaea;
     height:100%;
 }
-
-#container {
+html{
+    height: 100%;
+}
+#content {
     min-height:100%;
     position:relative;
 }
 .body {
-    padding:10px;
     padding-bottom:60px;   /* Height of the footer */
 }
 .container {
