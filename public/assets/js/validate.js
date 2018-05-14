@@ -12,7 +12,8 @@ $(document).ready(function () {
         var password = $('#password').val();
         var confirm_password = $('#confirm_password').val();
 
-        if (username.length > 20 || username.length < 0){
+        var usernameformat = /^[a-zA-Z0-9]{1,20}$/;
+        if (!usernameformat.test(username)){
             return false;
         }
 
@@ -44,7 +45,8 @@ $(document).ready(function () {
                 return false
             }
         }else {
-            if (loginId.length > 20 || loginId.length < 0){
+            var usernameformat = /^[a-zA-Z0-9]{1,20}$/;
+            if (!usernameformat.test(loginId)){
                 return false;
             }
         }
@@ -54,8 +56,8 @@ $(document).ready(function () {
             return false;
         }
 
-        $('#loginForm').submit(); // If all the validations succeeded
-    })
+        form.submit(); // If all the validations succeeded
+    });
 
     $('#deleteUserButton').click(function () {
         swal({
@@ -79,7 +81,8 @@ $(document).ready(function () {
 function checkForm(name, value){
     switch(name){
         case 'username':
-            if (value.length > 20 || value.length <= 0){
+            var usernameformat = /^[a-zA-Z0-9]{1,20}$/;
+            if (!usernameformat.test(value)){
                 $('#feedback-username').css('display', 'block');
                 $('input[name="username"]').css('border-color', '#dc3545');
             }else{
