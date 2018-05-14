@@ -212,6 +212,13 @@ $container['get_shares_use_case'] = function($container) {
     return $useCase;
 };
 
+$container['get_share_by_upload_id_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetShareByUploadIdUseCase(
+        $container->get('share_repository')
+    );
+    return $useCase;
+};
+
 $container['get_notifications_use_case'] = function($container) {
     $useCase = new \Pwbox\Model\UseCase\GetNotificationsUseCase(
         $container->get('notification_repository')

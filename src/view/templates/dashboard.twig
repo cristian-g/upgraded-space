@@ -14,7 +14,24 @@
 {% block header %}
     {{ parent() }}
 {% endblock %}
-{% block nav_item_dashboard %} active{% endblock %}
+{% block nav_item_dashboard %}
+    {% if role == "owner" %}
+         active
+    {% elseif role == "admin" %}
+
+    {% elseif role == "reader" %}
+
+    {% endif %}
+{% endblock %}
+{% block nav_item_shared %}
+    {% if role == "owner" %}
+
+    {% elseif role == "admin" %}
+        active
+    {% elseif role == "reader" %}
+        active
+    {% endif %}
+{% endblock %}
 {% block content %}
     <div class="container">
         {% for message in flash('dashboard') %}
@@ -54,14 +71,15 @@
 
         <div class="card">
             {% if not uuid_parent is null %}
-                <div class="card-header">
-
-                {% if not parentFolder is null %}
-                    <a href="/dashboard/{{ parentFolder.uuid }}"><i class="fa fa-folder-open"></i> Ir arriba</a>
-                {% else %}
-                    <a href="/dashboard"><i class="fa fa-folder-open"></i> Ir arriba</a>
+                {% if not ((role != "owner") and (parentFolder is null)) %}
+                    <div class="card-header">
+                        {% if not parentFolder is null %}
+                            <a href="/dashboard/{{ parentFolder.uuid }}"><i class="fa fa-folder-open"></i> Ir arriba</a>
+                        {% else %}
+                            <a href="/dashboard"><i class="fa fa-folder-open"></i> Ir arriba</a>
+                        {% endif %}
+                    </div>
                 {% endif %}
-                </div>
             {% endif %}
             <div class="card-body">
                 <div class="row">
@@ -78,10 +96,12 @@
                     </div>
                     <div class="col-md-4 text-right">
                         {% if not uuid_parent is null %}
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareModal">
-                                <i class="fa fa-users"></i> Compartir
-                            </button>
+                            {% if role == "owner" %}
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareModal">
+                                    <i class="fa fa-users"></i> Compartir
+                                </button>
+                            {% endif %}
                         {% endif %}
                     </div>
                 </div>
@@ -90,25 +110,41 @@
 
         {% if not uuid_parent is null %}
             <ol class="breadcrumb" dir="ltr">
-                <li><a href="/dashboard"><i class="fa fa-home fa-lg fa-fw"></i> Mi unidad</a></li>
+                {% if role == "owner" %}
+                    <li><a href="/dashboard"><i class="fa fa-home fa-lg fa-fw"></i> Mi unidad</a></li>
+                {% endif %}
                 {% for folder in breadcrumb %}
-                    &nbsp/&nbsp<li><a href="/dashboard/{{ folder.uuid }}">{{ folder.name }}</a></li>
+                    {% if (role != "owner") and (loop.index0 == 0) %}
+                        <li><a href="/dashboard/{{ folder.uuid }}"><i class="fa fa-folder"></i> {{ folder.name }}</a></li>
+                    {% else %}
+                        &nbsp/&nbsp<li><a href="/dashboard/{{ folder.uuid }}">{{ folder.name }}</a></li>
+                    {% endif %}
                 {% endfor %}
             </ol>
         {% endif %}
 
         <div class="row">
-            <div class="col-md-8">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newFolderModal">
-                    <i class="fa fa-folder"></i> Nueva carpeta
-                </button>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFileModal">
-                    <i class="fa fa-cloud-upload-alt"></i> Subir archivo
-                </button>
-            </div>
-            <div class="col-md-4 text-right"><i class="fa fa-user-circle"></i> Propietario</div>
+            {% if (role == "owner") or (role == "admin") %}
+                <div class="col-md-8">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newFolderModal">
+                        <i class="fa fa-folder"></i> Nueva carpeta
+                    </button>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFileModal">
+                        <i class="fa fa-cloud-upload-alt"></i> Subir archivo
+                    </button>
+                </div>
+            {% elseif role == "reader" %}
+
+            {% endif %}
+            {% if role == "owner" %}
+                <div class="col-md-4 text-right"><i class="fa fa-user-circle"></i> Propietario</div>
+            {% elseif role == "admin" %}
+                <div class="col-md-4 text-right"><i class="fa fa-edit"></i> Administrador</div>
+            {% elseif role == "reader" %}
+                <div class="col-md-12 text-right"><i class="fa fa-eye"></i> Espectador</div>
+            {% endif %}
         </div>
 
         <!-- Modal -->
@@ -223,7 +259,7 @@
                                 <div class="form-group">
                                     <label for="roleSelect">Rol del usuario que va a recibir la carpeta:</label>
                                     <select class="form-control" id="roleSelect" name="role">
-                                        <option value="viewer">Espectador</option>
+                                        <option value="reader">Espectador</option>
                                         <option value="admin">Administrador</option>
                                     </select>
                                 </div>
@@ -245,7 +281,11 @@
                     <th class="text-left">Nombre</th>
                     <th class="text-right">Tamaño</th>
                     <th class="text-right">Última modificación</th>
-                    <th class="text-right"></th>
+                    {% if (role == "owner") or (role == "admin") %}
+                        <th class="text-right"></th>
+                    {% elseif role == "reader" %}
+
+                    {% endif %}
                 </tr>
                 </thead>
                 <tbody>
@@ -275,14 +315,18 @@
                             </td>
                             <td class="text-right">{{ upload.bytes_size }} bytes</td>
                             <td class="text-right">{{ upload.updated_at }}</td>
-                            <td class="text-right">
-                                <button type="button" class="btn btn-secondary renameUploadButton" data-toggle="tooltip" data-placement="top" title="Renombrar" data-id="{{ upload.id }}" data-name="{{ upload.name }}">
-                                    <i class="fa fa-edit"></i>
-                                </button>
-                                <button type="button" class="btn btn-danger deleteUploadButton" data-id="{{ upload.id }}">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </td>
+                            {% if (role == "owner") or (role == "admin") %}
+                                <td class="text-right">
+                                    <button type="button" class="btn btn-secondary renameUploadButton" data-toggle="tooltip" data-placement="top" title="Renombrar" data-id="{{ upload.id }}" data-name="{{ upload.name }}">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger deleteUploadButton" data-id="{{ upload.id }}">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </td>
+                            {% elseif role == "reader" %}
+
+                            {% endif %}
                         </tr>
                     {% endfor %}
                     {% if uploads|length < 1 %}

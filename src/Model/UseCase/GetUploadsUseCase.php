@@ -18,7 +18,7 @@ class GetUploadsUseCase
     }
 
 
-    public function __invoke($id, $folderId = null) {
-        return $this->repository->getAll($id, $folderId);
+    public function __invoke($folderId = null, $userId = null) {
+        return $this->repository->getAll($folderId, $userId);
     }
 }
