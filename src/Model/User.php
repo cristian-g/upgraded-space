@@ -216,6 +216,7 @@ class User
             $array["email_activation_key"],
             $array["created_at"],
             $array["updated_at"]);
+        $object->setPassword($array["password"]);
         return $object;
     }
 
@@ -226,7 +227,7 @@ class User
         $array["username"] = $this->getUsername();
         $array["email"] = $this->getEmail();
         $array["birthdate"] = $this->getBirthdate();
-        $array["password"] = $this->password;
+        $array["password"] = $this->getPassword();
         $array["created_at"] = $this->getCreatedAt();
         $array["updated_at"] = $this->getUpdatedAt();
         return $array;
