@@ -16,20 +16,23 @@
 {% block content %}
     <div class="container">
         {{ form.userLogin() }}
+        <p></p>
+        <p>O si no tienes una cuenta...</p>
+        <a class="btn btn-primary"  href="{{ base_url() }}/register" role="button" aria-haspopup="true" aria-expanded="false">
+            Registrate
+        </a>
+        <p></p>
         {% if error %}
             <div class="alert alert-danger" role="alert">
                 <h4 class="alert-heading">Error</h4>
                 <p>{{ error }}</p>
-                <hr>
-                <p class="mb-0">You can...</p>
             </div>
         {% endif %}
+        <p></p>
         {% for message in messages %}
             <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">Success</h4>
                 <p>{{ message }}</p>
-                <hr>
-                <p class="mb-0">You can...</p>
             </div>
         {% endfor %}
     </div>
