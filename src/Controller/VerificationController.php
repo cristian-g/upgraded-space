@@ -25,7 +25,7 @@ class VerificationController
      */
     public function __invoke(Request $request, Response $response, array $args) {
 
-        $user = ($this->container->get('get_user_use_case'))($args['key']);
+        $user = ($this->container->get('get_user_by_email_activation_key_use_case'))($args['key']);
 
         if ($user->getEmailActivationKey() == $args['key']) {
             $service = $this->container->get('activate_user_use_case');

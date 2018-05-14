@@ -240,6 +240,13 @@ $container['activate_user_use_case'] = function($container) {
     return $useCase;
 };
 
+$container['get_user_by_email_activation_key_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetUserByEmailActivationKeyUseCase(
+        $container->get('user_repository')
+    );
+    return $useCase;
+};
+
 $container['flash'] = function ($container) {
     return new \Slim\Flash\Messages();
 };

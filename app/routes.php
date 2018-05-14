@@ -78,7 +78,7 @@ $app->post(
 $app->post(
     '/folder',
     'Pwbox\Controller\PostFolderController:postAction'
-);
+)->add('Pwbox\Controller\Middleware\PostMiddleware');
 
 $app->post(
     '/rename',
@@ -108,4 +108,9 @@ $app->get(
 $app->get(
     '/verification/{key}',
     'Pwbox\Controller\VerificationController'
+);
+
+$app->get(
+    '/resend',
+    'Pwbox\Controller\ResendVerificationController'
 );

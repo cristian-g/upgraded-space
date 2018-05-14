@@ -37,13 +37,13 @@ class LogInController
         try{
             $data = $request->getParsedBody();
 
-            //we check if the password is correct
-            if (!(strlen($data['password']) > 5 and strlen($data['password']) < 13  and
-                preg_match('/[a-z]/', $data['password']) and preg_match('/[A-Z]/', $data['password']) and
-                preg_match('/[0-9]/', $data['password']))){
+            //password
+            if (!(strlen($data['password']) > 5 and strlen($data['password']) < 13 and
+                preg_match('/[A-Z]/', $data['password'])
+                and preg_match('/[0-9]/', $data['password']))) {
 
                 return $this->container->get('view')
-                    ->render($response, 'login.twig', ['error' => "contraseña con formato incorrecto"]);
+                    ->render($response, 'login.twig', ['error' => "Contraseña con formato incorrecto"]);
             }
 
             //we check if the user is using email or username
@@ -54,17 +54,17 @@ class LogInController
                 }
                 else{
                     return $this->container->get('view')
-                        ->render($response, 'login.twig', ['error' => "correo con formato incorrecto"]);
+                        ->render($response, 'login.twig', ['error' => "Correo con formato incorrecto"]);
                 }
             }
             else{
-                if(ctype_alnum($data['loginId']) and strlen($data['loginId']) > 0 and strlen($data['loginId']) < 21){
+                //username
+                if (!(ctype_alnum($data['loginId']) and strlen($data['loginId']) > 0 and strlen($data['loginId']) < 21)) {
+                    return $this->container->get('view')
+                        ->render($response, 'login.twig', ['error' => "Nombre de usuario con formato incorrecto"]);
+                }else{
                     $service = $this->container->get('get_from_username_use_case');
                     $user = $service($data['loginId']);
-                }
-                else{
-                    return $this->container->get('view')
-                        ->render($response, 'login.twig', ['error' => "nombre de usuario con formato incorrecto"]);
                 }
             }
 
@@ -82,7 +82,7 @@ class LogInController
                 else{
                     //user exists but password is incorrect
                     return $this->container->get('view')
-                        ->render($response, 'login.twig', ['error' => "contrasenya incorrecta"]);
+                        ->render($response, 'login.twig', ['error' => "Contrasenya incorrecta"]);
                 }
             }
         } catch (\Exception $e){

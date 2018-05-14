@@ -50,34 +50,39 @@ class PostUserController
             $data = $request->getParsedBody();
             $uploadedFiles = $request->getUploadedFiles();
 
-            /*
             //password
             if (!(strlen($data['password']) > 5 and strlen($data['password']) < 13 and
-                preg_match('/[a-z]/', $data['password']) and preg_match('/[A-Z]/', $data['password'])
+                preg_match('/[A-Z]/', $data['password'])
                 and preg_match('/[0-9]/', $data['password']))) {
 
                 return $this->container->get('view')
-                    ->render($response, 'register.twig', ['error' => "contraseña con formato incorrecto"]);
+                    ->render($response, 'register.twig', ['error' => "Contraseña con formato incorrecto"]);
             }
 
             //confirm password
             if (strcmp($data['password'], $data['confirm_password']) != 0) {
                 return $this->container->get('view')
-                    ->render($response, 'register.twig', ['error' => "las dos contrasenyas no son iguales"]);
+                    ->render($response, 'register.twig', ['error' => "Las dos contrasenyas no son iguales"]);
             }
 
             //username
             if (!(ctype_alnum($data['username']) and strlen($data['username']) > 0 and strlen($data['username']) < 21)) {
                 return $this->container->get('view')
-                    ->render($response, 'register.twig', ['error' => "nombre de usuario con formato incorrecto"]);
+                    ->render($response, 'register.twig', ['error' => "Nombre de usuario con formato incorrecto"]);
             }
 
             //email
             if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                 return $this->container->get('view')
-                    ->render($response, 'register.twig', ['error' => "correo con formato incorrecto"]);
+                    ->render($response, 'register.twig', ['error' => "Correo con formato incorrecto"]);
             }
-            */
+
+            //birthdate
+            $birthdate = explode("-", $data['birthdate']);
+            if(!checkdate($birthdate[1], $birthdate[2], $birthdate[0])){
+                return $this->container->get('view')
+                    ->render($response, 'register.twig', ['error' => "Fecha de nacimiento con formato incorrecta"]);
+            }
 
             $service = $this->container->get('post_user_use_case');
             $userId = $service($data);

@@ -1,16 +1,19 @@
 //registerForm
 $(document).ready(function () {
 
-    $('#registerSubmit').click(function() {
+    $('#registerSubmit').click(function(event) {
         /* Validations go here */
-
-        /*var username = $('#username').val();
+        var form = $("#registerForm");
+        form.addClass('was-validated');
+        // Validate a form in Bootstrap 4 in the browser using html5 and checkValidity function. Once the form has "passed" validation, add the "was-validated" class to the form, then the inputs will show valid-feedback or invalid-feedback messages
+        form.addClass('was-validated');
+        var username = $('#username').val();
         var email = $('#email').val();
         var password = $('#password').val();
         var confirm_password = $('#confirm_password').val();
 
-        if (username.length > 20 || username.length < 0){
-            alert("username not valid");
+        var usernameformat = /^[a-zA-Z0-9]{1,20}$/;
+        if (!usernameformat.test(username)){
             return false;
         }
 
@@ -19,43 +22,42 @@ $(document).ready(function () {
             return false
         }
 
-        var passwordformat = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])");
+        var passwordformat = new RegExp("^(?=.*[A-Z])(?=.*[0-9])");
         if (password.length < 6 || password.length > 12 || !passwordformat.test(password)){
             return false;
         }
 
         if (confirm_password.localeCompare(password) != 0){
             return false;
-        }*/
-
-        $('#registerForm').submit(); // If all the validations succeeded
+        }
+        form.submit(); // If all the validations succeeded
     });
 
     $('#loginSubmit').click(function () {
+        var form = $("#loginForm");
+        form.addClass('was-validated');
         var loginId= $('#loginId').val();
         var password = $('#password').val();
         
         if (loginId.includes("@")){
             var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             if (!mailformat.test(loginId)){
-                alert("email not valid");
                 return false
             }
         }else {
-            if (loginId.length > 20 || loginId.length < 0){
-                alert("username not valid");
+            var usernameformat = /^[a-zA-Z0-9]{1,20}$/;
+            if (!usernameformat.test(loginId)){
                 return false;
             }
         }
 
-        var passwordformat = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])");
+        var passwordformat = new RegExp("^(?=.*[A-Z])(?=.*[0-9])");
         if (password.length < 6 || password.length > 12 || !passwordformat.test(password)){
-            alert("password not valid");
             return false;
         }
 
-        $('#loginForm').submit(); // If all the validations succeeded
-    })
+        form.submit(); // If all the validations succeeded
+    });
 
     $('#deleteUserButton').click(function () {
         swal({
@@ -79,7 +81,8 @@ $(document).ready(function () {
 function checkForm(name, value){
     switch(name){
         case 'username':
-            if (value.length > 20 || value.length < 0){
+            var usernameformat = /^[a-zA-Z0-9]{1,20}$/;
+            if (!usernameformat.test(value)){
                 $('#feedback-username').css('display', 'block');
                 $('input[name="username"]').css('border-color', '#dc3545');
             }else{
@@ -108,7 +111,7 @@ function checkForm(name, value){
             }
             break;
         case 'password':
-            var passwordformat = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])");
+            var passwordformat = new RegExp("^(?=.*[A-Z])(?=.*[0-9])");
             if (value.length < 6 || value.length > 12 || !passwordformat.test(value)){
                 $('#feedback-password').css('display', 'block');
                 $('input[name="password"]').css('border-color', '#dc3545');

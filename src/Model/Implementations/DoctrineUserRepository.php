@@ -98,11 +98,9 @@ class DoctrineUserRepository implements UserRepository
     }
 
     public function update(User $user) {
-        $sql = "UPDATE user SET username=:username, email=:email, birthdate=:birthdate, password=:password, updated_at=:updated_at WHERE id=:id";
+        $sql = "UPDATE user SET email=:email, password=:password, updated_at=:updated_at WHERE id=:id";
         $stmt = $this->connection->prepare($sql);
-        $stmt->bindValue("username", $user->getUsername(), 'string');
         $stmt->bindValue("email", $user->getEmail(), 'string');
-        $stmt->bindValue("birthdate", $user->getBirthdate(), 'string');
         $stmt->bindValue("password", $user->getPassword(), 'string');
         $stmt->bindValue("updated_at", $user->getCreatedAt()->format(self::DATE_FORMAT));
         $stmt->bindValue("id", $user->getId(), 'integer');

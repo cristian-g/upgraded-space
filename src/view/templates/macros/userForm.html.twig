@@ -1,25 +1,27 @@
-{% macro userForm(username, email, birthdate, password, confirm_password, profile_image, buttonText, action) %}
+{% macro userForm(username, email, birthdate, password, confirm_password, profile_image, buttonText, action, disabled) %}
     <form action="{{ action|default('/register') }}" method="post" id="registerForm" enctype="multipart/form-data">
         <div class="form-group">
             <label for="username">Nombre de usuario</label>
-            <input type="text" onchange="checkForm(this.name, this.value)" class="form-control" name="username" id="username" placeholder="Introduce el nombre de usuario que quieres" value="{{ username|default('') }}" required pattern="^[a-zA-Z0-9]{1,20}" aria-describedby="usernameHelpInline">
+            <input type="text" {% if disabled %} disabled {% else %} onchange="checkForm(this.name, this.value)" {% endif %} class="form-control" name="username" id="username" placeholder="Introduce el nombre de usuario que quieres" value="{{ username|default('') }}" required pattern="^[a-zA-Z0-9]{1,20}" aria-describedby="usernameHelpInline">
             <div id="feedback-username" class="invalid-feedback">
-                <strong>Introduce un nombre de usuario:</strong>
+                <strong>Introduce un nombre de usuario con el siguiente formato:</strong>
             </div>
-            <small id="usernameHelpBlock" class="form-text text-muted">
-                Sólo puede contener caracteres alfanuméricos y su longitud máxima es de 20 caracteres.
-            </small>
+            {% if disabled != true %}
+                <small id="usernameHelpBlock" class="form-text text-muted">
+                    Sólo puede contener caracteres alfanuméricos y su longitud máxima es de 20 caracteres.
+                </small>
+            {% endif %}
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" onchange="checkForm(this.name, this.value)" class="form-control" name="email" id="email" placeholder="Introduce un email válido" value="{{ email|default('') }}" required pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/">
+            <input type="email" onchange="checkForm(this.name, this.value)" class="form-control" name="email" id="email" placeholder="Introduce un email válido" value="{{ email|default('') }}" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
             <div id="feedback-email" class="invalid-feedback">
                 <strong>Introduce un email válido.</strong>
             </div>
         </div>
         <div class="form-group">
             <label for="birthdate">Fecha de nacimiento</label>
-            <input type="date" onblur="checkForm(this.name, this.value)" class="form-control" name="birthdate" id="birthdate" placeholder="¿Cuándo naciste?" value="{{ birthdate|default('') }}" required>
+            <input type="date" {% if disabled %} disabled {% else %} onblur="checkForm(this.name, this.value)" {% endif %} class="form-control" name="birthdate" id="birthdate" placeholder="¿Cuándo naciste?" value="{{ birthdate|default('') }}" required>
             <div id="feedback-birthdate" class="invalid-feedback">
                 <strong>Introduce una fecha válida con el formato correcto.</strong>
             </div>
