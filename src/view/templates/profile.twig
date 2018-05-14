@@ -24,6 +24,12 @@
                 <p>{{ error }}</p>
             </div>
         {% endif %}
+        {% if user.active == 0 %}
+            <div class="alert alert-warning" role="alert">
+                <h4 class="alert-heading">Dirección de correo electrónico pendiente de confirmación</h4>
+                <p>Aún no has confirmado tu dirección de correo electrónico... <a href="#">Haz click aquí para reenviar el link de verificación a tu email.</a></p>
+            </div>
+        {% endif %}
         {{ form.userForm(user.username, user.email, user.birthdate, "", "", "", "Guardar", "/edit") }}
         <div class="text-right">
             <form id="deleteUserForm" action="/deleteUser" method="POST">

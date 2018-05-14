@@ -104,3 +104,8 @@ $app->get(
     '/notifications',
     'Pwbox\Controller\NotificationsController'
 )->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');
+
+$app->get(
+    '/verification/{key}',
+    'Pwbox\Controller\VerificationController'
+);

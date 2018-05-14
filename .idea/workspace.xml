@@ -2,17 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38ef741-17f9-42c2-878f-2681224a399e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Model/UseCase/GetShareByUploadIdUseCase.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Controller/VerificationController.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Controller/utils/EmailSender.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Model/UseCase/ActivateUserUseCase.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Model/UseCase/GetUserByEmailActivationKeyUseCase.php" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/0. db/5. editando cristian/sql.sql" afterPath="$PROJECT_DIR$/0. db/5. editando cristian/sql.sql" />
       <change beforePath="$PROJECT_DIR$/app/dependencies.php" afterPath="$PROJECT_DIR$/app/dependencies.php" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DashboardController.php" afterPath="$PROJECT_DIR$/src/Controller/DashboardController.php" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PostFileController.php" afterPath="$PROJECT_DIR$/src/Controller/PostFileController.php" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Implementations/DoctrineShareRepository.php" afterPath="$PROJECT_DIR$/src/Model/Implementations/DoctrineShareRepository.php" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Implementations/DoctrineUploadRepository.php" afterPath="$PROJECT_DIR$/src/Model/Implementations/DoctrineUploadRepository.php" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ShareRepository.php" afterPath="$PROJECT_DIR$/src/Model/ShareRepository.php" />
-      <change beforePath="$PROJECT_DIR$/src/Model/UseCase/GetUploadsUseCase.php" afterPath="$PROJECT_DIR$/src/Model/UseCase/GetUploadsUseCase.php" />
-      <change beforePath="$PROJECT_DIR$/src/view/templates/dashboard.twig" afterPath="$PROJECT_DIR$/src/view/templates/dashboard.twig" />
-      <change beforePath="$PROJECT_DIR$/src/view/templates/shared.twig" afterPath="$PROJECT_DIR$/src/view/templates/shared.twig" />
+      <change beforePath="$PROJECT_DIR$/app/routes.php" afterPath="$PROJECT_DIR$/app/routes.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PostShareController.php" afterPath="$PROJECT_DIR$/src/Controller/PostShareController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PostUserController.php" afterPath="$PROJECT_DIR$/src/Controller/PostUserController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" afterPath="$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" />
+      <change beforePath="$PROJECT_DIR$/src/Model/UserRepository.php" afterPath="$PROJECT_DIR$/src/Model/UserRepository.php" />
+      <change beforePath="$PROJECT_DIR$/src/view/templates/login.twig" afterPath="$PROJECT_DIR$/src/view/templates/login.twig" />
+      <change beforePath="$PROJECT_DIR$/src/view/templates/profile.twig" afterPath="$PROJECT_DIR$/src/view/templates/profile.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,127 +29,113 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dashboard.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dashboard.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/templates/dashboard.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="80" column="26" lean-forward="false" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
+            <state relative-caret-position="504">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="43" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/templates/base.html.twig">
+      <file leaf-file-name="PostShareUseCase.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/UseCase/PostShareUseCase.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1155">
-              <caret line="77" column="55" lean-forward="true" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DoctrineUploadRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Implementations/DoctrineUploadRepository.php">
+      <file leaf-file-name="VerificationController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/VerificationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="673">
-              <caret line="76" column="153" lean-forward="false" selection-start-line="76" selection-start-column="153" selection-end-line="76" selection-end-column="153" />
+            <state relative-caret-position="540">
+              <caret line="36" column="49" lean-forward="false" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
               <folding>
-                <marker date="1526304231992" expanded="true" signature="679:859" ph="INSERT INTO upload... " />
-                <marker date="1526304231992" expanded="true" signature="1708:1823" ph="SELECT id, u... upload" />
-                <marker date="1526304231992" expanded="true" signature="2135:2252" ph="SELECT id, u... upload" />
-                <marker date="1526304231992" expanded="true" signature="2627:2763" ph="SELECT id, u... upload" />
-                <marker date="1526304231992" expanded="true" signature="2901:3024" ph="SELECT id, u... upload" />
-                <marker date="1526304231992" expanded="true" signature="3394:3686" ph="select SUM(b... *" />
-                <marker date="1526304231992" expanded="true" signature="3447:3511" ph="select * fro... upload" />
-                <marker date="1526304231992" expanded="true" signature="3551:3566" ph="select @pv :... " />
-                <marker date="1526304231992" expanded="true" signature="3851:3912" ph="SELECT SUM(b... upload" />
-                <marker date="1526304231992" expanded="true" signature="4032:4103" ph="UPDATE upload... " />
-                <marker date="1526304231992" expanded="true" signature="4038:4062" ph="INSERT INTO upload... " />
-                <marker date="1526304231992" expanded="true" signature="4526:4867" ph="select id fr... *" />
-                <marker date="1526304231992" expanded="true" signature="4572:4640" ph="select * fro... upload" />
-                <marker date="1526304231992" expanded="true" signature="4684:4701" ph="select @pv :... " />
-                <marker date="1526304231992" expanded="true" signature="5476:5793" ph="delete from upload... " />
-                <marker date="1526304231992" expanded="true" signature="5520:5792" ph="select id fr... *" />
-                <marker date="1526304231992" expanded="true" signature="5551:5615" ph="select * fro... upload" />
-                <marker date="1526304231992" expanded="true" signature="5655:5672" ph="select @pv :... " />
-                <marker date="1526304231992" expanded="true" signature="5988:6033" ph="delete from upload... " />
+                <element signature="e#36#73#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DoctrineShareRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Implementations/DoctrineShareRepository.php">
+      <file leaf-file-name="GetFromEmailUseCase.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetFromEmailUseCase.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="57" column="35" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-              <folding>
-                <marker date="1526299304027" expanded="true" signature="669:822" ph="INSERT INTO share... " />
-                <marker date="1526299304027" expanded="true" signature="1548:1662" ph="SELECT id, i... share" />
-                <marker date="1526299304027" expanded="true" signature="1548:1687" ph="SELECT id, i... share" />
-                <marker date="1526299304027" expanded="true" signature="2042:2180" ph="SELECT id, i... share" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetShareByUploadIdUseCase.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetShareByUploadIdUseCase.php">
+      <file leaf-file-name="GetUserByEmailActivationKeyUseCase.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetUserByEmailActivationKeyUseCase.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostUserController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/PostUserController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="403">
+              <caret line="84" column="74" lean-forward="false" selection-start-line="84" selection-start-column="74" selection-end-line="84" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/view/templates/login.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+              <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DashboardController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/DashboardController.php">
+      <file leaf-file-name="PostUserUseCase.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/UseCase/PostUserUseCase.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="707">
-              <caret line="79" column="65" lean-forward="false" selection-start-line="79" selection-start-column="65" selection-end-line="79" selection-end-column="65" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shared.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/templates/shared.twig">
+      <file leaf-file-name="UserRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/UserRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="60" column="93" lean-forward="false" selection-start-line="60" selection-start-column="93" selection-end-line="60" selection-end-column="93" />
+            <state relative-caret-position="165">
+              <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notifications.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/templates/notifications.twig">
+      <file leaf-file-name="DoctrineUserRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="60" column="27" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="60" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetUploadsUseCase.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetUploadsUseCase.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="59" lean-forward="false" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PostFileController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/PostFileController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="90" column="73" lean-forward="false" selection-start-line="90" selection-start-column="73" selection-end-line="90" selection-end-column="73" />
-              <folding />
+            <state relative-caret-position="609">
+              <caret line="83" column="196" lean-forward="false" selection-start-line="83" selection-start-column="196" selection-end-line="83" selection-end-column="196" />
+              <folding>
+                <marker date="1526338290496" expanded="true" signature="661:890" ph="INSERT INTO user... " />
+                <marker date="1526338290496" expanded="true" signature="1815:1953" ph="SELECT id, u... user" />
+                <marker date="1526338290496" expanded="true" signature="2227:2368" ph="SELECT id, u... user" />
+                <marker date="1526338290496" expanded="true" signature="2651:2795" ph="SELECT id, u... user" />
+                <marker date="1526338290496" expanded="true" signature="3106:3262" ph="SELECT id, u... user" />
+                <marker date="1526338290496" expanded="true" signature="3497:3528" ph="DELETE FROM user... " />
+                <marker date="1526338290496" expanded="true" signature="3723:3850" ph="UPDATE user... " />
+                <marker date="1526338290496" expanded="true" signature="4548:4587" ph="UPDATE user... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -164,8 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>email</find>
-      <find>File</find>
       <find>get_folde</find>
       <find>GetFolderById</find>
       <find>uuid</find>
@@ -182,7 +169,6 @@
       <find>shareMo</find>
       <find>Dashbo</find>
       <find>&amp;</find>
-      <find>dashboard</find>
       <find>share</find>
       <find>shares</find>
       <find>bytesActiveFolder</find>
@@ -194,6 +180,9 @@
       <find>Compartir</find>
       <find>Subir archivo</find>
       <find>breadcrumb</find>
+      <find>ir arriba</find>
+      <find>$_SESSION[&quot;user_id&quot;]</find>
+      <find>dashboard</find>
     </findStrings>
     <replaceStrings>
       <replace>uploadFileModal</replace>
@@ -214,6 +203,8 @@
       <replace>notifications</replace>
       <replace>reader</replace>
       <replace>share</replace>
+      <replace>$userId</replace>
+      <replace>login</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -222,16 +213,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Model/UseCase/PostFolderUseCase.php" />
-        <option value="$PROJECT_DIR$/src/Model/UseCase/PostFileUseCase.php" />
-        <option value="$PROJECT_DIR$/src/Model/UseCase/GetFolderUseCase.php" />
-        <option value="$PROJECT_DIR$/src/Model/UseCase/GetFolderByIdUseCase.php" />
-        <option value="$PROJECT_DIR$/src/Model/UseCase/GetFileUseCase.php" />
-        <option value="$PROJECT_DIR$/src/Controller/PostFolderController.php" />
-        <option value="$PROJECT_DIR$/public/assets/js/validate.js" />
         <option value="$PROJECT_DIR$/src/Model/UseCase/GetFolderSizeUseCase.php" />
         <option value="$PROJECT_DIR$/src/Model/UseCase/GetRootFolderSizeUseCase.php" />
-        <option value="$PROJECT_DIR$/src/Controller/PostUserController.php" />
         <option value="$PROJECT_DIR$/src/Model/UseCase/RenameUploadUseCase.php" />
         <option value="$PROJECT_DIR$/src/Controller/RenameUploadController.php" />
         <option value="$PROJECT_DIR$/public/assets/js/notifications.js" />
@@ -250,22 +233,17 @@
         <option value="$PROJECT_DIR$/src/Model/UseCase/GetSharesUseCase.php" />
         <option value="$PROJECT_DIR$/src/Model/Upload.php" />
         <option value="$PROJECT_DIR$/src/Model/User.php" />
-        <option value="$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" />
-        <option value="$PROJECT_DIR$/src/Controller/PostShareController.php" />
         <option value="$PROJECT_DIR$/src/Model/UseCase/GetNotificationsUseCase.php" />
-        <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/src/Model/Implementations/DoctrineNotificationRepository.php" />
         <option value="$PROJECT_DIR$/src/Model/UseCase/GetLastFiveNotificationsUseCase.php" />
         <option value="$PROJECT_DIR$/src/Model/NotificationRepository.php" />
         <option value="$PROJECT_DIR$/src/view/templates/notifications.twig" />
         <option value="$PROJECT_DIR$/src/Controller/SharedController.php" />
         <option value="$PROJECT_DIR$/src/Controller/NotificationsController.php" />
-        <option value="$PROJECT_DIR$/src/view/templates/profile.twig" />
         <option value="$PROJECT_DIR$/public/assets/css/styles.css" />
         <option value="$PROJECT_DIR$/src/view/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Model/Implementations/DoctrineShareRepository.php" />
         <option value="$PROJECT_DIR$/src/Model/ShareRepository.php" />
-        <option value="$PROJECT_DIR$/app/dependencies.php" />
         <option value="$PROJECT_DIR$/src/Model/UseCase/GetShareByUploadIdUseCase.php" />
         <option value="$PROJECT_DIR$/src/Controller/PostFileController.php" />
         <option value="$PROJECT_DIR$/src/Model/UseCase/GetUploadsUseCase.php" />
@@ -273,6 +251,19 @@
         <option value="$PROJECT_DIR$/src/view/templates/shared.twig" />
         <option value="$PROJECT_DIR$/src/Controller/DashboardController.php" />
         <option value="$PROJECT_DIR$/src/view/templates/dashboard.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/PostShareController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/utils/EmailSender.php" />
+        <option value="$PROJECT_DIR$/app/routes.php" />
+        <option value="$PROJECT_DIR$/src/Model/UseCase/ActivateUserUseCase.php" />
+        <option value="$PROJECT_DIR$/app/dependencies.php" />
+        <option value="$PROJECT_DIR$/public/test.php" />
+        <option value="$PROJECT_DIR$/src/view/templates/profile.twig" />
+        <option value="$PROJECT_DIR$/src/Model/UseCase/GetUserByEmailActivationKeyUseCase.php" />
+        <option value="$PROJECT_DIR$/src/Model/UserRepository.php" />
+        <option value="$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" />
+        <option value="$PROJECT_DIR$/src/Controller/VerificationController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/PostUserController.php" />
+        <option value="$PROJECT_DIR$/src/view/templates/login.twig" />
       </list>
     </option>
   </component>
@@ -316,10 +307,10 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2" />
-    <option name="y" value="22" />
-    <option name="width" value="821" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="248" />
+    <option name="y" value="46" />
+    <option name="width" value="1644" />
     <option name="height" value="1137" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -402,6 +393,13 @@
               <item name="slimapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="slimapp" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="utils" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="slimapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="slimapp" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Model" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -455,6 +453,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Controller/utils" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Model/UseCase" />
       <recent name="$PROJECT_DIR$/src/Controller" />
@@ -507,15 +508,15 @@
       <workItem from="1525871635789" duration="43721000" />
       <workItem from="1526052188981" duration="5000" />
       <workItem from="1526077330895" duration="15031000" />
-      <workItem from="1526160641680" duration="38736000" />
+      <workItem from="1526160641680" duration="50484000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211694000" />
+    <option name="totallyTimeSpent" value="223442000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2" y="22" width="1918" height="1137" extended-state="6" />
+    <frame x="248" y="46" width="1644" height="1137" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -524,7 +525,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11527648" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16475496" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19221412" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33675563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -553,106 +554,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/PostShareUseCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-          <folding>
-            <element signature="e#39#61#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/PostUserUseCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetFolderSizeUseCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/PostFileUseCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="17" lean-forward="true" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-          <folding>
-            <element signature="e#39#62#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="34" lean-forward="false" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetFromEmailUseCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PostUserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1010">
-          <caret line="112" column="14" lean-forward="false" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ProfileUserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/HelloController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/prueba.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PostFolderController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="31" column="26" lean-forward="true" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/LogInController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="52" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/LogOutController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -701,49 +602,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="208" column="25" lean-forward="false" selection-start-line="208" selection-start-column="25" selection-end-line="208" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetUserUseCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/UseCase/PostNotificationUseCase.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="28" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="50" column="202" lean-forward="false" selection-start-line="50" selection-start-column="202" selection-end-line="50" selection-end-column="202" />
-          <folding>
-            <marker date="1526214052593" expanded="true" signature="661:890" ph="INSERT INTO user... " />
-            <marker date="1526214052593" expanded="true" signature="1815:1953" ph="SELECT id, u... user" />
-            <marker date="1526214052593" expanded="true" signature="2227:2368" ph="SELECT id, u... user" />
-            <marker date="1526214052593" expanded="true" signature="2650:2794" ph="SELECT id, u... user" />
-            <marker date="1526214052593" expanded="true" signature="3018:3049" ph="DELETE FROM user... " />
-            <marker date="1526214052593" expanded="true" signature="3243:3370" ph="UPDATE user... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PostShareController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="47" column="40" lean-forward="false" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -768,14 +630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/UserRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -822,14 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/templates/profile.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
@@ -838,14 +684,6 @@
             <marker date="1526251647692" expanded="true" signature="5:38" ph="{...}" />
             <marker date="1526251647692" expanded="true" signature="897:900" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/PostFolderUseCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="21" column="49" lean-forward="false" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -879,22 +717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="66" column="42" lean-forward="true" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="911">
-          <caret line="104" column="35" lean-forward="false" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/dependencies.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="214" column="43" lean-forward="false" selection-start-line="214" selection-start-column="12" selection-end-line="214" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -959,7 +781,7 @@
     <entry file="file://$PROJECT_DIR$/src/view/templates/notifications.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
-          <caret line="60" column="27" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="60" selection-end-column="27" />
+          <caret line="60" column="27" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="60" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -975,8 +797,74 @@
     <entry file="file://$PROJECT_DIR$/src/view/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1155">
-          <caret line="77" column="55" lean-forward="true" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
+          <caret line="77" column="55" lean-forward="false" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/PostFolderUseCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="49" lean-forward="false" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/EditUserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/DashboardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="79" column="65" lean-forward="false" selection-start-line="79" selection-start-column="65" selection-end-line="79" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="215" column="42" lean-forward="false" selection-start-line="215" selection-start-column="42" selection-end-line="215" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/utils/EmailSender.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="54" lean-forward="false" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PostFolderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="898">
+          <caret line="108" column="23" lean-forward="false" selection-start-line="108" selection-start-column="23" selection-end-line="108" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PostShareController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="49" column="42" lean-forward="true" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+          <folding>
+            <element signature="e#36#73#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -988,18 +876,133 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/DashboardController.php">
+    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/ActivateUserUseCase.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="707">
-          <caret line="79" column="65" lean-forward="false" selection-start-line="79" selection-start-column="65" selection-end-line="79" selection-end-column="65" />
+        <state relative-caret-position="60">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetUserUseCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dependencies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="958">
+          <caret line="240" column="2" lean-forward="false" selection-start-line="240" selection-start-column="2" selection-end-line="240" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/templates/profile.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetFromEmailUseCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetUserByEmailActivationKeyUseCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/UserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="83" column="196" lean-forward="false" selection-start-line="83" selection-start-column="196" selection-end-line="83" selection-end-column="196" />
+          <folding>
+            <marker date="1526338290496" expanded="true" signature="661:890" ph="INSERT INTO user... " />
+            <marker date="1526338290496" expanded="true" signature="1815:1953" ph="SELECT id, u... user" />
+            <marker date="1526338290496" expanded="true" signature="2227:2368" ph="SELECT id, u... user" />
+            <marker date="1526338290496" expanded="true" signature="2651:2795" ph="SELECT id, u... user" />
+            <marker date="1526338290496" expanded="true" signature="3106:3262" ph="SELECT id, u... user" />
+            <marker date="1526338290496" expanded="true" signature="3497:3528" ph="DELETE FROM user... " />
+            <marker date="1526338290496" expanded="true" signature="3723:3850" ph="UPDATE user... " />
+            <marker date="1526338290496" expanded="true" signature="4548:4587" ph="UPDATE user... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/VerificationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="49" lean-forward="false" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
+          <folding>
+            <element signature="e#36#73#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/templates/dashboard.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="80" column="26" lean-forward="false" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
+        <state relative-caret-position="504">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="43" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/PostShareUseCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/PostUserUseCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PostUserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="84" column="74" lean-forward="false" selection-start-line="84" selection-start-column="74" selection-end-line="84" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/templates/login.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
           <folding />
         </state>
       </provider>

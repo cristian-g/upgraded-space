@@ -8,4 +8,6 @@ interface UserRepository
     public function get($id);
     public function getFromEmail($email);
     public function getFromUsername($username);
+    public function activate(User $user);
+    public function getByEmailActivationKeyUseCase($emailActivationKey);
 }

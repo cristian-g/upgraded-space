@@ -3,6 +3,7 @@
 namespace Pwbox\Controller;
 
 use Doctrine\DBAL\Driver\Mysqli\MysqliException;
+use Pwbox\Controller\utils\EmailSender;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -46,8 +47,6 @@ class PostUserController
     public function registerAction(Request $request, Response $response)
     {
         try {
-
-
             $data = $request->getParsedBody();
             $uploadedFiles = $request->getUploadedFiles();
 
@@ -81,11 +80,9 @@ class PostUserController
             */
 
             $service = $this->container->get('post_user_use_case');
-            $_SESSION["user_id"] = $service($data);
+            $userId = $service($data);
 
-
-
-            $user = ($this->container->get('get_user_use_case'))($_SESSION["user_id"]);
+            $user = ($this->container->get('get_user_use_case'))($userId);
 
             $directory = __DIR__.'/../../public/uploads/'.$user->getUuid();// És relatiu o absolut, però respecte el file system (la màquina)
             $directory_default = __DIR__.'/../../0.recursos/avatar.jpeg';
@@ -97,59 +94,21 @@ class PostUserController
             $profile = $uploadedFiles['profile_image'];
             if ($profile->getError() === UPLOAD_ERR_OK) {
                 $filename = $this->moveUploadedFile($directory, $profile);
-                $this->container->get('flash')->addMessage('dashboard', 'User registered with profile image.');
+                $this->container->get('flash')->addMessage('login', 'User registered with profile image.');
             }else{
                 if (copy('avatar.jpeg', 'profile_image.jpeg')){
-                    $this->container->get('flash')->addMessage('dashboard', 'User registered with default image.');
+                    $this->container->get('flash')->addMessage('login', 'User registered with default image.');
                 }
-                $this->container->get('flash')->addMessage('dashboard', 'User registered without image.');
+                $this->container->get('flash')->addMessage('login', 'User registered without image.');
             }
 
+            // Create account verification link
+            $verificationLink = 'http://' . $_SERVER['SERVER_NAME'] . '/verification/' . $user->getEmailActivationKey();
 
+            EmailSender::sendVerificationRequest($verificationLink, $user->getEmail(), $user->getUsername());
 
+            return $response->withStatus(302)->withHeader('Location', '/login');
 
-
-            // create account verification link
-            $link = 'http://' . $_SERVER['SERVER_NAME'] . '/activation.php?key=' . 'EXAMPLE';
-
-            // get the html email content
-            $directory = __DIR__ . '/../view/emails/';
-            $html_content = file_get_contents($directory . 'email_verification.html');
-            echo $html_content;
-            /*$html_content = preg_replace('/{link}/', $link, $html_content);*/
-            //$html_content = $link;
-
-            // get plain email content
-            /*$plain_text = file_get_contents('emails/email_verification.txt');
-            $plain_text = preg_replace('/{link}/', $link, $plain_text);*/
-            $plain_text = $html_content;
-
-
-            $smtp_server = 'smtp.mailtrap.io';
-            $username = 'f67054347185ac';
-            $password = 'eebd296edd6a0f';
-            $port = '465';
-
-
-            $message = (new \Swift_Message('Wonderful Subject'))
-                ->setSubject("PWBox")
-                ->setFrom(['user@yourdomain.com' => 'iTech Empires'])
-                ->setTo(["cristian@cristiangonzalez.com" => "Cristian"])
-                ->setBody($html_content, 'text/html')// add html content
-                ->addPart($plain_text, 'text/plain'); // Add plain text
-
-            // Create the Transport
-            $transport = (new \Swift_SmtpTransport($smtp_server, $port))
-                ->setUsername($username)
-                ->setPassword($password);
-
-            // Create the Mailer using your created Transport
-            $mailer = new \Swift_Mailer($transport);
-
-            //$mailer->send($message);
-
-
-            return $response->withStatus(302)->withHeader('Location', '/dashboard');
         } catch (\Exception $e){
             return $this->container->get('view')
                 ->render($response, 'register.twig', ['error' => 'code: '.$e->getMessage()]);

@@ -37,16 +37,18 @@ class PostShareController
 
             $service = $this->container->get('post_notification_use_case');
 
+            $user = ($this->container->get('get_user_use_case'))($_SESSION["user_id"]);
+
             // Post notifications
             $service([
                 'idShare' => $idShare,
                 'type' => 'folder_received',
-                'message' => 'Han compartido una carpeta contigo.'
+                'message' => $user->getUsername().' ('.$user->getEmail().') compartió la carpeta llamada "'.$folder->getName().'" contigo.'
             ]);
             $service([
                 'idShare' => $idShare,
                 'type' => 'folder_sended',
-                'message' => 'Has compartido una carpeta.'
+                'message' => 'Compartiste la carpeta llamada "'.$folder->getName().'" con '.$userDestination->getUsername().' ('.$userDestination->getEmail().').'
             ]);
 
             $this->container->get('flash')->addMessage('dashboard', 'La carpeta se ha compartido correctamente.');

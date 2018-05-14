@@ -233,6 +233,13 @@ $container['get_last_five_notifications_use_case'] = function($container) {
     return $useCase;
 };
 
+$container['activate_user_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\ActivateUserUseCase(
+        $container->get('user_repository')
+    );
+    return $useCase;
+};
+
 $container['flash'] = function ($container) {
     return new \Slim\Flash\Messages();
 };

@@ -63,7 +63,7 @@ class DoctrineUserRepository implements UserRepository
             $user = User::fromArray($array);
             return $user;
         }
-        catch (\Doctrine\DBAL\DBALException $e){
+        catch (\Doctrine\DBAL\DBALException $e) {
 
         }
     }
@@ -74,7 +74,18 @@ class DoctrineUserRepository implements UserRepository
             $user = User::fromArray($array);
             return $user;
         }
-        catch (\Doctrine\DBAL\DBALException $e){
+        catch (\Doctrine\DBAL\DBALException $e) {
+
+        }
+    }
+
+    public function getByEmailActivationKeyUseCase($emailActivationKey) {
+        try {
+            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE email_activation_key = ? LIMIT 1', array($emailActivationKey));
+            $user = User::fromArray($array);
+            return $user;
+        }
+        catch (\Doctrine\DBAL\DBALException $e) {
 
         }
     }
@@ -86,7 +97,7 @@ class DoctrineUserRepository implements UserRepository
         $stmt->execute();
     }
 
-    public function update(User $user){
+    public function update(User $user) {
         $sql = "UPDATE user SET username=:username, email=:email, birthdate=:birthdate, password=:password, updated_at=:updated_at WHERE id=:id";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindValue("username", $user->getUsername(), 'string');
@@ -100,5 +111,12 @@ class DoctrineUserRepository implements UserRepository
         $user->setId($this->connection->lastInsertId());
         // Return id
         return $user->getId();
+    }
+
+    public function activate(User $user) {
+        $sql = "UPDATE user SET active = 1 WHERE id=:id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue("id", $user->getId(), 'integer');
+        $stmt->execute();
     }
 }

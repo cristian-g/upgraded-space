@@ -1,0 +1,12 @@
+¡Tienes una nueva notificación en PWBox!
+{notification_title}
+{notification_message}
+
+Puedes consultar y editar tu carpeta compartida "{folder_name}" en:
+{link1}
+
+Puedes ver todas tus notificaciones en:
+{link2}
+
+Atentamente,
+El equipo de PWBox
