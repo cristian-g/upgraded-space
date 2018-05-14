@@ -51,10 +51,10 @@ class PostUserController
             $data = $request->getParsedBody();
             $uploadedFiles = $request->getUploadedFiles();
 
-            /*
+
             //password
             if (!(strlen($data['password']) > 5 and strlen($data['password']) < 13 and
-                preg_match('/[a-z]/', $data['password']) and preg_match('/[A-Z]/', $data['password'])
+                preg_match('/[A-Z]/', $data['password'])
                 and preg_match('/[0-9]/', $data['password']))) {
 
                 return $this->container->get('view')
@@ -66,7 +66,7 @@ class PostUserController
                 return $this->container->get('view')
                     ->render($response, 'register.twig', ['error' => "las dos contrasenyas no son iguales"]);
             }
-
+/*
             //username
             if (!(ctype_alnum($data['username']) and strlen($data['username']) > 0 and strlen($data['username']) < 21)) {
                 return $this->container->get('view')

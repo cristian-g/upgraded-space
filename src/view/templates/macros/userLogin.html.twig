@@ -2,7 +2,7 @@
     <form action="/login" method="post" id="loginForm" enctype="multipart/form-data">
         <div class="form-group">
             <label for="loginId">Nombre de usuario o correo</label>
-            <input type="text" class="form-control" name="loginId" id="loginId" placeholder="Introduce el nombre de usuario o correo" value="{{ username|default('') }}">
+            <input type="text" class="form-control" name="loginId" id="loginId" placeholder="Introduce el nombre de usuario o correo" value="{{ username|default('') }}" required>
             <div class="invalid-feedback">
                 <strong>Introduce un nombre de usuario o correo:</strong>
             </div>
@@ -12,8 +12,8 @@
         </div>
         <div class="form-group">
             <label for="password">Contraseña</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Introduce una contraseña" value="{{ password|default('') }}" required pattern="^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,12}$" aria-describedby="passwordHelpInline">
-            <div class="invalid-feedback">
+            <input type="password" onchange="checkForm(this.name, this.value)" class="form-control" name="password" id="password" placeholder="Introduce una contraseña" value="{{ password|default('') }}" required pattern="^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,12}$" aria-describedby="passwordHelpInline">
+            <div id="feedback-password" class="invalid-feedback">
                 <strong>Introduce una contraseña con el formato indicado:</strong>
             </div>
             <small id="passwordHelpBlock" class="form-text text-muted">
