@@ -30,6 +30,8 @@ class DashboardController
         $folderName = null;
         $parentFolder = null;
 
+        $role = null;
+
         if (isset($args['uuid'])) {
             $upload = ($this->container->get('get_folder_by_uuid_use_case'))($args['uuid']);
 
@@ -39,14 +41,50 @@ class DashboardController
                 $folderId = $folder->getId();
                 $folderName = $folder->getName();
                 $folderSize = ($this->container->get('get_folder_size_use_case'))($folderId);
-                $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"], $folderId);
+                $uploads = ($this->container->get('get_uploads_use_case'))($folderId);
                 $this->computeFolderSizes($uploads);
+
+                // Role
+                if ($folder->getIdUser() == $_SESSION["user_id"]) {
+                    $role = 'owner';
+                }
+                else {
+                    $folderAux = $folder;
+                    $share = ($this->container->get('get_share_by_upload_id_use_case'))($folderAux->getId(), $_SESSION["user_id"]);
+                    while ($share == null || $share->getIdUserDestination() != $_SESSION["user_id"]) {
+                        if ($folderAux->getIdParent() == null) break;
+                        $folderAux = ($this->container->get('get_folder_by_id_use_case'))($folderAux->getIdParent());
+                        $share = ($this->container->get('get_share_by_upload_id_use_case'))($folderAux->getId(), $_SESSION["user_id"]);
+                        if ($share != null && $share->getIdUserDestination() == $_SESSION["user_id"]) break;
+                    }
+                    if ($share != null && $share->getIdUserDestination() == $_SESSION["user_id"]) {
+                        $role = $share->getRole();
+                    }
+                    else {
+                        $folderAux2 = $folder;
+                        if ($folderAux2->getIdParent() != null) {
+                            $folderAux2 = ($this->container->get('get_folder_by_id_use_case'))($folderAux2->getIdParent());
+                            while ($folderAux2->getIdUser() != $_SESSION["user_id"]) {
+                                if ($folderAux2->getIdParent() == null) break;
+                                $folderAux2 = ($this->container->get('get_folder_by_id_use_case'))($folderAux2->getIdParent());
+                            }
+                            if ($folderAux2->getIdUser() == $_SESSION["user_id"]) {
+                                $role = 'owner';
+                            }
+                        }
+                    }
+                }
 
                 // Breadcrumb
                 array_push($breadcrumb, $folder);
-                while ($folder->getIdParent() != null) {
+                while ($folder->getIdParent() != null && ($role == 'owner' || !($folder->getId() == $share->getIdUpload()))) {
                     $folder = ($this->container->get('get_folder_by_id_use_case'))($folder->getIdParent());
                     array_unshift($breadcrumb, $folder);
+                    if ($role != 'owner') {
+                        if ($folder->getId() == $share->getIdUpload()) {
+                            break;
+                        }
+                    }
                 }
                 $parentFolder = $breadcrumb[count($breadcrumb)-2];
             }
@@ -59,8 +97,9 @@ class DashboardController
         }
         else {
             // It is the root folder
-            $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"]);
+            $uploads = ($this->container->get('get_uploads_use_case'))(null, $_SESSION["user_id"]);
             $this->computeFolderSizes($uploads);
+            $role = 'owner';
         }
 
         if ($folderSize == null) $folderSize = 0;
@@ -70,7 +109,7 @@ class DashboardController
         }
 
         return $this->container->get('view')
-            ->render($response, 'dashboard.twig', ['uploads' => $uploads, 'folderName' => $folderName, 'breadcrumb' => $breadcrumb, 'parentFolder' => $parentFolder, 'folderSize' => $folderSize, 'uuid_parent' => (isset($args['uuid'])) ? $args['uuid'] : null ]);
+            ->render($response, 'dashboard.twig', ['uploads' => $uploads, 'folderName' => $folderName, 'role' => $role, 'breadcrumb' => $breadcrumb, 'parentFolder' => $parentFolder, 'folderSize' => $folderSize, 'uuid_parent' => (isset($args['uuid'])) ? $args['uuid'] : null ]);
     }
 
     private function computeFolderSizes(&$uploads) {

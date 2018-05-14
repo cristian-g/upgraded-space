@@ -67,15 +67,14 @@ class DoctrineUploadRepository implements UploadRepository
         }
     }
 
-    public function getAll($id, $folderId = null) {
+    public function getAll($folderId = null, $userId = null) {
         try {
             if ($folderId == null) {
                 $stmt = $this->connection->prepare('SELECT id, uuid, id_user, id_parent, name, ext, bytes_size, created_at, updated_at FROM upload WHERE id_user = :id AND id_parent IS NULL');
-                $stmt->bindParam('id', $id);
+                $stmt->bindParam('id', $userId);
             }
             else {
-                $stmt = $this->connection->prepare('SELECT id, uuid, id_user, id_parent, name, ext, bytes_size, created_at, updated_at FROM upload WHERE id_user = :id AND id_parent = :id_parent');
-                $stmt->bindParam('id', $id);
+                $stmt = $this->connection->prepare('SELECT id, uuid, id_user, id_parent, name, ext, bytes_size, created_at, updated_at FROM upload WHERE id_parent = :id_parent');
                 $stmt->bindParam('id_parent', $folderId);
             }
             $result = $stmt->execute();

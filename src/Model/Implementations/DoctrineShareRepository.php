@@ -54,4 +54,15 @@ class DoctrineShareRepository implements ShareRepository
             return $e->getMessage();
         }
     }
+
+    public function getByUploadId($upload_id, $user_id) {
+        try {
+            $array = $this->connection->fetchAssoc('SELECT id, id_upload, id_user_destination, role, created_at, updated_at FROM share WHERE id_upload = ? AND id_user_destination = ? LIMIT 1', array($upload_id, $user_id));
+            $share = Share::fromArray($array);
+            return $share;
+        }
+        catch (\Doctrine\DBAL\DBALException $e) {
+            return $e->getMessage();
+        }
+    }
 }

@@ -88,7 +88,7 @@ class PostFileController
             $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $upload->getUuid());
         }
 
-        $uploads = ($this->container->get('get_uploads_use_case'))($_SESSION["user_id"]);
+        $uploads = ($this->container->get('get_uploads_use_case'))(null, $_SESSION["user_id"]);
 
         $this->container->get('flash')->addMessage('errors', $errors);
         $this->container->get('flash')->addMessage('isPost', true);
