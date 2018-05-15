@@ -13,6 +13,8 @@ use Dflydev\FigCookies\SetCookie;
 class PostFileController
 {
     protected $container;
+    public static $max_size_file = 2000000;
+    public static $max_size_disk = 1000000000;
 
     public function __construct(ContainerInterface $container)
     {
@@ -46,8 +48,17 @@ class PostFileController
         foreach ($uploadedFiles['files'] as $uploadedFile) {
             if ($uploadedFile->getError() !== UPLOAD_ERR_OK) {
                 $errors[] = sprintf(
-                    'An unexpected error ocurred uploading the file %s',
+                    'Ha ocurrido un error al subir el archivo %s',
                     $uploadedFile->getClientFilename()
+                );
+                continue;
+            }
+
+            if ($uploadedFile->getSize() > $this->max_size_file){
+                $errors[] = sprintf(
+                    'El tamaño supera los 2MB, no se ha podido subir el archivo %s  %s  %s',
+                    $uploadedFile->getClientFilename(),
+                    $uploadedFile->getSize()
                 );
                 continue;
             }
