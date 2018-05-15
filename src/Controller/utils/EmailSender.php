@@ -33,7 +33,7 @@ class EmailSender {
             ->setUsername(self::$username)
             ->setPassword(self::$password);
 
-        // Create the Mailer using your created Transport
+        // Create the mailer using your created transport
         $mailer = new \Swift_Mailer($transport);
 
         $mailer->send($message);
