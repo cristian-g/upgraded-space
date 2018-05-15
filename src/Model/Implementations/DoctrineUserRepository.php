@@ -113,6 +113,22 @@ class DoctrineUserRepository implements UserRepository
         return $user->getId();
     }
 
+    public function updateWithPicture(User $user){
+        $sql = "UPDATE user SET email=:email, password=:password, default_picture=:default_picture, extension=:extension, updated_at=:updated_at WHERE id=:id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue("email", $user->getEmail(), 'string');
+        $stmt->bindValue("password", $user->getPassword(), 'string');
+        $stmt->bindValue("default_picture", $user->getDefaultProfile(), 'integer');
+        $stmt->bindValue("extension", $user->getExtension(), 'string');
+        $stmt->bindValue("updated_at", $user->getCreatedAt()->format(self::DATE_FORMAT));
+        $stmt->bindValue("id", $user->getId(), 'integer');
+        $stmt->execute();
+        // Save id
+        $user->setId($this->connection->lastInsertId());
+        // Return id
+        return $user->getId();
+    }
+
     public function activate(User $user) {
         $sql = "UPDATE user SET active = 1 WHERE id=:id";
         $stmt = $this->connection->prepare($sql);
