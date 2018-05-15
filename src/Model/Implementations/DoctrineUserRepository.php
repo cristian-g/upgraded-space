@@ -29,14 +29,16 @@ class DoctrineUserRepository implements UserRepository
      */
     public function save(User $user)
     {
-        $sql = "INSERT INTO user(uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at) VALUES(uuid(), :username, :email, :birthdate, :password, :active, :email_activation_key, :created_at, :updated_at)";
+        $sql = "INSERT INTO user(uuid, username, email, birthdate, password, active, email_activation_key, default_picture, extension, created_at, updated_at) VALUES(uuid(), :username, :email, :birthdate, :password, :active, :email_activation_key, :default_picture, :extension, :created_at, :updated_at)";
         $stmt = $this->connection->prepare($sql);
         $stmt->bindValue("username", $user->getUsername(), 'string');
         $stmt->bindValue("email", $user->getEmail(), 'string');
         $stmt->bindValue("birthdate", $user->getBirthdate(), 'string');
         $stmt->bindValue("password", $user->getPassword(), 'string');
-        $stmt->bindValue("active", $user->getActive(), 'string');
+        $stmt->bindValue("active", $user->getActive(), 'integer');
         $stmt->bindValue("email_activation_key", $user->getEmailActivationKey(), 'string');
+        $stmt->bindValue("default_picture", $user->getDefaultProfile(),'integer');
+        $stmt->bindValue("extension",$user->getExtension(), 'string');
         $stmt->bindValue("created_at", $user->getCreatedAt()->format(self::DATE_FORMAT));
         $stmt->bindValue("updated_at", $user->getUpdatedAt()->format(self::DATE_FORMAT));
         $stmt->execute();
@@ -48,7 +50,7 @@ class DoctrineUserRepository implements UserRepository
 
     public function get($id) {
         try {
-            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE id = ? LIMIT 1', array($id));
+            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, default_picture, extension, created_at, updated_at FROM user WHERE id = ? LIMIT 1', array($id));
             $user = User::fromArray($array);
             return $user;
         }
@@ -59,7 +61,7 @@ class DoctrineUserRepository implements UserRepository
 
     public function getFromEmail($email) {
         try {
-            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE email = ? LIMIT 1', array($email));
+            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, default_picture, extension, created_at, updated_at FROM user WHERE email = ? LIMIT 1', array($email));
             $user = User::fromArray($array);
             return $user;
         }
@@ -70,7 +72,7 @@ class DoctrineUserRepository implements UserRepository
 
     public function getFromUsername($username) {
         try {
-            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE username = ? LIMIT 1', array($username));
+            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, default_picture, extension, created_at, updated_at FROM user WHERE username = ? LIMIT 1', array($username));
             $user = User::fromArray($array);
             return $user;
         }
@@ -81,7 +83,7 @@ class DoctrineUserRepository implements UserRepository
 
     public function getByEmailActivationKeyUseCase($emailActivationKey) {
         try {
-            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, created_at, updated_at FROM user WHERE email_activation_key = ? LIMIT 1', array($emailActivationKey));
+            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, default_picture, extension, created_at, updated_at FROM user WHERE email_activation_key = ? LIMIT 1', array($emailActivationKey));
             $user = User::fromArray($array);
             return $user;
         }

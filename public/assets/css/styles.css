@@ -73,3 +73,11 @@ footer .footer-black .blue{
 .card {
     margin-bottom: 15px;
 }
+
+#profileimage {
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
