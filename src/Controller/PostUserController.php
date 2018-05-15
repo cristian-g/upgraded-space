@@ -85,31 +85,26 @@ class PostUserController
             }
 
             $service = $this->container->get('post_user_use_case');
-
-            $profile = $uploadedFiles['profile_image'];
-            if ($profile->getError() === UPLOAD_ERR_OK){
-                $userId = $service($data, 0, pathinfo($profile->getClientFilename(), PATHINFO_EXTENSION));
-            }else{
-                $userId = $service($data, 1, 'jpg');
-            }
-
+            $userId = $service($data);
 
             $user = ($this->container->get('get_user_use_case'))($userId);
 
             $directory = __DIR__.'/../../public/uploads/'.$user->getUuid();// És relatiu o absolut, però respecte el file system (la màquina)
-            $directory_default = __DIR__.'/../../public/assets/img/profile_images/default.jpg';
+            $directory_default = __DIR__.'/../../0.recursos/avatar.jpeg';
 
             if (!file_exists($directory)) {
                 mkdir($directory, 0777, true);
             }
 
+            $profile = $uploadedFiles['profile_image'];
             if ($profile->getError() === UPLOAD_ERR_OK) {
                 $filename = $this->moveUploadedFile($directory, $profile);
                 $this->container->get('flash')->addMessage('login', 'User registered with profile image.');
             }else{
-                if (copy($directory_default, $directory.'/profile_image.jpg')){
+                if (copy('avatar.jpeg', 'profile_image.jpeg')){
                     $this->container->get('flash')->addMessage('login', 'User registered with default image.');
                 }
+                $this->container->get('flash')->addMessage('login', 'User registered without image.');
             }
 
             // Create account verification link

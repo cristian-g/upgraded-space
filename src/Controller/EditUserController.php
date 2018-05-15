@@ -5,7 +5,6 @@ namespace Pwbox\Controller;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Http\UploadedFile;
 
 class EditUserController
 {
@@ -24,23 +23,10 @@ class EditUserController
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
-
-    function moveUploadedFile($directory, UploadedFile $uploadedFile)
-    {
-        $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
-        $basename = "profile_image"; // see http://php.net/manual/en/function.random-bytes.php
-        $filename = sprintf('%s.%0.8s', $basename, $extension);
-
-        $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
-
-        return $filename;
-    }
-
     public function __invoke(Request $request, Response $response, array $args)
     {
         try {
             $data = $request->getParsedBody();
-            $uploadedFiles = $request->getUploadedFiles();
 
             //password
             if (!(strlen($data['password']) > 5 and strlen($data['password']) < 13 and
@@ -63,32 +49,10 @@ class EditUserController
                     ->render($response, 'profile.twig', ['error' => "Correo con formato incorrecto"]);
             }
 
-            $user = ($this->container->get('get_user_use_case'))($_SESSION['user_id']);
-            $directory = __DIR__.'/../../public/uploads/'.$user->getUuid();
-
             $service = $this->container->get('edit_user_use_case');
-
-            $profile = $uploadedFiles['profile_image'];
-            if ($profile->getError() === UPLOAD_ERR_OK){
-                $path = $directory.'/profile_image.'.$user->getExtension();
-                unlink($path);
-                $service($data, 0, pathinfo($profile->getClientFilename(), PATHINFO_EXTENSION), $_SESSION['user_id']);
-            }else{
-                $service($data, 1, null,  $_SESSION['user_id']);
-            }
-
+            $service($data, $_SESSION['user_id']);
             $this->container->get('flash')->addMessage('dashboard', 'User registered.');
 
-
-
-            if (!file_exists($directory)) {
-                mkdir($directory, 0777, true);
-            }
-
-            if ($profile->getError() === UPLOAD_ERR_OK) {
-                $filename = $this->moveUploadedFile($directory, $profile);
-                $this->container->get('flash')->addMessage('login', 'User registered with profile image.');
-            }
 
             // create account verification link
             $link = 'http://' . $_SERVER['SERVER_NAME'] . '/activation.php?key=' . 'EXAMPLE';
