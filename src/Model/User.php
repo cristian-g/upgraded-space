@@ -15,6 +15,8 @@ class User
     private $emailActivationKey;
     private $createdAt;
     private $updatedAt;
+    private $default_profile;
+    private $extension;
 
     /**
      * User constructor.
@@ -28,8 +30,10 @@ class User
      * @param $emailActivationKey
      * @param $createdAt
      * @param $updatedAt
+     * @param $default_profile
+     * @param $extension
      */
-    public function __construct($id, $uuid, $username, $email, $birthdate, $password, $active, $createdAt, $updatedAt)
+    public function __construct($id, $uuid, $username, $email, $birthdate, $password, $active, $createdAt, $updatedAt, $default_profile, $extension)
     {
         $this->id = $id;
         $this->uuid = $uuid;
@@ -41,6 +45,8 @@ class User
         $this->emailActivationKey = md5($email . $username);
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
+        $this->default_profile = $default_profile;
+        $this->extension = $extension;
     }
 
     /**
@@ -203,9 +209,42 @@ class User
         $this->updatedAt = $updatedAt;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDefaultProfile()
+    {
+        return $this->default_profile;
+    }
+
+    /**
+     * @param mixed $default_profile
+     */
+    public function setDefaultProfile($default_profile)
+    {
+        $this->default_profile = $default_profile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExtension()
+    {
+        return $this->extension;
+    }
+
+    /**
+     * @param mixed $extension
+     */
+    public function setExtension($extension)
+    {
+        $this->extension = $extension;
+    }
+
     public static function fromArray($array)
     {
         $object = new User(
+
             $array["id"],
             $array["uuid"],
             $array["username"],
@@ -213,9 +252,11 @@ class User
             $array["birthdate"],
             null,
             $array["active"],
-            $array["email_activation_key"],
             $array["created_at"],
-            $array["updated_at"]);
+            $array["updated_at"],
+            $array["default_picture"],
+            $array["extension"]);
+
         $object->setPassword($array["password"]);
         return $object;
     }
@@ -230,6 +271,8 @@ class User
         $array["password"] = $this->getPassword();
         $array["created_at"] = $this->getCreatedAt();
         $array["updated_at"] = $this->getUpdatedAt();
+        $array["default_profile"] = $this->getDefaultProfile();
+        $array["extension"] = $this->getExtension();
         return $array;
     }
 }
