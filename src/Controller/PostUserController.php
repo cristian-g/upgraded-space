@@ -87,7 +87,7 @@ class PostUserController
             $service = $this->container->get('post_user_use_case');
 
             $profile = $uploadedFiles['profile_image'];
-            if ($profile->getError() === UPLOAD_ERR_OK){
+            if ($profile->getError() === UPLOAD_ERR_OK and $profile->getSize() <= 500000){
                 $userId = $service($data, 0, pathinfo($profile->getClientFilename(), PATHINFO_EXTENSION));
             }else{
                 $userId = $service($data, 1, 'jpg');
@@ -103,11 +103,14 @@ class PostUserController
                 mkdir($directory, 0777, true);
             }
 
-            if ($profile->getError() === UPLOAD_ERR_OK) {
+            if ($profile->getError() === UPLOAD_ERR_OK and $profile->getSize() <= 500000) {
                 $filename = $this->moveUploadedFile($directory, $profile);
                 $this->container->get('flash')->addMessage('login', 'User registered with profile image.');
             }else{
-                if (copy($directory_default, $directory.'/profile_image.jpg')){
+                if ( !$profile->getSize() <= 500000){
+                    $this->container->get('flash')->addMessage('login', 'Submitted image larger than 500 Kb,user registered with default image.');
+                }
+                else if (copy($directory_default, $directory.'/profile_image.jpg')){
                     $this->container->get('flash')->addMessage('login', 'User registered with default image.');
                 }
             }

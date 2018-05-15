@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38ef741-17f9-42c2-878f-2681224a399e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/EditUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EditUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/UseCase/EditUserUseCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UseCase/EditUserUseCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PostUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PostUserController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,8 +23,8 @@
             <file leaf-file-name="PostUserController.php" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/Controller/PostUserController.php">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="630">
-                    <caret line="96" column="74" lean-forward="true" selection-start-line="96" selection-start-column="12" selection-end-line="96" selection-end-column="74" />
+                  <state relative-caret-position="795">
+                    <caret line="110" column="108" selection-start-line="110" selection-start-column="108" selection-end-line="110" selection-end-column="108" />
                     <folding>
                       <element signature="e#36#84#0#PHP" expanded="true" />
                     </folding>
@@ -53,11 +51,20 @@
       <file leaf-file-name="EditUserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/EditUserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="72" column="37" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
+            <state relative-caret-position="750">
+              <caret line="88" column="88" selection-start-line="88" selection-start-column="88" selection-end-line="88" selection-end-column="88" />
               <folding>
                 <element signature="e#36#73#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostFileController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/PostFileController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="778">
+              <caret line="67" column="57" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -97,15 +104,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="639">
               <caret line="72" column="54" selection-start-line="72" selection-start-column="54" selection-end-line="72" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/templates/profile.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -155,7 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_folde</find>
       <find>GetFolderById</find>
       <find>uuid</find>
       <find>postFolder</find>
@@ -185,6 +182,7 @@
       <find>$_SESSION[&quot;user_id&quot;]</find>
       <find>dashboard</find>
       <find>upload</find>
+      <find>size</find>
     </findStrings>
     <replaceStrings>
       <replace>uploadFileModal</replace>
@@ -260,12 +258,12 @@
         <option value="$PROJECT_DIR$/src/view/templates/profile.twig" />
         <option value="$PROJECT_DIR$/public/assets/css/styles.css" />
         <option value="$PROJECT_DIR$/src/view/templates/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/PostUserController.php" />
         <option value="$PROJECT_DIR$/src/Controller/LogInController.php" />
         <option value="$PROJECT_DIR$/src/Model/UseCase/PostUserUseCase.php" />
         <option value="$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" />
         <option value="$PROJECT_DIR$/src/Model/UseCase/EditUserUseCase.php" />
         <option value="$PROJECT_DIR$/src/Controller/EditUserController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/PostUserController.php" />
       </list>
     </option>
   </component>
@@ -459,12 +457,12 @@
       <workItem from="1526077330895" duration="15031000" />
       <workItem from="1526160641680" duration="51827000" />
       <workItem from="1526376494532" duration="10659000" />
-      <workItem from="1526392270004" duration="4232000" />
+      <workItem from="1526392270004" duration="5463000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="239676000" />
+    <option name="totallyTimeSpent" value="240907000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="959" height="1039" extended-state="4" />
@@ -541,13 +539,6 @@
     <entry file="file://$PROJECT_DIR$/src/Model/Share.php" />
     <entry file="file://$PROJECT_DIR$/src/Model/Implementations/DoctrineShareRepository.php" />
     <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetShareByUploadIdUseCase.php" />
-    <entry file="file://$PROJECT_DIR$/src/Controller/PostFileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="90" column="73" selection-start-line="90" selection-start-column="73" selection-end-line="90" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Implementations/DoctrineUploadRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="673">
@@ -707,6 +698,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetUserUseCase.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/UseCase/EditUserUseCase.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -714,25 +708,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetUserUseCase.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PostUserController.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/PostFileController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="96" column="74" lean-forward="true" selection-start-line="96" selection-start-column="12" selection-end-line="96" selection-end-column="74" />
-          <folding>
-            <element signature="e#36#84#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="778">
+          <caret line="67" column="57" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/EditUserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="72" column="37" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
+        <state relative-caret-position="750">
+          <caret line="88" column="88" selection-start-line="88" selection-start-column="88" selection-end-line="88" selection-end-column="88" />
           <folding>
             <element signature="e#36#73#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PostUserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="110" column="108" selection-start-line="110" selection-start-column="108" selection-end-line="110" selection-end-column="108" />
+          <folding>
+            <element signature="e#36#84#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

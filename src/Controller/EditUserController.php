@@ -69,7 +69,8 @@ class EditUserController
             $service = $this->container->get('edit_user_use_case');
 
             $profile = $uploadedFiles['profile_image'];
-            if ($profile->getError() === UPLOAD_ERR_OK){
+
+            if ($profile->getError() === UPLOAD_ERR_OK and $profile->getSize() <= 500000){
                 $path = $directory.'/profile_image.'.$user->getExtension();
                 unlink($path);
                 $service($data, 0, pathinfo($profile->getClientFilename(), PATHINFO_EXTENSION), $_SESSION['user_id']);
@@ -85,7 +86,7 @@ class EditUserController
                 mkdir($directory, 0777, true);
             }
 
-            if ($profile->getError() === UPLOAD_ERR_OK) {
+            if ($profile->getError() === UPLOAD_ERR_OK and $profile->getSize() <= 500000) {
                 $filename = $this->moveUploadedFile($directory, $profile);
                 $this->container->get('flash')->addMessage('login', 'User registered with profile image.');
             }
