@@ -6,7 +6,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class LogOutController
+class NotAuthorizedController
 {
     protected $container;
 
@@ -25,7 +25,7 @@ class LogOutController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $_SESSION["user_id"] = null;
-        return $response->withStatus(302)->withHeader('Location', '/');
+        return $this->container->get('view')
+            ->render($response, '403.twig', []);
     }
 }
