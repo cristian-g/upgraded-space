@@ -17,12 +17,18 @@ class ShareMiddleware
 //            }
 //        }
 
-        $folder = ($this->container->get('get_folder_by_uuid_use_case'))($args['uuid']);
+      //  $folder = ($this->container->get('get_folder_by_uuid_use_case'))($args['uuid']);
 
         // Role
-        if ($folder->getIdUser() == $_SESSION["user_id"]) {
+     /*   if ($folder->getIdUser() == $_SESSION["user_id"]) {
             $role = 'owner';
-        }
+        }*/
+
+
+       /* $file = __DIR__ . "/log.txt";
+        var_dump($_POST['uuid_upload']);
+die();
+        file_put_contents($file, $content);*/
         return $next($request, $response);
     }
 }

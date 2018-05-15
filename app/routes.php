@@ -84,7 +84,7 @@ $app->post(
 $app->post(
     '/share',
     'Pwbox\Controller\PostShareController:postAction'
-);
+)->add('Pwbox\Controller\Middleware\ShareMiddleware');
 
 $app->get(
     '/shared',
