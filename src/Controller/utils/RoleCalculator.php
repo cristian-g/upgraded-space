@@ -4,6 +4,7 @@ namespace Pwbox\Controller\utils;
 
 class RoleCalculator {
     public static function computeRole(&$folder, &$role, $container) {
+        // Role
         $role = null;
         $share = null;
         if ($folder->getIdUser() == $_SESSION["user_id"]) {

@@ -38,13 +38,13 @@ class DeleteUploadController
             $actionName = '';
             if ($uploadToDelete->getExt() == null) {
                 // It is a folder
-                $newName = $uploadToDelete->getName();
+                $itemFileName = $uploadToDelete->getName();
                 $itemName = 'La carpeta';
                 $actionName = 'eliminada';
             }
             else {
                 // It is a file
-                $newName = $uploadToDelete->getName().'.'.$uploadToDelete->getExt();
+                $itemFileName = $uploadToDelete->getName().'.'.$uploadToDelete->getExt();
                 $itemName = 'El archivo';
                 $actionName = 'eliminado';
             }
@@ -67,7 +67,7 @@ class DeleteUploadController
                 $sharedFolder = ($this->container->get('get_folder_by_id_use_case'))($share->getIdUpload());
 
                 // Post notification
-                $message = $itemName.' con el anterior nombre "'.$oldName.'" ha sido '.$actionName.' a "'.$newName.'" por '.$user->getUsername().' ('.$user->getEmail().'), que es administrador de tu carpeta compartida llamada "'.$sharedFolder->getName().'".';
+                $message = $itemName.' con el nombre "'.$itemFileName.'" ha sido '.$actionName.' por '.$user->getUsername().' ('.$user->getEmail().'), que es administrador de tu carpeta compartida llamada "'.$sharedFolder->getName().'".';
                 $owner = ($this->container->get('get_user_use_case'))($sharedFolder->getIdUser());
                 $service([
                     'idShare' => $idShare,

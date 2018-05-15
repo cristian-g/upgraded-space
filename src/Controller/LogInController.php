@@ -77,12 +77,12 @@ class LogInController
                 if ($user->getId() == null){
                     //user doesn't exist
                     return $this->container->get('view')
-                        ->render($response, 'login.twig', ['error' => "Usuario inexistente"]);
+                        ->render($response, 'login.twig', ['error' => "Usuari inexistent"]);
                 }
                 else{
                     //user exists but password is incorrect
                     return $this->container->get('view')
-                        ->render($response, 'login.twig', ['error' => "Contraseña incorrecta"]);
+                        ->render($response, 'login.twig', ['error' => "Contrasenya incorrecta"]);
                 }
             }
         } catch (\Exception $e){
