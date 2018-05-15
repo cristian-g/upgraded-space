@@ -73,6 +73,24 @@ footer .footer-black .blue{
 .card {
     margin-bottom: 15px;
 }
+.errorPage-msg{
+    display: grid;
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 30px;
+}
+.errorPage-msg .error-code{
+    font-size: 150px;
+}
+.errorPage-msg .error-title{
+    font-size: 50px;
+}
+.errorPage-msg .error-subtitle{
+    font-size: 30px;
+}
+.folder-name{
+    cursor: pointer;
+}
 
 #profileimage {
     width: 30px;
