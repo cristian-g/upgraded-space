@@ -2,7 +2,7 @@
 {notification_title}
 {notification_message}
 
-Puedes consultar y editar tu carpeta compartida "{folder_name}" en:
+Puedes abrir la carpeta compartida:
 {link1}
 
 Puedes ver todas tus notificaciones en:
