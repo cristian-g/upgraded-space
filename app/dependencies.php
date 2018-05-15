@@ -23,7 +23,7 @@ $container['view'] = function($container) {
         $rootFolderSize = ($container->get('get_root_folder_size_use_case'))($_SESSION["user_id"]);
         $max_size = \Pwbox\Controller\PostFileController::$max_size_disk;
         if ($rootFolderSize == null) $rootFolderSize = 0;
-        $freeSpace = (float)(($max_size - $rootFolderSize)/1000000000.0);
+        $freeSpace = round((float)(($max_size - $rootFolderSize)/1000000.0), 2);
         $view->getEnvironment()->addGlobal('rootFolderSize', $freeSpace);
 
         // Notificacions
