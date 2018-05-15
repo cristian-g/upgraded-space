@@ -5,7 +5,6 @@ namespace Pwbox\Controller;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Pwbox\Controller\utils\RoleCalculator;
 
 class DashboardController
 {
@@ -46,7 +45,35 @@ class DashboardController
                 $this->computeFolderSizes($uploads);
 
                 // Role
-                $share = RoleCalculator::computeRole($folder, $role, $this->container);
+                if ($folder->getIdUser() == $_SESSION["user_id"]) {
+                    $role = 'owner';
+                }
+                else {
+                    $folderAux = $folder;
+                    $share = ($this->container->get('get_share_by_upload_id_use_case'))($folderAux->getId(), $_SESSION["user_id"]);
+                    while ($share == null || $share->getIdUserDestination() != $_SESSION["user_id"]) {
+                        if ($folderAux->getIdParent() == null) break;
+                        $folderAux = ($this->container->get('get_folder_by_id_use_case'))($folderAux->getIdParent());
+                        $share = ($this->container->get('get_share_by_upload_id_use_case'))($folderAux->getId(), $_SESSION["user_id"]);
+                        if ($share != null && $share->getIdUserDestination() == $_SESSION["user_id"]) break;
+                    }
+                    if ($share != null && $share->getIdUserDestination() == $_SESSION["user_id"]) {
+                        $role = $share->getRole();
+                    }
+                    else {
+                        $folderAux2 = $folder;
+                        if ($folderAux2->getIdParent() != null) {
+                            $folderAux2 = ($this->container->get('get_folder_by_id_use_case'))($folderAux2->getIdParent());
+                            while ($folderAux2->getIdUser() != $_SESSION["user_id"]) {
+                                if ($folderAux2->getIdParent() == null) break;
+                                $folderAux2 = ($this->container->get('get_folder_by_id_use_case'))($folderAux2->getIdParent());
+                            }
+                            if ($folderAux2->getIdUser() == $_SESSION["user_id"]) {
+                                $role = 'owner';
+                            }
+                        }
+                    }
+                }
 
                 // Breadcrumb
                 array_push($breadcrumb, $folder);
@@ -59,12 +86,7 @@ class DashboardController
                         }
                     }
                 }
-                if ((count($breadcrumb)-2) >= 0) {
-                    $parentFolder = $breadcrumb[count($breadcrumb)-2];
-                }
-                else {
-                    $parentFolder = null;
-                }
+                $parentFolder = $breadcrumb[count($breadcrumb)-2];
             }
             else {
                 // It is a file

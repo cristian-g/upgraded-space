@@ -20,7 +20,7 @@ class PostUserUseCase
     }
 
 
-    public function __invoke(array $rawData, $value, $extension)
+    public function __invoke(array $rawData)
     {
         $now = new \DateTime('now');
         $user = new User(
@@ -32,9 +32,7 @@ class PostUserUseCase
             $rawData['password'],
             0,
             $now,
-            $now,
-            $value,
-            $extension
+            $now
         );
         return $this->repository->save($user);
     }
