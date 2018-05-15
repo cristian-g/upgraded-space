@@ -306,7 +306,7 @@
                                     <i class="fa fa-folder"></i>
                                 {% endif %}
                                 {% if upload.ext is null %}
-                                    <a href="/dashboard/{{ upload.uuid }}"><strong>{{ upload.name }}</strong></a>
+                                    <span class="folder-name" ondblclick="window.location.href = '/dashboard/{{ upload.uuid }}'"><strong>{{ upload.name }}</strong></span>
                                     {% set foldersCount = foldersCount+1 %}
                                 {% else %}
                                     <a href="/dashboard/{{ upload.uuid }}" download="{{ upload.name }}.{{ upload.ext }}"><strong>{{ upload.name }}.{{ upload.ext }}</strong></a>

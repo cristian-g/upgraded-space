@@ -11,19 +11,10 @@ $app->get(
 );
     //->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');//podríem afegir un altre middleware add('Pwbox\Controller\Middleware\TestMiddleware'), aquest afegit s'executaria el primer
 
-$app->get('/', function ($req, $res, $args) {
-    if (isset($_SESSION["user_id"])) {
-        return $res->withStatus(302)->withHeader('Location', '/dashboard');
-    }
-    else {
-        return $res->withStatus(302)->withHeader('Location', '/landing');
-    }
-});
-
 $app->get(
-    '/landing',
+    '/',
     'Pwbox\Controller\LandingController'
-);
+)->add('Pwbox\Controller\Middleware\LandingMiddleware');
 
 $app->get(
     '/register',
@@ -58,7 +49,7 @@ $app->get(
 $app->get(
     '/profile',
     'Pwbox\Controller\ProfileUserController'
-)->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');
+)->add('Pwbox\Controller\Middleware\AuthorizedMiddleware');
 
 $app->get(
     '/logout',
@@ -113,4 +104,9 @@ $app->get(
 $app->get(
     '/resend',
     'Pwbox\Controller\ResendVerificationController'
+);
+
+$app->get(
+    '/403',
+    'Pwbox\Controller\NotAuthorizedController'
 );

@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+{% import "macros/userLogin.html.twig" as form %}
+{% block title %}
+    403{{ parent() }}
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="errorPage-msg">
+            <span class="error-code">403</span>
+            <span class="error-title">No estás autorizado para acceder a esta página...</span>
+            <span class="error-subtitle">¡Fuera de aquí hacker!</span>
+        </div>
+
+    </div>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

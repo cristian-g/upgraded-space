@@ -31,6 +31,6 @@ class DeleteUserController
             return $this->container->get('view')
                 ->render($response, 'profile.twig', ['error' => 'Error inesperado.']);
         }
-        return $response->withStatus(302)->withHeader('Location', '/landing');
+        return $response->withStatus(302)->withHeader('Location', '/');
     }
 }
