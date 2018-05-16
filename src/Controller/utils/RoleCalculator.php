@@ -7,7 +7,12 @@ class RoleCalculator {
         // Role
         $role = null;
         $share = null;
-        if ($folder->getIdUser() == $_SESSION["user_id"]) {
+
+        $folderAuxI = $folder;
+        while ($folderAuxI->getIdParent() != null) {
+            $folderAuxI = ($container->get('get_folder_by_id_use_case'))($folderAuxI->getIdParent());
+        }
+        if ($folderAuxI->getIdUser() == $_SESSION["user_id"]) {
             $role = 'owner';
         }
         else {

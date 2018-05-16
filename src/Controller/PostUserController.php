@@ -107,7 +107,7 @@ class PostUserController
                 $filename = $this->moveUploadedFile($directory, $profile);
                 $this->container->get('flash')->addMessage('login', 'User registered with profile image.');
             }else{
-                if ( !$profile->getSize() <= 500000){
+                if ( $profile->getSize() > 500000){
                     $this->container->get('flash')->addMessage('login', 'Submitted image larger than 500 Kb,user registered with default image.');
                 }
                 else if (copy($directory_default, $directory.'/profile_image.jpg')){

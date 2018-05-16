@@ -46,6 +46,8 @@
                                 <i class="fa fa-trash"></i>&nbsp&nbsp Ítem eliminado
                             {% elseif notification.type == "new_upload" %}
                                 <i class="fa fa-cloud"></i>&nbsp&nbsp Nuevo ítem
+                            {% elseif notification.type == "new_uploads" %}
+                                <i class="fa fa-cloud"></i>&nbsp&nbsp Nuevos ítems
                             {% elseif notification.type == "folder_received" %}
                                 <i class="fa fa-folder"></i>&nbsp&nbsp Carpeta recibida
                             {% endif %}
