@@ -39,6 +39,7 @@ class EditUserController
     public function __invoke(Request $request, Response $response, array $args)
     {
         try {
+
             $data = $request->getParsedBody();
             $uploadedFiles = $request->getUploadedFiles();
 
@@ -89,7 +90,6 @@ class EditUserController
                 $this->container->get('flash')->addMessage('login', 'User registered with profile image.');
             }
 
-            return $response->withStatus(302)->withHeader('Location', '/profile');
         } catch (\Exception $e){
             return $this->container->get('view')
                 ->render($response, 'profile.twig', ['error' => 'code: '.$e->getMessage()]);

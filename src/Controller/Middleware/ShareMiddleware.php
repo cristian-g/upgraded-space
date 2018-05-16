@@ -17,14 +17,16 @@ class ShareMiddleware
 
     public function __invoke(Request $request, Response $response, callable $next)
     {
-        // Role
-        $folder = ($this->container->get('get_upload_by_uuid_use_case'))($_POST['uuid_upload']);
+        $data = $request->getParsedBody();
+        $folder = ($this->container->get('get_upload_by_uuid_use_case'))($data['uuid_upload']);
 
+        // Role
         $role = null;
         $share = RoleCalculator::computeRole($folder, $role, $this->container);
         if($role != 'owner'){
             return $response->withStatus(302)->withHeader('Location', '/403');
         }
+
         return $next($request, $response);
     }
 }
