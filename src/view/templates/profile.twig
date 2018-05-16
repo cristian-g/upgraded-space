@@ -39,7 +39,7 @@
                 <p>Aún no has confirmado tu dirección de correo electrónico... <a href="/resend">Haz click aquí para reenviar el link de verificación a tu email.</a></p>
             </div>
         {% endif %}
-        {{ form.userForm(user.username, user.email, user.birthdate, "", "", "", "Guardar", "/edit", true) }}
+        {{ form.userForm(user.username, user.email, user.birthdate, "", "", "","Guardar", "updateForm", "updateSubmit", "/edit", true) }}
         <div class="text-right">
             <form id="deleteUserForm" action="/deleteUser" method="POST">
                 <button id="deleteUserButton" type="button" class="btn btn-danger">ELIMINAR CUENTA</button>

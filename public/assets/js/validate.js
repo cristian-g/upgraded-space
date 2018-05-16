@@ -30,7 +30,6 @@ $(document).ready(function () {
         if (confirm_password.localeCompare(password) != 0){
             return false;
         }
-       // ejecutarAjax();
         form.submit(); // If all the validations succeeded
     });
 
@@ -57,6 +56,33 @@ $(document).ready(function () {
             return false;
         }
 
+        form.submit(); // If all the validations succeeded
+    });
+
+    $('#updateSubmit').click(function(event) {
+        /* Validations go here */
+        var form = $("#updateForm");
+        form.addClass('was-validated');
+        // Validate a form in Bootstrap 4 in the browser using html5 and checkValidity function. Once the form has "passed" validation, add the "was-validated" class to the form, then the inputs will show valid-feedback or invalid-feedback messages
+        form.addClass('was-validated');
+        var username = $('#username').val();
+        var email = $('#email').val();
+        var password = $('#password').val();
+        var confirm_password = $('#confirm_password').val();
+
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (!mailformat.test(email)){
+            return false
+        }
+
+        var passwordformat = new RegExp("^(?=.*[A-Z])(?=.*[0-9])");
+        if (password.length < 6 || password.length > 12 || !passwordformat.test(password)){
+            return false;
+        }
+
+        if (confirm_password.localeCompare(password) != 0){
+            return false;
+        }
         form.submit(); // If all the validations succeeded
     });
 

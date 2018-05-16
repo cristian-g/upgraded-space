@@ -1,5 +1,5 @@
-{% macro userForm(username, email, birthdate, password, confirm_password, profile_image, buttonText, action, disabled) %}
-    <form action="{{ action|default('/register') }}" method="post" id="registerForm" enctype="multipart/form-data">
+{% macro userForm(username, email, birthdate, password, confirm_password, profile_image, buttonText, idForm, idButton, action, disabled) %}
+    <form action="{{ action|default('/register') }}" method="post" id="{{ idForm|default('registerForm') }}" enctype="multipart/form-data">
         <div class="form-group">
             <label for="username">Nombre de usuario</label>
             <input type="text" {% if disabled %} disabled {% else %} onchange="checkForm(this.name, this.value)" {% endif %} class="form-control" name="username" id="username" placeholder="Introduce el nombre de usuario que quieres" value="{{ username|default('') }}" required pattern="^[a-zA-Z0-9]{1,20}" aria-describedby="usernameHelpInline">
@@ -47,6 +47,6 @@
             <label for="profile_image">Imagen de perfil (opcional)</label>
             <input type="file" name="profile_image" id="profile_image" value="{{ profile_image|default('') }}" style="display: block">
         </div>
-        <input type="button" class="btn btn-primary" value="{{ buttonText|default('Crear la cuenta') }}" id="registerSubmit">
+        <input type="button" class="btn btn-primary" value="{{ buttonText|default('Crear la cuenta') }}" id="{{ idButton|default('registerSubmit') }}">
     </form>
 {% endmacro %}
