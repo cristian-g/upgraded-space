@@ -78,6 +78,25 @@
             {% endfor %}
         {% endfor %}
 
+        {% if flash('succes') is empty and flash('isPost') %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>¡Hurra!</strong> Todos los archivos han sido cargados exitosamente.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+        {% for successes in flash('succes') %}
+            {% for succes in successes %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ succes }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
         <div class="card">
             {% if not uuid_parent is null %}
                 {% if not ((role != "owner") and (parentFolder is null)) %}

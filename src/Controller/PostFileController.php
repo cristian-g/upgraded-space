@@ -44,6 +44,7 @@ class PostFileController
         $data = $request->getParsedBody();
 
         $errors = [];
+        $succes = [];
 
         $parentFolder = ($this->container->get('get_upload_by_uuid_use_case'))($data["uuid_parent"]);
 
@@ -60,9 +61,8 @@ class PostFileController
 
             if ($uploadedFile->getSize() > self::$max_size_file) {
                 $errors[] = sprintf(
-                    'El tamaño supera los 2MB, no se ha podido subir el archivo %s  %s  %s',
-                    $uploadedFile->getClientFilename(),
-                    $uploadedFile->getSize()
+                    'El tamaño supera los 2MB, no se ha podido subir el archivo %s',
+                    $uploadedFile->getClientFilename()
                 );
                 continue;
             }
@@ -115,6 +115,11 @@ class PostFileController
 
             $numCorrectFiles++;
             $fileNames[] = $fileInfo['filename'].'.'.$fileInfo['extension'];
+
+            $succes[] = sprintf(
+                '%s se ha subido correctamente',
+                $fileName
+            );
         }
 
         $uploads = ($this->container->get('get_uploads_use_case'))(null, $_SESSION["user_id"]);
@@ -164,6 +169,7 @@ class PostFileController
 
         $this->container->get('flash')->addMessage('errors', $errors);
         $this->container->get('flash')->addMessage('isPost', true);
+        $this->container->get('flash')->addMessage('succes', $succes);
         return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
     }
 

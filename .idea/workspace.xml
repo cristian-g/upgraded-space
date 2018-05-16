@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38ef741-17f9-42c2-878f-2681224a399e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/EditUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EditUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PostUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PostUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/templates/register.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/templates/register.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PostFileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PostFileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/templates/dashboard.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/templates/dashboard.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PostShareController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/PostShareController.php">
+      <file leaf-file-name="dashboard.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/view/templates/dashboard.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+            <state relative-caret-position="759">
+              <caret line="90" column="47" selection-start-line="90" selection-start-column="47" selection-end-line="90" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -30,8 +30,8 @@
       <file leaf-file-name="PostFileController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/PostFileController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="86" column="12" lean-forward="true" selection-start-line="86" selection-start-column="12" selection-end-line="93" selection-end-column="13" />
+            <state relative-caret-position="643">
+              <caret line="171" column="70" selection-start-line="171" selection-start-column="70" selection-end-line="171" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -45,7 +45,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditUserController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EditUserController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/EditUserController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="669">
@@ -117,9 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Subir archivo</find>
-      <find>breadcrumb</find>
-      <find>ir arriba</find>
       <find>$_SESSION[&quot;user_id&quot;]</find>
       <find>dashboard</find>
       <find>this-&gt;</find>
@@ -147,6 +144,9 @@
       <find>erro</find>
       <find>error</find>
       <find>you</find>
+      <find>max_size_file</find>
+      <find>isPost</find>
+      <find>upload</find>
     </findStrings>
     <replaceStrings>
       <replace>uploadFileModal</replace>
@@ -216,7 +216,6 @@
         <option value="$PROJECT_DIR$/src/Model/UseCase/GetUploadByUuidUseCase.php" />
         <option value="$PROJECT_DIR$/src/Controller/DeleteUploadController.php" />
         <option value="$PROJECT_DIR$/src/Controller/RenameUploadController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/PostFileController.php" />
         <option value="$PROJECT_DIR$/src/Controller/PostFolderController.php" />
         <option value="$PROJECT_DIR$/app/dependencies.php" />
         <option value="$PROJECT_DIR$/src/view/templates/403.twig" />
@@ -230,11 +229,12 @@
         <option value="$PROJECT_DIR$/public/assets/js/validate.js" />
         <option value="$PROJECT_DIR$/src/Controller/Middleware/ShareMiddleware.php" />
         <option value="$PROJECT_DIR$/app/routes.php" />
-        <option value="$PROJECT_DIR$/src/view/templates/dashboard.twig" />
         <option value="$PROJECT_DIR$/src/Controller/PostShareController.php" />
         <option value="$PROJECT_DIR$/src/Controller/PostUserController.php" />
         <option value="$PROJECT_DIR$/src/view/templates/register.twig" />
         <option value="$PROJECT_DIR$/src/Controller/EditUserController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/PostFileController.php" />
+        <option value="$PROJECT_DIR$/src/view/templates/dashboard.twig" />
       </list>
     </option>
   </component>
@@ -390,12 +390,12 @@
       <workItem from="1526052188981" duration="5000" />
       <workItem from="1526077330895" duration="15031000" />
       <workItem from="1526160641680" duration="66323000" />
-      <workItem from="1526490772229" duration="3993000" />
+      <workItem from="1526490772229" duration="7012000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="278427000" />
+    <option name="totallyTimeSpent" value="281446000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
@@ -673,13 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/templates/dashboard.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/DeleteUserController.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -687,13 +680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PostFileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="86" column="12" lean-forward="true" selection-start-line="86" selection-start-column="12" selection-end-line="93" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -753,6 +739,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="669">
           <caret line="88" column="74" selection-start-line="88" selection-start-column="74" selection-end-line="88" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PostFileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="171" column="70" selection-start-line="171" selection-start-column="70" selection-end-line="171" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/templates/dashboard.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="759">
+          <caret line="90" column="47" selection-start-line="90" selection-start-column="47" selection-end-line="90" selection-end-column="47" />
         </state>
       </provider>
     </entry>
