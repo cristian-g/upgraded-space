@@ -59,7 +59,7 @@ $app->get(
 $app->post(
     '/file',
     'Pwbox\Controller\PostFileController:postAction'
-);
+)->add('Pwbox\Controller\Middleware\CreateMiddleware');
 
 $app->post(
     '/deleteUser',
@@ -69,7 +69,7 @@ $app->post(
 $app->post(
     '/folder',
     'Pwbox\Controller\PostFolderController:postAction'
-);
+)->add('Pwbox\Controller\Middleware\CreateMiddleware');
 
 $app->post(
     '/rename',
