@@ -18,11 +18,12 @@ class ActionMiddleware
 
         try {
             // El pare (carpeta) on l'usuari diu que es troba l'ítem que vol renombrar o esborrar
-            $parent = ($this->container->get('get_upload_by_uuid_use_case'))($_POST['uuid_parent']);
+            $data = $request->getParsedBody();
+            $parent = ($this->container->get('get_upload_by_uuid_use_case'))($data['uuid_parent']);
             $parentId = ($parent == null) ? null : $parent->getId();
 
             // L'ítem que l'usuari vol renombrar o esborrar
-            $upload = ($this->container->get('get_upload_by_id_use_case'))($_POST['id']);
+            $upload = ($this->container->get('get_upload_by_id_use_case'))($data['id']);
 
             // Comprovem que l'ítem que l'usuari vol renombrar o esborrar estigui on diu l'usuari
             if ($upload->getIdParent() != $parentId) {

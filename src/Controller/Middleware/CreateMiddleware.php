@@ -17,8 +17,10 @@ class CreateMiddleware
     public function __invoke(Request $request, Response $response, callable $next) {
 
         try {
+            $data = $request->getParsedBody();
+
             // El pare (carpeta) on l'usuari vol crear l'ítem
-            $parent = ($this->container->get('get_upload_by_uuid_use_case'))($_POST['uuid_parent']);
+            $parent = ($this->container->get('get_upload_by_uuid_use_case'))($data['uuid_parent']);
             $parentId = ($parent == null) ? null : $parent->getId();
 
             if ($_POST['uuid_parent'] == '') {
