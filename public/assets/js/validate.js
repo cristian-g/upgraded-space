@@ -63,7 +63,7 @@ $(document).ready(function () {
         swal({
             title: "¿Eliminar cuenta?",
             icon: "warning",
-            text: "Si eliminas tu cuenta perderás todos tus documentos! Si deseas continuar haz click en 'Eliminar'.",
+            text: '¡Si eliminas tu cuenta perderás todos tus archivos y carpetas! Si deseas continuar haz click en "Eliminar".',
             buttons: {
                 cancel: "Cancelar",
                 confirm: "Eliminar"
