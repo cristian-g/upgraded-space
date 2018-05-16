@@ -87,7 +87,6 @@ class EditUserController
 
             if ($profile->getError() === UPLOAD_ERR_OK and $profile->getSize() <= 500000) {
                 $filename = $this->moveUploadedFile($directory, $profile);
-                $this->container->get('flash')->addMessage('login', 'User registered with profile image.');
             }
 
         } catch (\Exception $e){

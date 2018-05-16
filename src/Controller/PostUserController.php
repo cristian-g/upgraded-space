@@ -87,32 +87,42 @@ class PostUserController
             $service = $this->container->get('post_user_use_case');
 
             $profile = $uploadedFiles['profile_image'];
-            if ($profile->getError() === UPLOAD_ERR_OK and $profile->getSize() <= 500000){
-                $userId = $service($data, 0, pathinfo($profile->getClientFilename(), PATHINFO_EXTENSION));
-            }else{
-                $userId = $service($data, 1, 'jpg');
-            }
 
+            //we check profile image extension
+            $fileName = $profile->getClientFilename();
+            $fileInfo = pathinfo($fileName);
+            $extension = $fileInfo['extension'];
+            if (!$this->isValidExtension($extension)) {
+                return $this->container->get('view')
+                    ->render($response, 'register.twig', ['error' => "Formato de imagen de perfil incorrecto, utilizar .jpg, .png o .gif"]);
+            }
 
             $user = ($this->container->get('get_user_use_case'))($userId);
 
             $directory = __DIR__.'/../../public/uploads/'.$user->getUuid();// És relatiu o absolut, però respecte el file system (la màquina)
             $directory_default = __DIR__.'/../../public/assets/img/profile_images/default.jpg';
 
-            if (!file_exists($directory)) {
-                mkdir($directory, 0777, true);
-            }
-
             if ($profile->getError() === UPLOAD_ERR_OK and $profile->getSize() <= 500000) {
                 $filename = $this->moveUploadedFile($directory, $profile);
                 $this->container->get('flash')->addMessage('login', 'User registered with profile image.');
             }else{
                 if ( $profile->getSize() > 500000){
-                    $this->container->get('flash')->addMessage('login', 'Submitted image larger than 500 Kb,user registered with default image.');
+                    return $this->container->get('view')
+                        ->render($response, 'register.twig', ['error' => "Archivo demasiado grande, el tamaño maximo es 500KB"]);
                 }
                 else if (copy($directory_default, $directory.'/profile_image.jpg')){
                     $this->container->get('flash')->addMessage('login', 'User registered with default image.');
                 }
+            }
+
+            if ($profile->getError() === UPLOAD_ERR_OK and $profile->getSize() <= 500000){
+                $userId = $service($data, 0, pathinfo($profile->getClientFilename(), PATHINFO_EXTENSION));
+            }else{
+                $userId = $service($data, 1, 'jpg');
+            }
+
+            if (!file_exists($directory)) {
+                mkdir($directory, 0777, true);
             }
 
             // Create account verification link
@@ -130,4 +140,12 @@ class PostUserController
     }
 
 
+    private function isValidExtension($extension)
+    {
+        if ($extension == null) return false;
+
+        $validExtensions = ['jpg', 'png', 'gif'];
+
+        return in_array($extension, $validExtensions);
+    }
 }
