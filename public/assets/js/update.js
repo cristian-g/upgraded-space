@@ -20,12 +20,14 @@ $(document).ready(function () {
                         confirm: "Aceptar"
                     }
                 });
+                var profileimageSrc = $('#profileimage').attr('src');
+                $('#profileimage').removeAttr('src').attr('src', profileimageSrc+'?timestamp=' + new Date().getTime());
             },
             error: function (responseText) {
                 swal({
                     title: "Error",
                     icon: "error",
-                    text: "Ha habido un error con el servidor, intentalo de nuevo.",
+                    text: "Ha habido un error con el servidor, inténtalo de nuevo.",
                     buttons: {
                         confirm: "Aceptar"
                     },
