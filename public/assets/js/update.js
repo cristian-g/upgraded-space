@@ -1,14 +1,23 @@
+$(document).ready(function () {
 
-function ejecutarAjax(){
-    $.ajax({
-        type: 'post',
-        url: '/edit',
-        data: $("#registerForm").serialize(),
-        success: function(json) {
+    $(document).on('submit', '#registerForm', function (e) {
+        e.preventDefault();
 
-        },
-        error: function(responseText) {
+        var data = new FormData($('#registerForm')[0]);
+        $.ajax({
+            type: 'post',
+            url: '/edit',
+            processData: false,
+            contentType: false,
+            cache: false,
+            data: data,
+            success: function (json) {
 
-        }
+            },
+            error: function (responseText) {
+
+            }
+        });
     });
-}
+});
+
