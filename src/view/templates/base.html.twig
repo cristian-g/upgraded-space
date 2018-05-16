@@ -73,6 +73,8 @@
                                                 <i class="fa fa-trash"></i>&nbsp&nbsp Ítem eliminado
                                             {% elseif notification.type == "new_upload" %}
                                                 <i class="fa fa-cloud"></i>&nbsp&nbsp Nuevo ítem
+                                            {% elseif notification.type == "new_uploads" %}
+                                                <i class="fa fa-cloud"></i>&nbsp&nbsp Nuevos ítems
                                             {% elseif notification.type == "folder_received" %}
                                                 <i class="fa fa-folder"></i>&nbsp&nbsp Carpeta recibida
                                             {% endif %}
@@ -95,7 +97,7 @@
                                             {{ user.username }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuButton">
-                                            <p class="text-center root-folder-size">{{ rootFolderSize }}MB disponibles de un total de 1000MB</p>
+                                            <p class="text-center root-folder-size">{{ rootFolderSize }} MB disponibles de un total de 1000 MB</p>
                                             <a class="dropdown-item" href="{{ base_url() }}/profile">
                                                 Mi perfil
                                             </a>

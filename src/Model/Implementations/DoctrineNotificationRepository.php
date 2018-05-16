@@ -60,7 +60,8 @@ class DoctrineNotificationRepository implements NotificationRepository
                 (notification.type = 'folder_sended' OR 
                 notification.type = 'upload_renamed' OR
                 notification.type = 'upload_deleted' OR 
-                notification.type = 'new_upload'))
+                notification.type = 'new_upload' OR
+                notification.type = 'new_uploads'))
                 UNION
                 (SELECT 
                 notification.id, 
@@ -102,7 +103,8 @@ class DoctrineNotificationRepository implements NotificationRepository
                 (notification.type = 'folder_sended' OR 
                 notification.type = 'upload_renamed' OR
                 notification.type = 'upload_deleted' OR 
-                notification.type = 'new_upload'))
+                notification.type = 'new_upload' OR
+                notification.type = 'new_uploads'))
                 UNION
                 (SELECT 
                 notification.id, 

@@ -5,6 +5,7 @@ namespace Pwbox\Controller;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Pwbox\Controller\utils\EmailSender;
 use Pwbox\Controller\utils\RoleCalculator;
 
 class DeleteUploadController
@@ -53,7 +54,7 @@ class DeleteUploadController
             $service = $this->container->get('delete_upload_use_case');
             $service($data['id']);
 
-            // Post notification and send email. Type: upload_renamed - Ítem renombrado
+            // Post notification and send email. Type: upload_deleted - Ítem eliminado
             // Post notification
             $service = $this->container->get('post_notification_use_case');
             $user = ($this->container->get('get_user_use_case'))($_SESSION["user_id"]);

@@ -5,6 +5,8 @@ namespace Pwbox\Controller;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Pwbox\Controller\utils\EmailSender;
+use Pwbox\Controller\utils\RoleCalculator;
 
 class PostFolderController
 {
@@ -29,36 +31,20 @@ class PostFolderController
             $service($data, $parentFolder->getId());
 
             // Store the name of the item
-            $uploadToDelete = ($this->container->get('get_folder_by_id_use_case'))($data["id"]);
-            $itemName = '';
-            $actionName = '';
-            if ($uploadToDelete->getExt() == null) {
-                // It is a folder
-                $itemFileName = $uploadToDelete->getName();
-                $itemName = 'La carpeta';
-                $actionName = 'eliminada';
-            }
-            else {
-                // It is a file
-                $itemFileName = $uploadToDelete->getName().'.'.$uploadToDelete->getExt();
-                $itemName = 'El archivo';
-                $actionName = 'eliminado';
-            }
+            $itemFileName = $data["name"];
+            $itemName = "La carpeta";
+            $actionName = 'creada';
 
-            // Delete from database
-            $service = $this->container->get('delete_upload_use_case');
-            $service($data['id']);
-
-            // Post notification and send email. Type: upload_renamed - Ítem renombrado
+            // Post notification and send email. Type: new_upload - Nuevo ítem
             // Post notification
             $service = $this->container->get('post_notification_use_case');
             $user = ($this->container->get('get_user_use_case'))($_SESSION["user_id"]);
 
-            // Role
+            // Role and notificate
             $folder = ($this->container->get('get_folder_by_uuid_use_case'))($data["uuid_parent"]);
             $role = null;
             $share = RoleCalculator::computeRole($folder, $role, $this->container);
-            if ($share != null) {
+            if ($role == 'admin') {
                 $idShare = $share->getId();
                 $sharedFolder = ($this->container->get('get_folder_by_id_use_case'))($share->getIdUpload());
 
@@ -67,11 +53,11 @@ class PostFolderController
                 $owner = ($this->container->get('get_user_use_case'))($sharedFolder->getIdUser());
                 $service([
                     'idShare' => $idShare,
-                    'type' => 'upload_deleted',
+                    'type' => 'new_upload',
                     'message' => $message
                 ]);
                 // Send email
-                $notificationTitle = 'Ítem eliminado';
+                $notificationTitle = 'Nuevo ítem';
                 $notificationMessage = $message;
                 $folderName = $sharedFolder->getName();
                 $folderLink = "http://pwbox.test/dashboard/".$sharedFolder->getUuid();

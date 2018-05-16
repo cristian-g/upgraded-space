@@ -5,6 +5,7 @@ namespace Pwbox\Controller;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Pwbox\Controller\utils\EmailSender;
 
 class PostShareController
 {
@@ -39,17 +40,44 @@ class PostShareController
 
             $user = ($this->container->get('get_user_use_case'))($_SESSION["user_id"]);
 
-            // Post notifications
+            // Post notifications and send emails
+            $roleText = '';
+            if ($data["role"] == 'reader') {
+                $roleText = 'lector';
+            }
+            else if ($data["role"] == 'admin') {
+                $roleText = 'administrador';
+            }
+            // Carpeta recibida
+            $message = $user->getUsername().' ('.$user->getEmail().') compartió la carpeta llamada "'.$folder->getName().'" contigo con rol de '.$roleText.'.';
             $service([
                 'idShare' => $idShare,
                 'type' => 'folder_received',
-                'message' => $user->getUsername().' ('.$user->getEmail().') compartió la carpeta llamada "'.$folder->getName().'" contigo.'
+                'message' => $message
             ]);
+            $notificationTitle = "Carpeta recibida";
+            $notificationMessage = $message;
+            $folderName = $folder->getName();
+            $folderLink = "http://pwbox.test/dashboard/".$folder->getUuid();
+            $notificationsLink = "http://pwbox.test/notifications";
+            $userEmail = $userDestination->getEmail();
+            $userUsername = $userDestination->getUsername();
+            EmailSender::sendNotification($notificationTitle, $notificationMessage, $folderName, $folderLink, $notificationsLink, $userEmail, $userUsername);
+            // Carpeta compartida
+            $message = 'Compartiste la carpeta llamada "'.$folder->getName().'" con '.$userDestination->getUsername().' ('.$userDestination->getEmail().') con rol de '.$roleText.'.';
             $service([
                 'idShare' => $idShare,
                 'type' => 'folder_sended',
-                'message' => 'Compartiste la carpeta llamada "'.$folder->getName().'" con '.$userDestination->getUsername().' ('.$userDestination->getEmail().').'
+                'message' => $message
             ]);
+            $notificationTitle = "Carpeta compartida";
+            $notificationMessage = $message;
+            $folderName = $folder->getName();
+            $folderLink = "http://pwbox.test/dashboard/".$folder->getUuid();
+            $notificationsLink = "http://pwbox.test/notifications";
+            $userEmail = $user->getEmail();
+            $userUsername = $user->getUsername();
+            EmailSender::sendNotification($notificationTitle, $notificationMessage, $folderName, $folderLink, $notificationsLink, $userEmail, $userUsername);
 
             $this->container->get('flash')->addMessage('dashboard', 'La carpeta se ha compartido correctamente.');
             return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));

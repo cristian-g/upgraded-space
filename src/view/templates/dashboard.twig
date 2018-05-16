@@ -143,7 +143,7 @@
             {% elseif role == "admin" %}
                 <div class="col-md-4 text-right"><i class="fa fa-edit"></i> Administrador</div>
             {% elseif role == "reader" %}
-                <div class="col-md-12 text-right"><i class="fa fa-eye"></i> Espectador</div>
+                <div class="col-md-12 text-right"><i class="fa fa-eye"></i> Lector</div>
             {% endif %}
         </div>
 
@@ -259,10 +259,15 @@
                                 <div class="form-group">
                                     <label for="roleSelect">Rol del usuario que va a recibir la carpeta:</label>
                                     <select class="form-control" id="roleSelect" name="role">
-                                        <option value="reader">Espectador</option>
+                                        <option value="reader">Lector</option>
                                         <option value="admin">Administrador</option>
                                     </select>
                                 </div>
+                                {% if uuid_parent is null %}
+                                    <input type="hidden" name="uuid_parent" value="">
+                                {% else %}
+                                    <input type="hidden" name="uuid_parent" value="{{ uuid_parent }}">
+                                {% endif %}
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -338,10 +343,20 @@
                 <tfoot>
                     <tr>
                         <td colspan="4">
-                        {% if uuid_parent is null %}
-                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} carpetas y {{ filesCount }} archivos, {{ rootFolderSize }} bytes en total.</small>
+                        {% if foldersCount == 1 %}
+                            {% set foldersWord = "carpeta" %}
                         {% else %}
-                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} carpetas y {{ filesCount }} archivos, {{ folderSize }} bytes en total.</small>
+                            {% set foldersWord = "carpetas" %}
+                        {% endif %}
+                        {% if filesCount == 1 %}
+                            {% set filesWord = "archivo" %}
+                        {% else %}
+                            {% set filesWord = "archivos" %}
+                        {% endif %}
+                        {% if uuid_parent is null %}
+                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} {{ foldersWord }} y {{ filesCount }} {{ filesWord }}, {{ rootFolderSize }} bytes en total.</small>
+                        {% else %}
+                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} {{ foldersWord }} y {{ filesCount }} {{ filesWord }}, {{ folderSize }} bytes en total.</small>
                         {% endif %}
                         </td>
                     </tr>
