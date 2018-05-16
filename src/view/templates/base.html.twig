@@ -41,13 +41,13 @@
                                     </li>
                                 {% else %}
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#info"><span class="glyphicon glyphicon-file"></span>{{ app.request.uri }} Conócenos</a>
+                                        <a class="nav-link" href="{% if isLanding %}#info{% else %}/#info{% endif %}"><span class="glyphicon glyphicon-file"></span> Conócenos</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#opiniones"><span class="glyphicon glyphicon-file"></span> Opinión</a>
+                                        <a class="nav-link" href="{% if isLanding %}#opiniones{% else %}/#opiniones{% endif %}"><span class="glyphicon glyphicon-file"></span> Opinión</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#contacto"><span class="glyphicon glyphicon-file"></span> Contacto</a>
+                                        <a class="nav-link" href="{% if isLanding %}#contacto{% else %}/#contacto{% endif %}"><span class="glyphicon glyphicon-file"></span> Contacto</a>
                                     </li>
                                 {% endif %}
                             </ul>
