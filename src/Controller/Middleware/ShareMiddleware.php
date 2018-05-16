@@ -17,7 +17,8 @@ class ShareMiddleware
 
     public function __invoke(Request $request, Response $response, callable $next)
     {
-        $folder = ($this->container->get('get_upload_by_uuid_use_case'))($_POST['uuid_upload']);
+        $data = $request->getParsedBody();
+        $folder = ($this->container->get('get_upload_by_uuid_use_case'))($data['uuid_upload']);
 
         // Role
         $role = null;

@@ -102,13 +102,3 @@ $app->get(
     '/403',
     'Pwbox\Controller\NotAuthorizedController'
 );
-
-//usuari no registrat
-$app->group('', function () use ($app) {
-
-})->add('Pwbox\Controller\Middleware\UserNotLoggedMiddleware');
-
-//usuari registrat
-$app->group('', function () use ($app) {
-
-})->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');
