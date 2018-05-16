@@ -91,7 +91,7 @@ $app->get(
 $app->get(
     '/verification/{key}',
     'Pwbox\Controller\VerificationController'
-);
+)->add('Pwbox\Controller\Middleware\VerificationMiddleware');// Només permet l'accés si l'usuari encara no està validat
 
 $app->get(
     '/resend',

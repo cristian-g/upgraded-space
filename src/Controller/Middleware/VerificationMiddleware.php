@@ -4,9 +4,8 @@ namespace Pwbox\Controller\Middleware;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Pwbox\Controller\utils\RoleCalculator;
 
-class ShareMiddleware
+class VerificationMiddleware
 {
     private $container;
 
@@ -16,16 +15,12 @@ class ShareMiddleware
 
     public function __invoke(Request $request, Response $response, callable $next)
     {
-        $data = $request->getParsedBody();
-        $folder = ($this->container->get('get_upload_by_uuid_use_case'))($data['uuid_upload']);
+        $key = $request->getAttribute('routeInfo')[2]['key'];
+        $user = ($this->container->get('get_user_by_email_activation_key_use_case'))($key);
 
-        // Role
-        $role = null;
-        $share = RoleCalculator::computeRole($folder, $role, $this->container);
-        if($role != 'owner'){
+        if ($user->getActive() == 1) {
             return $response->withStatus(302)->withHeader('Location', '/403');
         }
-
         return $next($request, $response);
     }
 }
