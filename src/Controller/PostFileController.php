@@ -16,7 +16,7 @@ class PostFileController
 {
     protected $container;
     public static $max_size_file = 2000000;// 2000000 = 2 MB
-    public static $max_size_disk = 100;// 1000000000 = 1 GB
+    public static $max_size_disk = 1000000000;// 1000000000 = 1 GB
 
     public function __construct(ContainerInterface $container)
     {

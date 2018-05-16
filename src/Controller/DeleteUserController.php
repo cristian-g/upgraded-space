@@ -24,9 +24,25 @@ class DeleteUserController
     {
         try{
             $userid = $_SESSION['user_id'];
+            $user = $this->container->get('get_user_use_case')($userid);
             $service = $this->container->get('delete_user_use_case');
-            $service(["userid" => $userid]);
+            $service($userid);
             $_SESSION['user_id'] = null;
+
+            //we delete the physical folder with all file on it
+            $dir = __DIR__.'/../../public/uploads/'.$user->getUuid();
+            $it = new \RecursiveDirectoryIterator($dir, \RecursiveDirectoryIterator::SKIP_DOTS);
+            $files = new \RecursiveIteratorIterator($it,
+                \RecursiveIteratorIterator::CHILD_FIRST);
+            foreach($files as $file) {
+                if ($file->isDir()){
+                    rmdir($file->getRealPath());
+                } else {
+                    unlink($file->getRealPath());
+                }
+            }
+            rmdir($dir);
+
         } catch (\Exception $e){
             return $this->container->get('view')
                 ->render($response, 'profile.twig', ['error' => 'Error inesperado.']);
