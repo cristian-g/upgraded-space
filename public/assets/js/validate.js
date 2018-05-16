@@ -30,6 +30,7 @@ $(document).ready(function () {
         if (confirm_password.localeCompare(password) != 0){
             return false;
         }
+//        ejecutarAjax();
         form.submit(); // If all the validations succeeded
     });
 

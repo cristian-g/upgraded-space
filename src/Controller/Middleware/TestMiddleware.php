@@ -9,6 +9,8 @@ class TestMiddleware
 {
     public function __invoke(Request $request, Response $response, callable $next)
     {
+        var_dump($_POST);
+        die();
         $response->getBody()->write('BEFORE');
         $next($request, $response);//següent middleware. hi ha un altre middleware? no, doncs crida a la ruta, al controlador
         $response->getBody()->write('AFTER');

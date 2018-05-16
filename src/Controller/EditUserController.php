@@ -39,6 +39,7 @@ class EditUserController
     public function __invoke(Request $request, Response $response, array $args)
     {
         try {
+
             $data = $request->getParsedBody();
             $uploadedFiles = $request->getUploadedFiles();
 
