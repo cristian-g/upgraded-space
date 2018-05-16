@@ -4,6 +4,8 @@ $(document).ready(function () {
         e.preventDefault();
 
         var data = new FormData($('#updateForm')[0]);
+        var filename = $('#profile_image').val();
+        var extension = filename.split('.').pop();
         $.ajax({
             type: 'post',
             url: '/edit',
@@ -21,7 +23,9 @@ $(document).ready(function () {
                     }
                 });
                 var profileimageSrc = $('#profileimage').attr('src');
-                $('#profileimage').removeAttr('src').attr('src', profileimageSrc+'?timestamp=' + new Date().getTime());
+                var newPath =  profileimageSrc.replace(/\.[^/.]+$/, "") + '.' + extension;
+                $('#profileimage').removeAttr('src').attr('src', newPath+'?timestamp=' + new Date().getTime());
+                $('#bigProfileImage').removeAttr('src').attr('src', newPath+'?timestamp=' + new Date().getTime());
             },
             error: function (responseText) {
                 swal({
