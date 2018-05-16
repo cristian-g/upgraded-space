@@ -1,8 +1,5 @@
 <?php
-
 namespace Pwbox\Model;
-
-
 class User
 {
     private $id;
@@ -15,7 +12,8 @@ class User
     private $emailActivationKey;
     private $createdAt;
     private $updatedAt;
-
+    private $default_profile;
+    private $extension;
     /**
      * User constructor.
      * @param $id
@@ -28,8 +26,10 @@ class User
      * @param $emailActivationKey
      * @param $createdAt
      * @param $updatedAt
+     * @param $default_profile
+     * @param $extension
      */
-    public function __construct($id, $uuid, $username, $email, $birthdate, $password, $active, $createdAt, $updatedAt)
+    public function __construct($id, $uuid, $username, $email, $birthdate, $password, $active, $createdAt, $updatedAt, $default_profile, $extension)
     {
         $this->id = $id;
         $this->uuid = $uuid;
@@ -41,8 +41,9 @@ class User
         $this->emailActivationKey = md5($email . $username);
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
+        $this->default_profile = $default_profile;
+        $this->extension = $extension;
     }
-
     /**
      * @return mixed
      */
@@ -50,7 +51,6 @@ class User
     {
         return $this->id;
     }
-
     /**
      * @param mixed $id
      */
@@ -58,7 +58,6 @@ class User
     {
         $this->id = $id;
     }
-
     /**
      * @return mixed
      */
@@ -66,7 +65,6 @@ class User
     {
         return $this->uuid;
     }
-
     /**
      * @param mixed $uuid
      */
@@ -74,7 +72,6 @@ class User
     {
         $this->uuid = $uuid;
     }
-
     /**
      * @return mixed
      */
@@ -82,7 +79,6 @@ class User
     {
         return $this->username;
     }
-
     /**
      * @param mixed $username
      */
@@ -90,7 +86,6 @@ class User
     {
         $this->username = $username;
     }
-
     /**
      * @return mixed
      */
@@ -98,7 +93,6 @@ class User
     {
         return $this->email;
     }
-
     /**
      * @param mixed $email
      */
@@ -106,7 +100,6 @@ class User
     {
         $this->email = $email;
     }
-
     /**
      * @return mixed
      */
@@ -114,7 +107,6 @@ class User
     {
         return $this->birthdate;
     }
-
     /**
      * @param mixed $birthdate
      */
@@ -122,7 +114,6 @@ class User
     {
         $this->birthdate = $birthdate;
     }
-
     /**
      * @return mixed
      */
@@ -130,7 +121,6 @@ class User
     {
         return $this->password;
     }
-
     /**
      * @param mixed $password
      */
@@ -138,7 +128,6 @@ class User
     {
         $this->password = $password;
     }
-
     /**
      * @return mixed
      */
@@ -146,7 +135,6 @@ class User
     {
         return $this->active;
     }
-
     /**
      * @param mixed $active
      */
@@ -154,7 +142,6 @@ class User
     {
         $this->active = $active;
     }
-
     /**
      * @return mixed
      */
@@ -162,7 +149,6 @@ class User
     {
         return $this->emailActivationKey;
     }
-
     /**
      * @param mixed $emailActivationKey
      */
@@ -170,7 +156,6 @@ class User
     {
         $this->emailActivationKey = $emailActivationKey;
     }
-
     /**
      * @return mixed
      */
@@ -178,7 +163,6 @@ class User
     {
         return $this->createdAt;
     }
-
     /**
      * @param mixed $createdAt
      */
@@ -186,7 +170,6 @@ class User
     {
         $this->createdAt = $createdAt;
     }
-
     /**
      * @return mixed
      */
@@ -194,7 +177,6 @@ class User
     {
         return $this->updatedAt;
     }
-
     /**
      * @param mixed $updatedAt
      */
@@ -202,7 +184,34 @@ class User
     {
         $this->updatedAt = $updatedAt;
     }
-
+    /**
+     * @return mixed
+     */
+    public function getDefaultProfile()
+    {
+        return $this->default_profile;
+    }
+    /**
+     * @param mixed $default_profile
+     */
+    public function setDefaultProfile($default_profile)
+    {
+        $this->default_profile = $default_profile;
+    }
+    /**
+     * @return mixed
+     */
+    public function getExtension()
+    {
+        return $this->extension;
+    }
+    /**
+     * @param mixed $extension
+     */
+    public function setExtension($extension)
+    {
+        $this->extension = $extension;
+    }
     public static function fromArray($array)
     {
         $object = new User(
@@ -213,13 +222,13 @@ class User
             $array["birthdate"],
             null,
             $array["active"],
-            $array["email_activation_key"],
             $array["created_at"],
-            $array["updated_at"]);
+            $array["updated_at"],
+            $array["default_picture"],
+            $array["extension"]);
         $object->setPassword($array["password"]);
         return $object;
     }
-
     public function toArray() {
         $array = [];
         $array["id"] = $this->getId();
@@ -230,6 +239,8 @@ class User
         $array["password"] = $this->getPassword();
         $array["created_at"] = $this->getCreatedAt();
         $array["updated_at"] = $this->getUpdatedAt();
+        $array["default_profile"] = $this->getDefaultProfile();
+        $array["extension"] = $this->getExtension();
         return $array;
     }
 }

@@ -1,15 +1,11 @@
 <?php
-
 namespace Pwbox\Model\UseCase;
-
 use Pwbox\Model\User;
 use Pwbox\Model\UserRepository;
-
 class EditUserUseCase
 {
     /** @var UserRepository */
     private $repository;
-
     /**
      * PostUserUseCase constructor.
      * @param UserRepository $repository
@@ -18,9 +14,7 @@ class EditUserUseCase
     {
         $this->repository = $repository;
     }
-
-
-    public function __invoke(array $rawData, int $uid)
+    public function __invoke(array $rawData, $value, $extension, int $uid)
     {
         $now = new \DateTime('now');
         $user = new User(
@@ -32,8 +26,15 @@ class EditUserUseCase
             $rawData['password'],
             0,
             $now,
-            $now
+            $now,
+            $value,
+            $extension
         );
-        return $this->repository->update($user);
+        //if we update the profile picture
+        if ($value == 0){
+            return $this->repository->updateWithPicture($user);
+        }else{
+            return $this->repository->update($user);
+        }
     }
 }
