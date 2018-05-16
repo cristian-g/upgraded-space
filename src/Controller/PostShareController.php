@@ -31,6 +31,11 @@ class PostShareController
 
             $service = $this->container->get('get_from_email_use_case');
             $userDestination = $service($data['email']);
+            if ($userDestination->getId() == null) {
+                $this->container->get('flash')->addMessage('dashboard-errors', 'La carpeta no se ha podido compartir porque no existe un usuario con el email especificado.');
+                return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
+            }
+
             $data["idUserDestination"] = $userDestination->getId();
 
             $service = $this->container->get('post_share_use_case');

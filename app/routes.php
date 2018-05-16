@@ -1,8 +1,5 @@
 <?php
 
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
-
 $app->add('Pwbox\Controller\Middleware\SessionMiddleware');
 
 $app->get(
