@@ -28,7 +28,7 @@ class RenameUploadController
             $data = $request->getParsedBody();
 
             // Store upload to know its old name
-            $oldUpload = ($this->container->get('get_folder_by_id_use_case'))($data["id"]);
+            $oldUpload = ($this->container->get('get_upload_by_id_use_case'))($data["id"]);
             if ($oldUpload->getExt() == null) {
                 // It is a folder
                 $oldName = $oldUpload->getName();
@@ -43,7 +43,7 @@ class RenameUploadController
             $service($data);
 
             // New name
-            $newUpload = ($this->container->get('get_folder_by_id_use_case'))($data["id"]);
+            $newUpload = ($this->container->get('get_upload_by_id_use_case'))($data["id"]);
             $itemName = '';
             $actionName = '';
             if ($newUpload->getExt() == null) {
@@ -65,12 +65,12 @@ class RenameUploadController
             $user = ($this->container->get('get_user_use_case'))($_SESSION["user_id"]);
 
             // Role
-            $folder = ($this->container->get('get_folder_by_uuid_use_case'))($data["uuid_parent"]);
+            $folder = ($this->container->get('get_upload_by_uuid_use_case'))($data["uuid_parent"]);
             $role = null;
             $share = RoleCalculator::computeRole($folder, $role, $this->container);
-            if ($share != null) {
+            if ($share != null && $role == 'admin') {
                 $idShare = $share->getId();
-                $sharedFolder = ($this->container->get('get_folder_by_id_use_case'))($share->getIdUpload());
+                $sharedFolder = ($this->container->get('get_upload_by_id_use_case'))($share->getIdUpload());
 
                 // Post notification
                 $message = $itemName.' con el anterior nombre "'.$oldName.'" ha sido '.$actionName.' a "'.$newName.'" por '.$user->getUsername().' ('.$user->getEmail().'), que es administrador de tu carpeta compartida llamada "'.$sharedFolder->getName().'".';

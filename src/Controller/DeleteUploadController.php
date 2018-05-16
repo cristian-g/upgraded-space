@@ -34,7 +34,7 @@ class DeleteUploadController
             }
             
             // Store the name of the item
-            $uploadToDelete = ($this->container->get('get_folder_by_id_use_case'))($data["id"]);
+            $uploadToDelete = ($this->container->get('get_upload_by_id_use_case'))($data["id"]);
             $itemName = '';
             $actionName = '';
             if ($uploadToDelete->getExt() == null) {
@@ -60,12 +60,12 @@ class DeleteUploadController
             $user = ($this->container->get('get_user_use_case'))($_SESSION["user_id"]);
 
             // Role
-            $folder = ($this->container->get('get_folder_by_uuid_use_case'))($data["uuid_parent"]);
+            $folder = ($this->container->get('get_upload_by_uuid_use_case'))($data["uuid_parent"]);
             $role = null;
             $share = RoleCalculator::computeRole($folder, $role, $this->container);
-            if ($share != null) {
+            if ($share != null && $role == 'admin') {
                 $idShare = $share->getId();
-                $sharedFolder = ($this->container->get('get_folder_by_id_use_case'))($share->getIdUpload());
+                $sharedFolder = ($this->container->get('get_upload_by_id_use_case'))($share->getIdUpload());
 
                 // Post notification
                 $message = $itemName.' con el nombre "'.$itemFileName.'" ha sido '.$actionName.' por '.$user->getUsername().' ('.$user->getEmail().'), que es administrador de tu carpeta compartida llamada "'.$sharedFolder->getName().'".';

@@ -54,7 +54,7 @@ class EditUserController
             //confirm password
             if (strcmp($data['password'], $data['confirm_password']) != 0) {
                 return $this->container->get('view')
-                    ->render($response, 'profile.twig', ['error' => "Las dos contrasenyas no son iguales"]);
+                    ->render($response, 'profile.twig', ['error' => "Las dos contraseñas no son iguales"]);
             }
 
             //email
@@ -80,8 +80,6 @@ class EditUserController
 
             $this->container->get('flash')->addMessage('dashboard', 'User registered.');
 
-
-
             if (!file_exists($directory)) {
                 mkdir($directory, 0777, true);
             }
@@ -90,46 +88,6 @@ class EditUserController
                 $filename = $this->moveUploadedFile($directory, $profile);
                 $this->container->get('flash')->addMessage('login', 'User registered with profile image.');
             }
-
-            // create account verification link
-            $link = 'http://' . $_SERVER['SERVER_NAME'] . '/activation.php?key=' . 'EXAMPLE';
-
-            // get the html email content
-            $directory = __DIR__ . '/../view/emails/';
-            $html_content = file_get_contents($directory . 'email_verification.html');
-            echo $html_content;
-            /*$html_content = preg_replace('/{link}/', $link, $html_content);*/
-            //$html_content = $link;
-
-            // get plain email content
-            /*$plain_text = file_get_contents('emails/email_verification.txt');
-            $plain_text = preg_replace('/{link}/', $link, $plain_text);*/
-            $plain_text = $html_content;
-
-
-            $smtp_server = 'smtp.mailtrap.io';
-            $username = 'f67054347185ac';
-            $password = 'eebd296edd6a0f';
-            $port = '465';
-
-
-            $message = (new \Swift_Message('Wonderful Subject'))
-                ->setSubject("PWBox")
-                ->setFrom(['user@yourdomain.com' => 'iTech Empires'])
-                ->setTo(["cristian@cristiangonzalez.com" => "Cristian"])
-                ->setBody($html_content, 'text/html')// add html content
-                ->addPart($plain_text, 'text/plain'); // Add plain text
-
-            // Create the Transport
-            $transport = (new \Swift_SmtpTransport($smtp_server, $port))
-                ->setUsername($username)
-                ->setPassword($password);
-
-            // Create the Mailer using your created Transport
-            $mailer = new \Swift_Mailer($transport);
-
-            $mailer->send($message);
-
 
             return $response->withStatus(302)->withHeader('Location', '/profile');
         } catch (\Exception $e){

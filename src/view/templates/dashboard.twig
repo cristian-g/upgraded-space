@@ -354,7 +354,7 @@
                             {% set filesWord = "archivos" %}
                         {% endif %}
                         {% if uuid_parent is null %}
-                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} {{ foldersWord }} y {{ filesCount }} {{ filesWord }}, {{ rootFolderSize }} bytes en total.</small>
+                            <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} {{ foldersWord }} y {{ filesCount }} {{ filesWord }}, {{ rootFolderBytes }} bytes en total.</small>
                         {% else %}
                             <small class="pull-left text-muted" dir="ltr">{{ foldersCount }} {{ foldersWord }} y {{ filesCount }} {{ filesWord }}, {{ folderSize }} bytes en total.</small>
                         {% endif %}

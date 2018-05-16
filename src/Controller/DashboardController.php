@@ -34,7 +34,7 @@ class DashboardController
         $role = null;
 
         if (isset($args['uuid'])) {
-            $upload = ($this->container->get('get_folder_by_uuid_use_case'))($args['uuid']);
+            $upload = ($this->container->get('get_upload_by_uuid_use_case'))($args['uuid']);
 
             if ($upload->getExt() == null) {
                 // It is a folder (not the root)
@@ -51,7 +51,7 @@ class DashboardController
                 // Breadcrumb
                 array_push($breadcrumb, $folder);
                 while ($folder->getIdParent() != null && ($role == 'owner' || !($folder->getId() == $share->getIdUpload()))) {
-                    $folder = ($this->container->get('get_folder_by_id_use_case'))($folder->getIdParent());
+                    $folder = ($this->container->get('get_upload_by_id_use_case'))($folder->getIdParent());
                     array_unshift($breadcrumb, $folder);
                     if ($role != 'owner') {
                         if ($folder->getId() == $share->getIdUpload()) {

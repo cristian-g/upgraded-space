@@ -25,6 +25,7 @@ $container['view'] = function($container) {
         if ($rootFolderSize == null) $rootFolderSize = 0;
         $freeSpace = round((float)(($max_size - $rootFolderSize)/1000000.0), 2);
         $view->getEnvironment()->addGlobal('rootFolderSize', $freeSpace);
+        $view->getEnvironment()->addGlobal('rootFolderBytes', $rootFolderSize);
 
         // Notificacions
         $notifications = ($container->get('get_last_five_notifications_use_case'))($_SESSION["user_id"]);
@@ -144,15 +145,15 @@ $container['get_uploads_use_case'] = function($container) {
     return $useCase;
 };
 
-$container['get_folder_by_uuid_use_case'] = function($container) {
-    $useCase = new \Pwbox\Model\UseCase\GetFolderByUuidUseCase(
+$container['get_upload_by_uuid_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetUploadByUuidUseCase(
         $container->get('upload_repository')
     );
     return $useCase;
 };
 
-$container['get_folder_by_id_use_case'] = function($container) {
-    $useCase = new \Pwbox\Model\UseCase\GetFolderByIdUseCase(
+$container['get_upload_by_id_use_case'] = function($container) {
+    $useCase = new \Pwbox\Model\UseCase\GetUploadByIdUseCase(
         $container->get('upload_repository')
     );
     return $useCase;

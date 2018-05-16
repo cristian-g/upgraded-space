@@ -45,7 +45,7 @@ class PostFileController
 
         $errors = [];
 
-        $parentFolder = ($this->container->get('get_folder_by_uuid_use_case'))($data["uuid_parent"]);
+        $parentFolder = ($this->container->get('get_upload_by_uuid_use_case'))($data["uuid_parent"]);
 
         $numCorrectFiles = 0;
         $fileNames = [];
@@ -130,12 +130,12 @@ class PostFileController
             $fileNamesText = implode(", ", $fileNames);
 
             // Role and notificate
-            $folder = ($this->container->get('get_folder_by_uuid_use_case'))($data["uuid_parent"]);
+            $folder = ($this->container->get('get_upload_by_uuid_use_case'))($data["uuid_parent"]);
             $role = null;
             $share = RoleCalculator::computeRole($folder, $role, $this->container);
-            if ($share != null) {
+            if ($share != null && $role == 'admin') {
                 $idShare = $share->getId();
-                $sharedFolder = ($this->container->get('get_folder_by_id_use_case'))($share->getIdUpload());
+                $sharedFolder = ($this->container->get('get_upload_by_id_use_case'))($share->getIdUpload());
 
                 // Post notification
                 $type = ($numCorrectFiles > 1) ? 'new_uploads' : 'new_upload';

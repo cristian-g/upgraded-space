@@ -26,7 +26,7 @@ class PostShareController
         try{
             $data = $request->getParsedBody();
 
-            $folder = ($this->container->get('get_folder_by_uuid_use_case'))($data["uuid_upload"]);
+            $folder = ($this->container->get('get_upload_by_uuid_use_case'))($data["uuid_upload"]);
             $data["idUpload"] = $folder->getId();
 
             $service = $this->container->get('get_from_email_use_case');

@@ -10,7 +10,7 @@ class RoleCalculator {
 
         $folderAuxI = $folder;
         while ($folderAuxI->getIdParent() != null) {
-            $folderAuxI = ($container->get('get_folder_by_id_use_case'))($folderAuxI->getIdParent());
+            $folderAuxI = ($container->get('get_upload_by_id_use_case'))($folderAuxI->getIdParent());
         }
         if ($folderAuxI->getIdUser() == $_SESSION["user_id"]) {
             $role = 'owner';
@@ -20,7 +20,7 @@ class RoleCalculator {
             $share = ($container->get('get_share_by_upload_id_use_case'))($folderAux->getId(), $_SESSION["user_id"]);
             while ($share == null || $share->getIdUserDestination() != $_SESSION["user_id"]) {
                 if ($folderAux->getIdParent() == null) break;
-                $folderAux = ($container->get('get_folder_by_id_use_case'))($folderAux->getIdParent());
+                $folderAux = ($container->get('get_upload_by_id_use_case'))($folderAux->getIdParent());
                 $share = ($container->get('get_share_by_upload_id_use_case'))($folderAux->getId(), $_SESSION["user_id"]);
                 if ($share != null && $share->getIdUserDestination() == $_SESSION["user_id"]) break;
             }
@@ -30,10 +30,10 @@ class RoleCalculator {
             else {
                 $folderAux2 = $folder;
                 if ($folderAux2->getIdParent() != null) {
-                    $folderAux2 = ($container->get('get_folder_by_id_use_case'))($folderAux2->getIdParent());
+                    $folderAux2 = ($container->get('get_upload_by_id_use_case'))($folderAux2->getIdParent());
                     while ($folderAux2->getIdUser() != $_SESSION["user_id"]) {
                         if ($folderAux2->getIdParent() == null) break;
-                        $folderAux2 = ($container->get('get_folder_by_id_use_case'))($folderAux2->getIdParent());
+                        $folderAux2 = ($container->get('get_upload_by_id_use_case'))($folderAux2->getIdParent());
                     }
                     if ($folderAux2->getIdUser() == $_SESSION["user_id"]) {
                         $role = 'owner';

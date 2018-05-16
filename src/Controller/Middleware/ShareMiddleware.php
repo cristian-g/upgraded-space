@@ -18,7 +18,7 @@ class ShareMiddleware
     public function __invoke(Request $request, Response $response, callable $next)
     {
         // Role
-        $folder = ($this->container->get('get_folder_by_uuid_use_case'))($_POST['uuid_upload']);
+        $folder = ($this->container->get('get_upload_by_uuid_use_case'))($_POST['uuid_upload']);
 
         $role = null;
         $share = RoleCalculator::computeRole($folder, $role, $this->container);

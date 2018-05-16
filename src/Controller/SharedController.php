@@ -27,7 +27,7 @@ class SharedController
         $shares = ($this->container->get('get_shares_use_case'))($_SESSION["user_id"]);
 
         foreach ($shares as $key => $share) {
-            $upload = ($this->container->get('get_folder_by_id_use_case'))($share['id_upload']);
+            $upload = ($this->container->get('get_upload_by_id_use_case'))($share['id_upload']);
             $shares[$key]["upload"] = $upload->toArray();
 
             $uploadUser = ($this->container->get('get_user_use_case'))($upload->getIdUser());

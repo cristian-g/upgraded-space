@@ -74,12 +74,12 @@ $app->post(
 $app->post(
     '/rename',
     'Pwbox\Controller\RenameUploadController:postAction'
-);
+)->add('Pwbox\Controller\Middleware\ActionMiddleware');
 
 $app->post(
     '/delete',
     'Pwbox\Controller\DeleteUploadController:postAction'
-);
+)->add('Pwbox\Controller\Middleware\ActionMiddleware');
 
 $app->post(
     '/share',

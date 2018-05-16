@@ -27,7 +27,7 @@ class PostFolderController
         try{
             $data = $request->getParsedBody();
             $service = $this->container->get('post_folder_use_case');
-            $parentFolder = ($this->container->get('get_folder_by_uuid_use_case'))($data["uuid_parent"]);
+            $parentFolder = ($this->container->get('get_upload_by_uuid_use_case'))($data["uuid_parent"]);
             $service($data, $parentFolder->getId());
 
             // Store the name of the item
@@ -41,12 +41,12 @@ class PostFolderController
             $user = ($this->container->get('get_user_use_case'))($_SESSION["user_id"]);
 
             // Role and notificate
-            $folder = ($this->container->get('get_folder_by_uuid_use_case'))($data["uuid_parent"]);
+            $folder = ($this->container->get('get_upload_by_uuid_use_case'))($data["uuid_parent"]);
             $role = null;
             $share = RoleCalculator::computeRole($folder, $role, $this->container);
-            if ($role == 'admin') {
+            if ($share != null && $role == 'admin') {
                 $idShare = $share->getId();
-                $sharedFolder = ($this->container->get('get_folder_by_id_use_case'))($share->getIdUpload());
+                $sharedFolder = ($this->container->get('get_upload_by_id_use_case'))($share->getIdUpload());
 
                 // Post notification
                 $message = $itemName.' con el nombre "'.$itemFileName.'" ha sido '.$actionName.' por '.$user->getUsername().' ('.$user->getEmail().'), que es administrador de tu carpeta compartida llamada "'.$sharedFolder->getName().'".';
