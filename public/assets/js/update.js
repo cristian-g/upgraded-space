@@ -14,6 +14,23 @@ $(document).ready(function () {
             cache: false,
             data: data,
             success: function (json) {
+
+                //we check the file extension
+                var validExtensions = ['jpg', 'png', 'gif']
+                if (validExtensions.indexOf(extension)){
+                    swal({
+                        title: "Error",
+                        icon: "error",
+                        text: "Formato de imagen de perfil incorrecto, utilizar .jpg, .png o .gif",
+                        buttons: {
+                            confirm: "Aceptar"
+                        },
+                        dangerMode: true
+                    });
+                    return;
+                }
+
+                console.log(extension);
                 swal({
                     title: "Datos actualizados",
                     icon: "success",

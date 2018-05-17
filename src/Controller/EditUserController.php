@@ -71,6 +71,14 @@ class EditUserController
 
             $profile = $uploadedFiles['profile_image'];
 
+            $fileName = $profile->getClientFilename();
+            $fileInfo = pathinfo($fileName);
+            $extension = isset($fileInfo['extension']) ? $fileInfo['extension'] : null;
+            if (!$this->isValidExtension($extension) && $profile->getError() === UPLOAD_ERR_OK) {
+                return $this->container->get('view')
+                    ->render($response, 'profile.twig', ['error' => "Formato de imagen de perfil incorrecto, utilizar .jpg, .png o .gif"]);
+            }
+
             if ($profile->getError() === UPLOAD_ERR_OK and $profile->getSize() <= 500000){
                 $path = $directory.'/profile_image.'.$user->getExtension();
                 unlink($path);
@@ -94,5 +102,14 @@ class EditUserController
                 ->render($response, 'profile.twig', ['error' => 'code: '.$e->getMessage()]);
         }
         return $response;
+    }
+
+    private function isValidExtension($extension)
+    {
+        if ($extension == null) return false;
+
+        $validExtensions = ['jpg', 'png', 'gif'];
+
+        return in_array($extension, $validExtensions);
     }
 }
