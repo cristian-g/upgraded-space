@@ -96,7 +96,8 @@ $app->get(
 $app->get(
     '/resend',
     'Pwbox\Controller\ResendVerificationController'
-)->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');// Només permet l'accés si l'usuari ha iniciat sessió
+)->add('Pwbox\Controller\Middleware\ResendVerificationMiddleware')// Només permet l'accés si l'usuari encara no està validat
+->add('Pwbox\Controller\Middleware\UserLoggedMiddleware');// Només permet l'accés si l'usuari ha iniciat sessió
 
 $app->get(
     '/403',

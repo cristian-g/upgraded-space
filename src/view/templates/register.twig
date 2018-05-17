@@ -16,7 +16,6 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-        {{ form.userForm() }}
         {% if error %}
             <div class="alert alert-danger" role="alert">
                 <h4 class="alert-heading">Error</h4>
@@ -29,6 +28,7 @@
                 <p>{{ message }}</p>
             </div>
         {% endfor %}
+        {{ form.userForm() }}
     </div>
 {% endblock %}
 {% block footer %}

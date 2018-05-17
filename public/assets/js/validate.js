@@ -1,4 +1,4 @@
-//registerForm
+// Register form
 $(document).ready(function () {
 
     $('#registerSubmit').click(function(event) {
@@ -27,7 +27,7 @@ $(document).ready(function () {
             return false;
         }
 
-        if (confirm_password.localeCompare(password) != 0){
+        if (confirm_password.localeCompare(password) != 0) {
             return false;
         }
         form.submit(); // If all the validations succeeded

@@ -31,9 +31,10 @@ class EditUserUseCase
             $extension
         );
         //if we update the profile picture
-        if ($value == 0){
+        if ($value == 0) {
             return $this->repository->updateWithPicture($user);
-        }else{
+        }
+        else{
             return $this->repository->update($user);
         }
     }
