@@ -86,9 +86,7 @@ class EditUserController
             }else{
                 $service($data, 1, null,  $_SESSION['user_id']);
             }
-
-            $this->container->get('flash')->addMessage('dashboard', 'User registered.');
-
+            
             if (!file_exists($directory)) {
                 mkdir($directory, 0777, true);
             }
