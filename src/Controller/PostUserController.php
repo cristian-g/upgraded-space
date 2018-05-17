@@ -108,13 +108,14 @@ class PostUserController
             $directory = __DIR__.'/../../public/uploads/'.$user->getUuid();// És relatiu o absolut, però respecte el file system (la màquina)
             $directory_default = __DIR__.'/../../public/assets/img/profile_images/default.jpg';
 
+            if (!file_exists($directory)) {
+                mkdir($directory, 0777, true);
+            }
+
             if ($profile->getError() === UPLOAD_ERR_OK && $profile->getSize() <= 500000) {
                 $filename = $this->moveUploadedFile($directory, $profile);
                 $this->container->get('flash')->addMessage('login', 'User registered with profile image.');
             }else{
-                if (!file_exists($directory)) {
-                    mkdir($directory, 0777, true);
-                }
                 if ( $profile->getSize() > 500000){
                     return $this->container->get('view')
                         ->render($response, 'register.twig', ['error' => "Archivo demasiado grande, el tamaño maximo es 500KB"]);
