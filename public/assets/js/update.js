@@ -29,8 +29,6 @@ $(document).ready(function () {
                     });
                     return;
                 }
-
-                console.log(extension);
                 swal({
                     title: "Datos actualizados",
                     icon: "success",

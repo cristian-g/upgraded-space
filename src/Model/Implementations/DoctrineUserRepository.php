@@ -52,7 +52,8 @@ class DoctrineUserRepository implements UserRepository
     }
     public function getFromEmail($email) {
         try {
-            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, default_picture, extension, created_at, updated_at FROM user WHERE email = ? LIMIT 1', array($email));
+            $aux = strtolower($email);
+            $array = $this->connection->fetchAssoc('SELECT id, uuid, username, email, birthdate, password, active, email_activation_key, default_picture, extension, created_at, updated_at FROM user WHERE email = ? LIMIT 1', array($aux));
             $user = User::fromArray($array);
             return $user;
         }
