@@ -26,6 +26,12 @@ class PostFolderController
     {
         try{
             $data = $request->getParsedBody();
+
+            if ($data["name"] == "" || $data["name"] == null) {
+                $this->container->get('flash')->addMessage('dashboard-errors', 'La carpeta no se ha podido crear porque el nombre especificado está vacío.');
+                return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
+            }
+
             $service = $this->container->get('post_folder_use_case');
             $parentFolder = ($this->container->get('get_upload_by_uuid_use_case'))($data["uuid_parent"]);
             $service($data, $parentFolder->getId());
