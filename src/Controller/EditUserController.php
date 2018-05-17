@@ -86,7 +86,7 @@ class EditUserController
             }else{
                 $service($data, 1, null,  $_SESSION['user_id']);
             }
-            
+
             if (!file_exists($directory)) {
                 mkdir($directory, 0777, true);
             }

@@ -27,6 +27,11 @@ class RenameUploadController
         try{
             $data = $request->getParsedBody();
 
+            if ($data["name"] == "" || $data["name"] == null) {
+                $this->container->get('flash')->addMessage('dashboard-errors', 'El ítem no se ha podido renombrar porque el nombre especificado está vacío.');
+                return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
+            }
+
             // Store upload to know its old name
             $oldUpload = ($this->container->get('get_upload_by_id_use_case'))($data["id"]);
             if ($oldUpload->getExt() == null) {
@@ -95,8 +100,8 @@ class RenameUploadController
             return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
         }
         catch (\Exception $e) {
-            return $this->container->get('view')
-                ->render($response, 'dashboard.twig', ['error' => 'Error inesperado.']);
+            $this->container->get('flash')->addMessage('dashboard-errors', 'Error inesperado.');
+            return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
         }
         return $response;
     }

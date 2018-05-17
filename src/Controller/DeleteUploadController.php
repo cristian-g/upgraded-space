@@ -89,8 +89,8 @@ class DeleteUploadController
             $this->container->get('flash')->addMessage('dashboard', 'El ítem se ha eliminado correctamente.');
             return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
         } catch (\Exception $e) {
-            return $this->container->get('view')
-                ->render($response, 'dashboard.twig', ['error' => 'Error inesperado.']);
+            $this->container->get('flash')->addMessage('dashboard-errors', 'Error inesperado.');
+            return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
         }
         return $response;
     }
