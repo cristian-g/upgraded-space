@@ -90,7 +90,7 @@ class DeleteUploadController
             return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
         } catch (\Exception $e) {
             return $this->container->get('view')
-                ->render($response, 'dashboard.twig', ['error' => $e->getMessage()]);
+                ->render($response, 'dashboard.twig', ['error' => 'Error inesperado.']);
         }
         return $response;
     }

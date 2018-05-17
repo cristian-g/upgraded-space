@@ -91,7 +91,7 @@ class EditUserController
 
         } catch (\Exception $e){
             return $this->container->get('view')
-                ->render($response, 'profile.twig', ['error' => 'code: '.$e->getMessage()]);
+                ->render($response, 'profile.twig', ['error' => 'Error inesperado.']);
         }
         return $response;
     }

@@ -96,7 +96,7 @@ class RenameUploadController
         }
         catch (\Exception $e) {
             return $this->container->get('view')
-                ->render($response, 'dashboard.twig', ['error' => $e->getMessage()]);
+                ->render($response, 'dashboard.twig', ['error' => 'Error inesperado.']);
         }
         return $response;
     }
