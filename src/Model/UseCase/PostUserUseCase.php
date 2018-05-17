@@ -21,7 +21,7 @@ class PostUserUseCase
             null,
             null,
             $rawData['username'],
-            $rawData['email'],
+            strtolower($rawData['email']),
             $rawData['birthdate'],
             $rawData['password'],
             0,

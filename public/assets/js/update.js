@@ -16,8 +16,8 @@ $(document).ready(function () {
             success: function (json) {
 
                 //we check the file extension
-                var validExtensions = ['jpg', 'png', 'gif']
-                if (validExtensions.indexOf(extension)){
+                var validExtensions = ['jpg', 'png', 'gif'];
+                if (validExtensions.indexOf(extension) && extension.localeCompare('') != 0){
                     swal({
                         title: "Error",
                         icon: "error",
@@ -39,10 +39,13 @@ $(document).ready(function () {
                         confirm: "Aceptar"
                     }
                 });
-                var profileimageSrc = $('#profileimage').attr('src');
-                var newPath =  profileimageSrc.replace(/\.[^/.]+$/, "") + '.' + extension;
-                $('#profileimage').removeAttr('src').attr('src', newPath+'?timestamp=' + new Date().getTime());
-                $('#bigProfileImage').removeAttr('src').attr('src', newPath+'?timestamp=' + new Date().getTime());
+
+                if (extension.localeCompare('') != 0){
+                    var profileimageSrc = $('#profileimage').attr('src');
+                    var newPath =  profileimageSrc.replace(/\.[^/.]+$/, "") + '.' + extension;
+                    $('#profileimage').removeAttr('src').attr('src', newPath+'?timestamp=' + new Date().getTime());
+                    $('#bigProfileImage').removeAttr('src').attr('src', newPath+'?timestamp=' + new Date().getTime());
+                }
             },
             error: function (responseText) {
                 swal({
