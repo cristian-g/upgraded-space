@@ -86,7 +86,8 @@ class LogInController
                 }
             }
         } catch (\Exception $e){
-
+            return $this->container->get('view')
+                ->render($response, 'login.twig', ['error' => 'Error inesperado.']);
         }
 
     }

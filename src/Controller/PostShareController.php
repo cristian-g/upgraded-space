@@ -35,6 +35,14 @@ class PostShareController
                 $this->container->get('flash')->addMessage('dashboard-errors', 'La carpeta no se ha podido compartir porque no existe un usuario con el email especificado.');
                 return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
             }
+            else {
+                // Check if this folder is already shared
+                $share = ($this->container->get('get_share_by_upload_id_use_case'))($folder->getId(), $userDestination->getId());
+                if ($share->getId() != null) {
+                    $this->container->get('flash')->addMessage('dashboard-errors', 'Esta carpeta ya está compartida con el usuario con el email especificado.');
+                    return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
+                }
+            }
 
             $data["idUserDestination"] = $userDestination->getId();
 
@@ -88,7 +96,7 @@ class PostShareController
             return $response->withStatus(302)->withHeader('Location', '/dashboard'.(($data["uuid_parent"] != null) ? '/'.$data["uuid_parent"] : null));
         } catch (\Exception $e){
             return $this->container->get('view')
-                ->render($response, 'dashboard.twig', ['error' => $e->getMessage()]);
+                ->render($response, 'dashboard.twig', ['error' => 'Error inesperado.']);
         }
         return $response;
     }
