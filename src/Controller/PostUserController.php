@@ -62,7 +62,7 @@ class PostUserController
             //confirm password
             if (strcmp($data['password'], $data['confirm_password']) != 0) {
                 return $this->container->get('view')
-                    ->render($response, 'register.twig', ['error' => "Las dos contrasenyas no son iguales"]);
+                    ->render($response, 'register.twig', ['error' => "Las dos contraseñas no son iguales"]);
             }
 
             //username
@@ -95,7 +95,7 @@ class PostUserController
             $extension = isset($fileInfo['extension']) ? $fileInfo['extension'] : null;
             if (!$this->isValidExtension($extension) && $profile->getError() === UPLOAD_ERR_OK) {
                 return $this->container->get('view')
-                    ->render($response, 'register.twig', ['error' => "Formato de imagen de perfil incorrecto, utilizar .jpg, .png o .gif"]);
+                    ->render($response, 'register.twig', ['error' => "El formato de la imagen de perfil es incorrecto. Por favor, utiliza .jpg, .png o .gif"]);
             }
 
             if ($profile->getError() === UPLOAD_ERR_OK && $profile->getSize() <= 500000){
