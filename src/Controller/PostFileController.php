@@ -16,7 +16,7 @@ class PostFileController
 {
     protected $container;
     public static $max_size_file = 2000000;// 2000000 bytes = 2 MB
-    public static $max_size_disk = 9000000;// 1000000000 bytes = 1 GB
+    public static $max_size_disk = 1000000000;// 1000000000 bytes = 1 GB
 
     public function __construct(ContainerInterface $container)
     {
@@ -97,9 +97,8 @@ class PostFileController
             $rootFolderSize = ($this->container->get('get_root_folder_size_use_case'))($_SESSION["user_id"]);
             if ($rootFolderSize + $uploadedFile->getSize() > self::$max_size_disk){
                 $errors[] = sprintf(
-                    'El archivo %s no se ha podido subir porque la extensión %s no es válida.',
-                    $fileName,
-                    $extension
+                    'El archivo %s no se ha podido subir porque supera el espacio disponible',
+                    $fileName
                 );
                 continue;
             }
