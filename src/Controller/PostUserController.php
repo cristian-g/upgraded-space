@@ -135,7 +135,7 @@ class PostUserController
 
         } catch (\Exception $e){
             return $this->container->get('view')
-                ->render($response, 'register.twig', ['error' => 'Error inesperado. Es posible que el nombre de usuario o email ya esten registrados.']);
+                ->render($response, 'register.twig', ['error' => 'Error inesperado. Es posible que el nombre de usuario o email ya estén registrados.']);
         }
         return $response;
     }
