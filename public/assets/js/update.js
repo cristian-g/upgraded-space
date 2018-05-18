@@ -4,6 +4,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         var data = new FormData($('#updateForm')[0]);
+        var filesize = $('#profile_image')[0].files[0].size;
         var filename = $('#profile_image').val();
         var extension = filename.split('.').pop();
         $.ajax({
@@ -29,6 +30,20 @@ $(document).ready(function () {
                     });
                     return;
                 }
+
+                if (filesize > 500000){
+                    swal({
+                        title: "Error",
+                        icon: "error",
+                        text: "Por favor seleccione una imagen con un tamaño inferior a 500KB",
+                        buttons: {
+                            confirm: "Aceptar"
+                        },
+                        dangerMode: true
+                    });
+                    return;
+                }
+
                 swal({
                     title: "Datos actualizados",
                     icon: "success",
