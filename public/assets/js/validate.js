@@ -30,6 +30,39 @@ $(document).ready(function () {
         if (confirm_password.localeCompare(password) != 0) {
             return false;
         }
+
+        var filename = $('#profile_image').val();
+        if(filename != ''){
+            var filesize = $('#profile_image')[0].files[0].size;
+            var extension = filename.split('.').pop();
+            //we check the file extension
+            var validExtensions = ['jpg', 'png', 'gif'];
+            if (validExtensions.indexOf(extension) == -1 && extension.localeCompare('') != 0){
+                swal({
+                    title: "Error",
+                    icon: "error",
+                    text: "El formato de la imagen de perfil es incorrecto. Por favor, utiliza .jpg, .png o .gif",
+                    buttons: {
+                        confirm: "Aceptar"
+                    },
+                    dangerMode: true
+                });
+                return false;
+            }
+
+            if (filesize > 500000){
+                swal({
+                    title: "Error",
+                    icon: "error",
+                    text: "La imagen de perfil es demasiado grande. El tamaño máximo es de 500 KB.",
+                    buttons: {
+                        confirm: "Aceptar"
+                    },
+                    dangerMode: true
+                });
+                return false;
+            }
+        }
         form.submit(); // If all the validations succeeded
     });
 
@@ -70,6 +103,7 @@ $(document).ready(function () {
         var password = $('#password').val();
         var confirm_password = $('#confirm_password').val();
 
+
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (!mailformat.test(email)){
             return false
@@ -83,6 +117,41 @@ $(document).ready(function () {
         if (confirm_password.localeCompare(password) != 0){
             return false;
         }
+
+
+        var filename = $('#profile_image').val();
+        if(filename != ''){
+            var filesize = $('#profile_image')[0].files[0].size;
+            var extension = filename.split('.').pop();
+            //we check the file extension
+            var validExtensions = ['jpg', 'png', 'gif'];
+            if (validExtensions.indexOf(extension) == -1 && extension.localeCompare('') != 0){
+                swal({
+                    title: "Error",
+                    icon: "error",
+                    text: "El formato de la imagen de perfil es incorrecto. Por favor, utiliza .jpg, .png o .gif",
+                    buttons: {
+                        confirm: "Aceptar"
+                    },
+                    dangerMode: true
+                });
+                return false;
+            }
+
+            if (filesize > 500000){
+                swal({
+                    title: "Error",
+                    icon: "error",
+                    text: "La imagen de perfil es demasiado grande. El tamaño máximo es de 500 KB.",
+                    buttons: {
+                        confirm: "Aceptar"
+                    },
+                    dangerMode: true
+                });
+                return false;
+            }
+        }
+
         form.submit(); // If all the validations succeeded
     });
 

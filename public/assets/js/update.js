@@ -4,7 +4,6 @@ $(document).ready(function () {
         e.preventDefault();
 
         var data = new FormData($('#updateForm')[0]);
-        var filesize = $('#profile_image')[0].files[0].size;
         var filename = $('#profile_image').val();
         var extension = filename.split('.').pop();
         $.ajax({
@@ -15,34 +14,6 @@ $(document).ready(function () {
             cache: false,
             data: data,
             success: function (json) {
-
-                //we check the file extension
-                var validExtensions = ['jpg', 'png', 'gif'];
-                if (validExtensions.indexOf(extension) && extension.localeCompare('') != 0){
-                    swal({
-                        title: "Error",
-                        icon: "error",
-                        text: "El formato de la imagen de perfil es incorrecto. Por favor, utiliza .jpg, .png o .gif",
-                        buttons: {
-                            confirm: "Aceptar"
-                        },
-                        dangerMode: true
-                    });
-                    return;
-                }
-
-                if (filesize > 500000){
-                    swal({
-                        title: "Error",
-                        icon: "error",
-                        text: "La imagen de perfil es demasiado grande. El tamaño máximo es de 500 KB.",
-                        buttons: {
-                            confirm: "Aceptar"
-                        },
-                        dangerMode: true
-                    });
-                    return;
-                }
 
                 swal({
                     title: "Datos actualizados",
