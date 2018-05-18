@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38ef741-17f9-42c2-878f-2681224a399e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/0. db/0. base/sql.sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. db/1. editando cristian/sql.sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. db/2. editando cristian/WhatsApp Image 2018-05-06 at 21.47.53.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. db/2. editando cristian/apunts.rtf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. db/2. editando cristian/sql.sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. db/3. editando cristian/sql.sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. db/4. editando cristian/sql.sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. db/5. editando cristian/sql.sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. db/6. editando marc/marc.sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. db/7. editando cristian/sql.sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/avatar.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/avatar.psd" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/formulari/jqueryform (1).zip" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/formulari/jqueryform-04cc47/admin.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/formulari/jqueryform-04cc47/form.config.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/formulari/jqueryform-04cc47/form.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/formulari/jqueryform-04cc47/form.lib.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/formulari/jqueryform-04cc47/jqueryform.com.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/formulari/jqueryform-04cc47/phpmailer.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/formulari/jqueryform-04cc47/vendor.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/formulari/jqueryform-04cc47/vendor.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/formulari/jqueryform.zip" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/pwbox.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/0. recursos/table.txt" afterPath="" />
       <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/update.js" afterPath="$PROJECT_DIR$/public/assets/js/update.js" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EditUserController.php" afterPath="$PROJECT_DIR$/src/Controller/EditUserController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,8 +40,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="377">
-                <caret line="69" column="45" lean-forward="true" selection-start-line="69" selection-start-column="45" selection-end-line="69" selection-end-column="45" />
+              <first_editor relative-caret-position="808">
+                <caret line="151" column="3" lean-forward="false" selection-start-line="151" selection-start-column="3" selection-end-line="151" selection-end-column="3" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -477,7 +450,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="305956000" />
+    <option name="totallyTimeSpent" value="306075000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1138" extended-state="6" />
@@ -917,8 +890,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="377">
-            <caret line="69" column="45" lean-forward="true" selection-start-line="69" selection-start-column="45" selection-end-line="69" selection-end-column="45" />
+          <first_editor relative-caret-position="808">
+            <caret line="151" column="3" lean-forward="false" selection-start-line="151" selection-start-column="3" selection-end-line="151" selection-end-column="3" />
             <folding />
           </first_editor>
           <second_editor />

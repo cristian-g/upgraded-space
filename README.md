@@ -1,7 +1,7 @@
 # Pwbox
-##**Práctica final de Proyectos Web II**
+## **Práctica final de Proyectos Web II**
 
-###**Autores:**
+### **Autores:**
 
   * Cristian González Ruz (login c.gonzalez.2015)
 
@@ -11,21 +11,21 @@
 
 **¡Bienvenido a PWBox!** PWBox es una plataforma web diseñada para almacenar tus archivos, acceder a ellos donde quieras y compartirlos con quien quieras. Hemos desarrollado la práctica siguiendo los bloques descritos en el enunciado. Para detallar las funcionalidades de ésta, utilizaremos los mismos bloques.
 
-##Ejecutar el proyecto
+## Ejecutar el proyecto
 
 Para ejecutar el proyecto es necesario previamente ejecutar el script SQL que genera la estructura de la base de datos en MySQL. El script se encuentra en el archivo entregado llamado &quot;database.sql&quot;.
 
-##BLOCK 1: Estructura
+## BLOCK 1: Estructura
 
 La estructura del proyecto se ha realizado de acuerdo con todos los puntos especificados por el enunciado, por lo que se ha utilizado Twig como motor de plantillas y todas las páginas extienden el archivo &quot;base.html.twig&quot;. Además, hemos hecho uso de _macros_ para evitar repetir código HTML, como el del formulario de registro y actualización del perfil del usuario. Se ha utilizado &quot;doctrine/dbal&quot; para el modelo y se ha seguido el estándar MVC en todo momento.
 
 Como punto opcional, destaca el uso de la librería Bootstrap, de la que hemos utilizado sus componentes para conseguir una interfaz más profesional, siguiendo en todo momento la documentación de la librería.
 
-##BLOCK 2: Landing
+## BLOCK 2: Landing
 
 Cuando entramos en la plataforma sin haber iniciado sesión vemos la Landing Page. En esta hemos introducido un slider, información para convencer al usuario, la información de contacto y algunas animaciones usando librerías de Javascript como animate.js, wow.js o progressbar.js para crear una página más atractiva. En la barra de navegación superior el usuario puede elegir si ir a &quot;Iniciar sesión&quot; o &quot;Registrarse&quot;. El usuario sólo puede acceder a la Landing si no ha iniciado sesión.
 
-##BLOCK 3: Registro
+## BLOCK 3: Registro
 
 En el registro el usuario debe introducir un nombre de usuario alfanumérico, una dirección de correo electrónico, la fecha de nacimiento, una contraseña y confirmar esa contraseña. Además, el usuario puede subir una imagen de perfil siempre, si no lo hace, se le adjudicará una por defecto. A medida que el usuario va rellenando los campos, estos van comprobando que el formato sea el correcto y en caso de no serlo, el campo se marca en rojo y aparece un pequeño mensaje de error. Cuando el usuario hace click en &quot;Crear la cuenta&quot; el front-end comprueba que todos los campos tengan el formato correcto y lo envía al back-end, el cual lo vuelve a revisar. Si todo está correcto, se guarda la información y la contraseña se encripta usando _bcrypt_, que es una función de _hash_ específicamente pensada para contraseñas. El motivo de que esta función sea adecuada para contraseñas es que es más lenta en ejecutarse (tarda unos 100ms) respecto otro algoritmos como _sha1_. Esto significa que si un hacker quisiera comparar una contraseña encriptada con este método con una lista de un billón de contraseñas tendría que comprar unas 30.000 horas de CPU para solamente tener la posibilidad de descubrir una contraseña. Para evitar el método de las _rainbow tables_, _bcrypt_ incorpora una _salt_ para cada usuario, que se almacena en el mismo _string_ que contiene el _hash_, es decir, en la misma columna de la tabla de la base de datos. Para obtener más información sobre este tema, puede consultar el siguiente artículo:
 
@@ -35,19 +35,19 @@ Al registrarse, se crea una carpeta del usuario en el servidor, se envía un cor
 
 Para el envío de emails hemos utilizado la librería _swiftmailer_ y para la recepción de los emails hemos hecho uso del servicio de [https://mailtrap.io/](https://mailtrap.io/).
 
-##BLOCK 4: Iniciar sesión
+## BLOCK 4: Iniciar sesión
 
 Cuando el usuario está en la página de Login, éste puede introducir el correo o el nombre de usuario en el primer campo y la contraseña en el segundo. La comprobación de front-end y back-end funciona de la misma forma que el registro. Si todo es correcto, el controlador recupera el usuario con ese nombre o correo y comprueba la contraseña. Si las credenciales son correctas, se guarda el identificador del usuario en la sesión y se redirige al Dashboard. Si el usuario intentase acceder a la página de login habiendo iniciado sesión, se le redigiría a su dashboard.
 
-##BLOCK 5: Editar información de usuario
+## BLOCK 5: Editar información de usuario
 
 Cuando el usuario ha iniciado sesión, puede acceder a &quot;Mi perfil&quot;&#39; a través del desplegable de la barra superior. En esta página el usuario verá un formulario parecido al de registro donde se mostrará la información guardada en ese momento. De este formulario se podrá editar el email, la contraseña y la imagen de perfil (si sube una nueva se elimina la anterior, tal como especifica el punto opcional del enunciado). Para poder guardar estos cambios el usuario debe introducir y confirmar una contraseña. Una vez validados por el front-end de la misma forma que en el registro, se envía la información a través de AJAX. El back-end también validará esta información y la actualizará en la base de datos. Tanto si la información se actualiza correctamente como si se ha producido algún error, el servidor avisará al usuario cuando haya terminado a través de un modal. Si el usuario intentase acceder a la página de &quot;Mi perfil&quot; sin haber iniciado sesión, se le redirigiría hacia una página de error 403.
 
-##BLOCK 6: Eliminar cuenta
+## BLOCK 6: Eliminar cuenta
 
 En la misma página de &quot;Mi perfil&quot;, el usuario tiene la opción de eliminar su cuenta haciendo click en el botón rojo inferior derecho. Al hacer click, un modal avisará al usuario para que éste confirme que quiere borrar su cuenta. Al aceptar se eliminará de la base de datos toda la información del usuario, así como sus carpetas, archivos, carpetas compartidas y notificaciones. En el servidor se borrará la carpeta de ese usuario, eliminando así los archivos de su interior. Una vez eliminada la cuenta, se redirige a la Landing Page.
 
-##BLOCK 7: Roles
+## BLOCK 7: Roles
 
 Existen tres roles: propietario, lector y administrador. El concepto de rol se entiende teniendo en cuenta la relación entre un usuario y una carpeta, es decir, el rol del usuario se calcula según la relación que tiene con esa carpeta. El rol de propietario es para las carpetas que el usuario ha creado, en cambio, los roles de lector y administrador son para ser asignados en el momento de compartir una carpeta con otro usuario.
 
@@ -63,25 +63,25 @@ El código que calcula el rol que tiene el usuario sobre una carpeta se encuentr
 
 Todas las acciones posibles (ver contenidos, descargar archivos, renombrar ítems, eliminar ítems, crear nuevas carpetas y subir archivos) son controladas por middlewares para que sólo aquellos usuarios que tienen el rol necesario puedan hacerlas.
 
-##BLOCK 8: Dashboard
+## BLOCK 8: Dashboard
 
 El dashboard permite al usuario gestionar los archivos y carpetas de su unidad, así como los de las carpetas compartidas. Los ítems de tipo archivo se pueden descargar haciendo click en ellos y las carpetas se pueden abrir haciendo doble click en su nombre, ya que hemos implementado la funcionalidad opcional del doble click. Además, el dashboard muestra el rol que tiene el usuario para la carpeta que está viendo su contenido.
 
 Otro añadido extra que hemos implementado es el _breadcrumb_ (en español, miga de pan), que muestra la ruta de carpetas. El inicio del breadcrumb es la raíz (el _root_) para el caso de carpetas de las que el usuario es propietario (es decir, aquellas que ha creado el mismo usuario). Para el caso de carpetas compartidas, el inicio del breadcrumb es la raíz de la carpeta compartida, es decir, aquella que se ha compartido.
 
-##BLOCK 9: Carpetas
+## BLOCK 9: Carpetas
 
 Las carpetas son mostradas en el dashboard y, si el usuario tiene el rol de propietario o de administrador, se pueden crear, renombrar, compartir (sólo si el usuario tiene el rol de propietario) o eliminar. Para saber más detalles sobre las posibilidades que ofrece cada rol, puede consultarse la explicación realizada en el apartado de roles.
 
 Si una carpeta tiene contenido, al eliminarse se elimina también todo su contenido, de forma recursiva, tal como especifica el punto opcional del enunciado.
 
-##BLOCK 10: Archivos
+## BLOCK 10: Archivos
 
 Los archivos son mostrados en el dashboard y, si el usuario tiene el rol de propietario o de administrador, se pueden subir, renombrar o eliminar. Para saber más detalles sobre las posibilidades que ofrece cada rol, puede consultarse la explicación realizada en el apartado de roles.
 
 Las extensiones de archivo permitidas son PDF, JPG, PNG, GIF, MD y TXT. El tamaño máximo de cada archivo es de 2 MB. El formulario para subir archivos permite seleccionar o arrastrar y soltar múltiples archivos. Es importante destacar que la subida de cada archivo se trata de forma independiente, es decir, si la subida de uno o varios archivos falla, el resto de archivos pueden ser subidos correctamente de igual manera. Para cada archivo subido correctamente y para cada error ocurrido se muestra un mensaje en el dashboard.
 
-##BLOCK 11: Compartir
+## BLOCK 11: Compartir
 
 El usuario puede compartir aquellas carpetas de las cuales es propietario, es decir, aquellas carpetas que ha creado el mismo usuario y por tanto su rol es _owner_. Para compartir una carpeta, el usuario debe acceder a ella hacer click en el botón &quot;Compartir&quot; (este botón no aparece en la carpeta _root_ porque ésta no se puede compartir). El modal contiene un pequeño formulario en el que se debe especificar el correo electrónico del usuario que va a recibir la carpeta y su rol. Si el email introducido no está asociado a ningún usuario existente en la base de datos o la carpeta ya ha sido compartida previamente con el mismo usuario, se muestra un error. Existen dos roles posibles para compartir una carpeta, tal como se ha explicado en el apartado del bloque de roles.
 
@@ -92,7 +92,7 @@ Tanto la acción de compartir una carpeta como las acciones de administrador (ve
 - La petición de compartir una carpeta sólo se permite si el usuario es owner de la carpeta.
 - Las peticiones de acciones de administrador (ver, descargar, renombrar, eliminar, crear nuevas carpetas y subir archivos) sólo se permiten si el rol del usuario es administrador.
 
-##BLOCK 12: Almacenamiento
+## BLOCK 12: Almacenamiento
 
 El almacenamiento utilizado por el usuario se calcula mediante la suma de los tamaños de los archivos que tiene, ya que la tabla de archivos en la base de datos existe una columna que es el tamaño que ocupa cada archivo. Además, como añadido extra hemos implementado la funcionalidad de ver el tamaño que ocupa cada carpeta en el dashboard, mostrándose en la columna &quot;Tamaño&quot;. Para conseguir esta funcionalidad hemos utilizado una consulta recursiva a la base de datos, que es capaz de calcular el tamaño total de una carpeta teniendo en cuenta todos sus hijos de forma recursiva. La suma del tamaño de los ítems que se muestran en el dashboard se muestra en la zona inferior, por ejemplo &quot;4 carpetas y 1 archivos, 42952 bytes en total&quot;.
 
@@ -100,7 +100,7 @@ El usuario puede consultar en todo momento el almacenamiento que tiene disponibl
 
 Al subir archivos, se comprueba si el usuario tiene espacio disponible suficiente teniendo en cuenta el tamaño del archivo que se quiere subir. En caso de que el usuario haya seleccionado varios archivos y alguno(s) de ellos tenga(n) un tamaño superior al espacio disponible, se subirán aquellos que sí que quepan en el espacio disponible y para aquellos que no quepan se mostrará un mensaje de error informativo.
 
-##BLOCK 13: Notificaciones
+## BLOCK 13: Notificaciones
 
 Existen 6 tipos de notificaciones:
 
@@ -135,7 +135,7 @@ Las notificaciones llegan al usuario de dos maneras diferentes:
 
 Todas las fechas mostradas son relativas (por ejemplo, &quot;hace 10 minutos&quot;) para facilitar que el usuario pueda saber cuándo realizó la acción.
 
-##Diseño de la base de datos
+## Diseño de la base de datos
 
 La base de datos está definida en 4 tablas.
 
@@ -149,7 +149,7 @@ La última tabla es la &quot;notification&quot;. Esta tabla guarda la informaci�
 
 **El código SQL que genera la estructura de la base de datos en MySQL se encuentra en el archivo entregado llamado &quot;database.sql&quot;.**
 
-##Horas dedicadas
+## Horas dedicadas
 
 Después de haber realizado esta práctica, calculamos que el tiempo invertido es aproximadamente el siguiente:
 
