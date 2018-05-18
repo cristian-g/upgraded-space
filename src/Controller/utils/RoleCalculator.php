@@ -18,30 +18,14 @@ class RoleCalculator {
         else {
             $folderAux = $folder;
             $share = ($container->get('get_share_by_upload_id_use_case'))($folderAux->getId(), $_SESSION["user_id"]);
-            $roles = [];
-            if ($share != null && $share->getIdUserDestination() == $_SESSION["user_id"]) {
-                // Save role
-                array_push($roles, $share->getRole());
-            }
             while ($share == null || $share->getIdUserDestination() != $_SESSION["user_id"]) {
                 if ($folderAux->getIdParent() == null) break;
                 $folderAux = ($container->get('get_upload_by_id_use_case'))($folderAux->getIdParent());
                 $share = ($container->get('get_share_by_upload_id_use_case'))($folderAux->getId(), $_SESSION["user_id"]);
-                if ($share != null && $share->getIdUserDestination() == $_SESSION["user_id"]) {
-                    // Save role
-                    array_push($roles, $share->getRole());
-                }
+                if ($share != null && $share->getIdUserDestination() == $_SESSION["user_id"]) break;
             }
             if ($share != null && $share->getIdUserDestination() == $_SESSION["user_id"]) {
-                // Choose best role (not just $role = $share->getRole())
-                $containsAdmin = in_array("admin", $roles);
-                $containsReader = in_array("reader", $roles);
-                if ($containsReader) {
-                    $role = 'reader';
-                }
-                if ($containsAdmin) {
-                    $role = 'admin';
-                }
+                $role = $share->getRole();
             }
             else {
                 $folderAux2 = $folder;
