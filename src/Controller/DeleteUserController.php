@@ -47,6 +47,8 @@ class DeleteUserController
             return $this->container->get('view')
                 ->render($response, 'profile.twig', ['error' => 'Error inesperado.']);
         }
+
+        $this->container->get('flash')->addMessage('landing', 'Hemos eliminado tu cuenta y todos tus datos correctamente. ¡Te echaremos de menos!');
         return $response->withStatus(302)->withHeader('Location', '/');
     }
 }

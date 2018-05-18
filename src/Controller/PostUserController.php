@@ -81,7 +81,7 @@ class PostUserController
             $birthdate = explode("-", $data['birthdate']);
             if(!checkdate($birthdate[1], $birthdate[2], $birthdate[0]) or $birthdate[0] > date("Y") or ($birthdate[0] == date("Y") and $birthdate[1] > date("m")) or ($birthdate[0] == date("Y") and $birthdate[1] == date("m") and $birthdate[2] > date("d"))){
                 return $this->container->get('view')
-                    ->render($response, 'register.twig', ['error' => "Fecha de nacimiento con formato incorrecta"]);
+                    ->render($response, 'register.twig', ['error' => "Fecha de nacimiento con formato incorrecto"]);
             }
 
 
@@ -119,7 +119,7 @@ class PostUserController
             }else{
                 if ( $profile->getSize() > 500000){
                     return $this->container->get('view')
-                        ->render($response, 'register.twig', ['error' => "Archivo demasiado grande, el tamaño maximo es 500KB"]);
+                        ->render($response, 'register.twig', ['error' => "La imagen de perfil es demasiado grande. El tamaño máximo es de 500 KB."]);
                 }
                 else if (copy($directory_default, $directory.'/profile_image.jpg')){
                     $this->container->get('flash')->addMessage('login', 'El usuario ha sido registrado correctamente. Por favor, inicia sesión o utiliza el link de activación que hemos enviado a tu email.');
