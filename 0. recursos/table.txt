@@ -1,8 +1,0 @@
-   | Name             | Description                                                  | Characteristics                                              |
-   | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-   | username         | Identifies the user inside the application                   | Can only contain alphanumeric characters and a max length of 20 characters |
-   | email            | It will be used to sent all the notifications of the application | It must be a valid email                                     |
-   | birthdate        | The birthadate of the user                                   | It must be a valid date and must be well formatted           |
-   | password         |                                                              | The length of the password must be between 6 and 12 characters and it must contain at least one number and one upper case letter | (^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,12}$)
-   | confirm_password | Allow the users to double check the specified password       | It must match with the value of the password field           |
-   | profile_image    | The profile image of the user                                | This field is optional. The image size must be less than 500Kb. If the user does not upload any image, then a default placeholder must be used instead |

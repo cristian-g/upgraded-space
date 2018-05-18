@@ -79,6 +79,11 @@ class EditUserController
                     ->render($response, 'profile.twig', ['error' => "Formato de imagen de perfil incorrecto, utilizar .jpg, .png o .gif"]);
             }
 
+            if ($profile != null && $profile->getSize() > 500000) {
+                return $this->container->get('view')
+                    ->render($response, 'profile.twig', ['error' => 'La imagen de perfil es demasiado grande. El tamaño máximo es de 500 KB.']);
+            }
+
             if ($profile->getError() === UPLOAD_ERR_OK and $profile->getSize() <= 500000){
                 $path = $directory.'/profile_image.'.$user->getExtension();
                 unlink($path);

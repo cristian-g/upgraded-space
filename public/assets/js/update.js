@@ -35,7 +35,7 @@ $(document).ready(function () {
                     swal({
                         title: "Error",
                         icon: "error",
-                        text: "Por favor seleccione una imagen con un tamaño inferior a 500KB",
+                        text: "La imagen de perfil es demasiado grande. El tamaño máximo es de 500 KB.",
                         buttons: {
                             confirm: "Aceptar"
                         },
