@@ -227,6 +227,7 @@ class User
             $array["default_picture"],
             $array["extension"]);
         $object->setPassword($array["password"]);
+        $object->setEmailActivationKey($array["email_activation_key"]);
         return $object;
     }
     public function toArray() {
@@ -236,6 +237,7 @@ class User
         $array["username"] = $this->getUsername();
         $array["email"] = $this->getEmail();
         $array["birthdate"] = $this->getBirthdate();
+        $array["email_activation_key"] = $this->getEmailActivationKey();
         $array["password"] = $this->getPassword();
         $array["created_at"] = $this->getCreatedAt();
         $array["updated_at"] = $this->getUpdatedAt();

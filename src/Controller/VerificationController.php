@@ -39,7 +39,7 @@ class VerificationController
             return $response->withStatus(302)->withHeader('Location', '/dashboard');
         }
         else {
-            return $response->withStatus(302)->withHeader('Location', '/dashboard');
+            return $response->withStatus(302)->withHeader('Location', '/403');
         }
 
     }

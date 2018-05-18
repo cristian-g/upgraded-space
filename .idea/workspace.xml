@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38ef741-17f9-42c2-878f-2681224a399e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/utils/RoleCalculator.php" afterPath="$PROJECT_DIR$/src/Controller/utils/RoleCalculator.php" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PostUserController.php" afterPath="$PROJECT_DIR$/src/Controller/PostUserController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/VerificationController.php" afterPath="$PROJECT_DIR$/src/Controller/VerificationController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Model/User.php" afterPath="$PROJECT_DIR$/src/Model/User.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,28 +22,48 @@
       <file leaf-file-name="PostUserController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/PostUserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="97" column="120" lean-forward="false" selection-start-line="97" selection-start-column="120" selection-end-line="97" selection-end-column="120" />
+            <state relative-caret-position="434">
+              <caret line="83" column="112" lean-forward="false" selection-start-line="83" selection-start-column="112" selection-end-line="83" selection-end-column="112" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfileUserController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/ProfileUserController.php">
+      <file leaf-file-name="DoctrineUserRepository.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="434">
+              <caret line="87" column="88" lean-forward="false" selection-start-line="87" selection-start-column="88" selection-end-line="87" selection-end-column="88" />
+              <folding>
+                <marker date="1526639201819" expanded="true" signature="655:942" ph="INSERT INTO user... " />
+                <marker date="1526639201819" expanded="true" signature="2021:2187" ph="SELECT id, u... user" />
+                <marker date="1526639201819" expanded="true" signature="2498:2667" ph="SELECT id, u... user" />
+                <marker date="1526639201819" expanded="true" signature="2946:3118" ph="SELECT id, u... user" />
+                <marker date="1526639201819" expanded="true" signature="3427:3611" ph="SELECT id, u... user" />
+                <marker date="1526639201819" expanded="true" signature="3844:3875" ph="DELETE FROM user... " />
+                <marker date="1526639201819" expanded="true" signature="4069:4154" ph="UPDATE user... " />
+                <marker date="1526639201819" expanded="true" signature="4717:4858" ph="UPDATE user... " />
+                <marker date="1526639201819" expanded="true" signature="5569:5608" ph="UPDATE user... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="659">
+              <caret line="86" column="21" lean-forward="false" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RenameUploadController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/RenameUploadController.php">
+      <file leaf-file-name="VerificationController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/VerificationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="732">
-              <caret line="87" column="29" lean-forward="true" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+            <state relative-caret-position="600">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -56,31 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SharedController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/SharedController.php">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VerificationController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/VerificationController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RoleCalculator.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controller/utils/RoleCalculator.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+            <state relative-caret-position="704">
+              <caret line="231" column="5" lean-forward="false" selection-start-line="231" selection-start-column="5" selection-end-line="231" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -89,28 +92,28 @@
       <file leaf-file-name="PostFileController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/PostFileController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1225">
-              <caret line="40" column="9" lean-forward="true" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+            <state relative-caret-position="15">
+              <caret line="40" column="9" lean-forward="false" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostFolderController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/PostFolderController.php">
+      <file leaf-file-name="GetUserUseCase.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetUserUseCase.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="956">
-              <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostShareController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/PostShareController.php">
+      <file leaf-file-name="VerificationMiddleware.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Middleware/VerificationMiddleware.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="965">
-              <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+            <state relative-caret-position="300">
+              <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -129,7 +132,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PostMiddle</find>
       <find>$newUpload</find>
       <find>$newName</find>
       <find>new_upload</find>
@@ -159,6 +161,7 @@
       <find>margin-left: 10</find>
       <find>jpg</find>
       <find>flash</find>
+      <find>FECHA DE</find>
     </findStrings>
     <replaceStrings>
       <replace>uploadFileModal</replace>
@@ -202,9 +205,7 @@
         <option value="$PROJECT_DIR$/public/test.php" />
         <option value="$PROJECT_DIR$/src/Model/UseCase/GetUserByEmailActivationKeyUseCase.php" />
         <option value="$PROJECT_DIR$/src/Model/UserRepository.php" />
-        <option value="$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" />
         <option value="$PROJECT_DIR$/src/view/templates/macros/userForm.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/VerificationController.php" />
         <option value="$PROJECT_DIR$/src/Controller/ResendVerificationController.php" />
         <option value="$PROJECT_DIR$/src/view/templates/notifications.twig" />
         <option value="$PROJECT_DIR$/src/Model/Implementations/DoctrineNotificationRepository.php" />
@@ -232,7 +233,6 @@
         <option value="$PROJECT_DIR$/public/assets/css/styles.css" />
         <option value="$PROJECT_DIR$/public/assets/js/update.js" />
         <option value="$PROJECT_DIR$/src/Controller/PostFileController.php" />
-        <option value="$PROJECT_DIR$/src/Model/User.php" />
         <option value="$PROJECT_DIR$/src/view/templates/profile.twig" />
         <option value="$PROJECT_DIR$/src/view/templates/landing.twig" />
         <option value="$PROJECT_DIR$/src/view/templates/register.twig" />
@@ -240,13 +240,16 @@
         <option value="$PROJECT_DIR$/src/Model/UseCase/EditUserUseCase.php" />
         <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/src/Controller/Middleware/ResendVerificationMiddleware.php" />
-        <option value="$PROJECT_DIR$/src/Controller/PostUserController.php" />
         <option value="$PROJECT_DIR$/src/Controller/EditUserController.php" />
         <option value="$PROJECT_DIR$/src/Controller/RenameUploadController.php" />
         <option value="$PROJECT_DIR$/src/Controller/DeleteUploadController.php" />
         <option value="$PROJECT_DIR$/src/Controller/PostFolderController.php" />
         <option value="$PROJECT_DIR$/src/Controller/PostShareController.php" />
         <option value="$PROJECT_DIR$/src/Controller/utils/RoleCalculator.php" />
+        <option value="$PROJECT_DIR$/src/Controller/PostUserController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/VerificationController.php" />
+        <option value="$PROJECT_DIR$/src/Model/User.php" />
+        <option value="$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php" />
       </list>
     </option>
   </component>
@@ -263,10 +266,10 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="993" />
-    <option name="height" value="1027" />
+    <option name="width" value="1920" />
+    <option name="height" value="1138" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -331,6 +334,13 @@
               <item name="slimapp" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="slimapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="slimapp" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Middleware" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="slimapp" type="b2602c69:ProjectViewProjectNode" />
@@ -583,10 +593,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="298138000" />
+    <option name="totallyTimeSpent" value="301313000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="22" width="2048" height="1219" extended-state="6" />
+    <frame x="0" y="22" width="1920" height="1138" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -595,7 +605,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15478516" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16510417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2598499" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -637,13 +647,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetFileUseCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
@@ -723,13 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3330">
-          <caret line="222" column="17" lean-forward="false" selection-start-line="222" selection-start-column="17" selection-end-line="222" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/templates/landing.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="656">
@@ -751,13 +747,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-661">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/dependencies.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -776,14 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Middleware/VerificationMiddleware.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -825,13 +806,6 @@
         <state relative-caret-position="255">
           <caret line="19" column="46" lean-forward="false" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="86" column="21" lean-forward="false" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -930,14 +904,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PostFileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1225">
-          <caret line="40" column="9" lean-forward="true" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/PostFolderController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="956">
@@ -954,34 +920,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PostUserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="97" column="120" lean-forward="false" selection-start-line="97" selection-start-column="120" selection-end-line="97" selection-end-column="120" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ProfileUserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/RenameUploadController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="732">
           <caret line="87" column="29" lean-forward="true" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ResendVerificationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -994,19 +936,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/VerificationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/utils/RoleCalculator.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
           <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ProfileUserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="86" column="21" lean-forward="false" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Middleware/VerificationMiddleware.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/VerificationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ResendVerificationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/UseCase/GetUserUseCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PostFileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="40" column="9" lean-forward="false" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PostUserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="83" column="112" lean-forward="false" selection-start-line="83" selection-start-column="112" selection-end-line="83" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="231" column="5" lean-forward="false" selection-start-line="231" selection-start-column="5" selection-end-line="231" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Implementations/DoctrineUserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="87" column="88" lean-forward="false" selection-start-line="87" selection-start-column="88" selection-end-line="87" selection-end-column="88" />
+          <folding>
+            <marker date="1526639201819" expanded="true" signature="655:942" ph="INSERT INTO user... " />
+            <marker date="1526639201819" expanded="true" signature="2021:2187" ph="SELECT id, u... user" />
+            <marker date="1526639201819" expanded="true" signature="2498:2667" ph="SELECT id, u... user" />
+            <marker date="1526639201819" expanded="true" signature="2946:3118" ph="SELECT id, u... user" />
+            <marker date="1526639201819" expanded="true" signature="3427:3611" ph="SELECT id, u... user" />
+            <marker date="1526639201819" expanded="true" signature="3844:3875" ph="DELETE FROM user... " />
+            <marker date="1526639201819" expanded="true" signature="4069:4154" ph="UPDATE user... " />
+            <marker date="1526639201819" expanded="true" signature="4717:4858" ph="UPDATE user... " />
+            <marker date="1526639201819" expanded="true" signature="5569:5608" ph="UPDATE user... " />
+          </folding>
         </state>
       </provider>
     </entry>

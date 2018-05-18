@@ -81,7 +81,7 @@ class PostUserController
             $birthdate = explode("-", $data['birthdate']);
             if(!checkdate($birthdate[1], $birthdate[2], $birthdate[0]) or $birthdate[0] > date("Y") or ($birthdate[0] == date("Y") and $birthdate[1] > date("m")) or ($birthdate[0] == date("Y") and $birthdate[1] == date("m") and $birthdate[2] > date("d"))){
                 return $this->container->get('view')
-                    ->render($response, 'register.twig', ['error' => "Fecha de nacimiento con formato incorrecta"]);
+                    ->render($response, 'register.twig', ['error' => "Fecha de nacimiento con formato incorrecto"]);
             }
 
 
