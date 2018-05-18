@@ -6,7 +6,7 @@ $container = $app->getContainer();
 $container['view'] = function($container) {
     $view = new \Slim\Views\Twig(__DIR__ . '/../src/view/templates', [/*
         'cache' => __DIR__ . '/../var/cache/'
-    */]);// TODO desactivar en la versió de producció (és a dir al entregar la pràctica en aquest cas) (diu que NO CAL FER-HO)
+    */]);
     $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
     $view->addExtension(new \Slim\Views\TwigExtension($container['router'], $basePath));
     $view->addExtension(new Knlv\Slim\Views\TwigMessages(

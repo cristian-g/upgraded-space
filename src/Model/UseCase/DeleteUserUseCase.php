@@ -18,7 +18,6 @@ class DeleteUserUseCase
     }
 
     public function __invoke(int $userid) {
-        //TODO Eliminar documents i informació de l'usuari abans de borrar-los
         $this->repository->delete($userid);
     }
 }
