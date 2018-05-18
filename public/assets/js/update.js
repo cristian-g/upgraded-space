@@ -21,7 +21,7 @@ $(document).ready(function () {
                     swal({
                         title: "Error",
                         icon: "error",
-                        text: "Formato de imagen de perfil incorrecto, utilizar .jpg, .png o .gif",
+                        text: "El formato de la imagen de perfil es incorrecto. Por favor, utiliza .jpg, .png o .gif",
                         buttons: {
                             confirm: "Aceptar"
                         },

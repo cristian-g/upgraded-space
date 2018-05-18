@@ -119,7 +119,7 @@ class PostUserController
             }else{
                 if ( $profile->getSize() > 500000){
                     return $this->container->get('view')
-                        ->render($response, 'register.twig', ['error' => "Archivo demasiado grande, el tamaño maximo es 500KB"]);
+                        ->render($response, 'register.twig', ['error' => "La imagen de perfil es demasiado grande. El tamaño máximo es de 500 KB."]);
                 }
                 else if (copy($directory_default, $directory.'/profile_image.jpg')){
                     $this->container->get('flash')->addMessage('login', 'El usuario ha sido registrado correctamente. Por favor, inicia sesión o utiliza el link de activación que hemos enviado a tu email.');

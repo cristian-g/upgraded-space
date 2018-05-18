@@ -14,12 +14,14 @@
     {{ parent() }}
 {% endblock %}
 {% block content %}
-    {% if deletedUser %}
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">Error</h4>
-            <p>El usuario de ha borrado correctamente.</p>
+    {% for message in flash('landing') %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-    {% endif %}
+    {% endfor %}
     <div id="carouselLanding" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselLanding" data-slide-to="0" class="active"></li>
