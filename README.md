@@ -2,7 +2,7 @@
 
 <p align="center">
     <img src="docs/logo.png" width="300">
-    <br>
+    <br><br>
     <a href="https://github.com/cristian-g/upgraded-space/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/cristian-g/upgraded-space?style=for-the-badge"></a>
     <a href="https://github.com/cristian-g/upgraded-space/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/cristian-g/upgraded-space?style=for-the-badge"></a>
     <a href="https://github.com/cristian-g/upgraded-space/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/cristian-g/upgraded-space?style=for-the-badge"></a>
