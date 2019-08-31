@@ -147,5 +147,3 @@ La segunda tabla es la &quot;upload&quot;. En esta tabla guardamos todos los arc
 La tercera tabla es la &quot;share&quot;. En esta tabla guardamos la información de las carpetas compartidas por los usuarios con otros usuarios. Destacamos la columna &quot;role&quot;, donde guardamos el rol con el que se ha compartido la carpeta (&quot;reader&quot; o &quot;admin&quot;).
 
 La última tabla es la &quot;notification&quot;. Esta tabla guarda la información de las notificaciones que se mostrarán a los usuarios. En la columna &quot;type&quot; definimos el tipo de notificación, que puede ser &quot;folder\_sended&quot;, &quot;upload\_renamed&quot;, &quot;upload\_deleted&quot;, &quot;new\_upload&quot;, &quot;new\_uploads&quot; o  &quot;folder\_received&quot;.
-
-**El código SQL que genera la estructura de la base de datos en MySQL se encuentra en el archivo llamado &quot;database.sql&quot;.**
