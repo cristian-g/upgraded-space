@@ -1,7 +1,7 @@
 # UpgradedSpace
 
 <p align="center"> 
-    <img src="docs/logo.png">
+    <img src="docs/logo.png" width="100">
 </p>
 
 **UpgradedSpace es una plataforma web diseñada para almacenar tus archivos, acceder a ellos donde quieras y compartirlos con quien quieras.**
