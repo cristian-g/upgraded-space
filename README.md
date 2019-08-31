@@ -1,4 +1,4 @@
-# UpgradedSpace
+# Upgraded Space
 
 <p align="center">
     <a href="https://github.com/cristian-g/upgraded-space/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/cristian-g/upgraded-space?style=for-the-badge"></a>
@@ -10,7 +10,7 @@
     <img src="docs/logo.png" width="300">
 </p>
 
-**UpgradedSpace es una plataforma web diseñada para almacenar tus archivos, acceder a ellos donde quieras y compartirlos con quien quieras.**
+**Upgraded Space es una plataforma web diseñada para almacenar tus archivos, acceder a ellos donde quieras y compartirlos con quien quieras.**
 
 ## Ejecutar el proyecto
 
