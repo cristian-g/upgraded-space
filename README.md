@@ -1,6 +1,12 @@
 # UpgradedSpace
 
 <p align="center"> 
+    <a href="https://github.com/cristian-g/upgraded-space/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/cristian-g/upgraded-space?style=for-the-badge"></a>
+    <a href="https://github.com/cristian-g/upgraded-space/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/cristian-g/upgraded-space?style=for-the-badge"></a>
+    <a href="https://github.com/cristian-g/upgraded-space/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/cristian-g/upgraded-space?style=for-the-badge"></a>
+    <a href="https://github.com/cristian-g/upgraded-space/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/cristian-g/upgraded-space?style=for-the-badge"></a>
+    <a href="https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fcristian-g%2Fupgraded-space"><img alt="Twitter" src="https://img.shields.io/twitter/url/https/github.com/cristian-g/upgraded-space?style=for-the-badge"></a>
+    <br>
     <img src="docs/logo.png">
 </p>
 
